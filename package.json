@@ -1,0 +1,21 @@
+{
+  "name": "graphql-server",
+  "version": "1.0.0",
+  "description": "GraphQL server of the ERP Lagalm Industrial",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "author": "Martín GC",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.6.6",
+    "dotenv": "^16.0.0",
+    "graphql": "^16.3.0",
+    "mongoose": "^6.2.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
