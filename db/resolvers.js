@@ -91,16 +91,19 @@ const resolvers = {
 
         },
 
-        newPermission: async (_, { input }) => {
-            try {
-                const permission = new Permission(input);
+        newPermission: async (_, { input }, ctx) => {
+            
+            const permission = new Permission(input);
+            // assign permission to user
+            permission.user = ctx.user.id;
 
+            try {
                 // save
                 const result = await permission.save();
 
                 return result;
             } catch (error) {
-                console.log('a',error);
+                console.log(error);
             }
         },
 

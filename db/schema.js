@@ -32,7 +32,7 @@ const typeDefs = gql`
     type Permission {
         id: ID
         reason: String
-        user: User
+        user: ID
         day: String
         from: String
         to: String
@@ -43,7 +43,6 @@ const typeDefs = gql`
 
     input PermissionInput {
         reason: String!
-        user: String!
         day: String!
         from: String!
         to: String!

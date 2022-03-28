@@ -7,8 +7,9 @@ const PermissionSchema = mongoose.Schema({
         trim: true
     },
     user: {
-        type: String,
-        require: true
+        type: mongoose.Schema.Types.ObjectId,
+        require: true,
+        ref: 'User'
     },
     day: {
         type: String,
