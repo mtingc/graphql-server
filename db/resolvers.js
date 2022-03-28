@@ -1,4 +1,6 @@
 const User = require('../models/User');
+const Permission = require('../models/Permission');
+
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: 'variables.env' });
@@ -11,11 +13,34 @@ const createToken = (user, secret, expiresIn) => {
 
 const resolvers = {
     Query: {
+
         getUser: async (_, { token }) => {
             const userId = await jwt.verify(token, process.env.SECRET);
 
             return userId;
+        },
+
+        getPermission: async (_, { id }) => {
+
+            // check if the permission exists
+            const permission = await Permission.findById(id);
+            if (!permission) {
+                throw new Error('Permiso no encontrado');
+            }
+
+            return permission;
+
+        },
+        
+        getPermissions: async () => {
+            try {
+                const permission = await Permission.find({});
+                return permission;
+            } catch (error) {
+                console.log(error);
+            }
         }
+
     },
     Mutation: {
 
@@ -43,7 +68,7 @@ const resolvers = {
             }
         },
 
-        authUser: async (_, {input}) => {
+        authUser: async (_, { input }) => {
 
             const { email, password } = input;
 
@@ -65,6 +90,51 @@ const resolvers = {
             }
 
         },
+
+        newPermission: async (_, { input }) => {
+            try {
+                const permission = new Permission(input);
+
+                // save
+                const result = await permission.save();
+
+                return result;
+            } catch (error) {
+                console.log('a',error);
+            }
+        },
+
+        updatePermission: async (_, { id, input }) => {
+
+            let permission = await Permission.findById(id);
+
+            // check if the permission exists
+            if (!permission) {
+                throw new Error('Permiso no encontrado');
+            }
+
+            // update permission
+            permission = await Permission.findOneAndUpdate({ _id : id }, input, { new: true });
+
+            return permission;
+
+        },
+
+        detelePermission: async (_, { id }) => {
+
+            let permission = await Permission.findById(id);
+
+            // check if the permission exists
+            if (!permission) {
+                throw new Error('Permiso no encontrado');
+            }
+
+            // delete permission
+            await Permission.findOneAndDelete({ _id: id });
+            
+            return "Permiso eliminado";
+
+        }
 
     }
 }
