@@ -56,6 +56,7 @@ const typeDefs = gql`
 
         # Permission
         getPermission(id: ID!): Permission
+        getPermissionsByUser: [Permission]
         getPermissions: [Permission]
     }
 
@@ -67,7 +68,7 @@ const typeDefs = gql`
         # Permission
         newPermission(input: PermissionInput) : Permission
         updatePermission(id: ID!, input: PermissionInput) : Permission
-        detelePermission(id: ID!) : String
+        deletePermission(id: ID!) : String
     }
 `
 

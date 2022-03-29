@@ -20,16 +20,31 @@ const resolvers = {
             return userId;
         },
 
-        getPermission: async (_, { id }) => {
+        getPermission: async (_, { id }, ctx) => {
+
+            const permission = await Permission.findById(id);
 
             // check if the permission exists
-            const permission = await Permission.findById(id);
             if (!permission) {
                 throw new Error('Permiso no encontrado');
             }
 
+            // Only visible to the creator
+            if (permission.user.toString() !== ctx.user.id) {
+                throw new Error('No tienes las validaciones necesarias para consultar el permiso');
+            }
+
             return permission;
 
+        },
+
+        getPermissionsByUser: async (_, {}, ctx) => {
+            try {
+                const permissions = await Permission.find({ user: ctx.user.id.toString() });
+                return permissions;
+            } catch (error) {
+                console.log(error);
+            }
         },
         
         getPermissions: async () => {
@@ -107,23 +122,27 @@ const resolvers = {
             }
         },
 
-        updatePermission: async (_, { id, input }) => {
+        updatePermission: async (_, { id, input }, ctx) => {
 
             let permission = await Permission.findById(id);
 
             // check if the permission exists
             if (!permission) {
                 throw new Error('Permiso no encontrado');
+            }
+
+            // Verify that the user edits their own permission
+            if (permission.user.toString() !== ctx.user.id) {
+                throw new Error('No tienes las validaciones necesarias para consultar el permiso')
             }
 
             // update permission
             permission = await Permission.findOneAndUpdate({ _id : id }, input, { new: true });
-
             return permission;
 
         },
 
-        detelePermission: async (_, { id }) => {
+        deletePermission: async (_, { id }, ctx) => {
 
             let permission = await Permission.findById(id);
 
@@ -132,9 +151,13 @@ const resolvers = {
                 throw new Error('Permiso no encontrado');
             }
 
+            // Verify that the user edits their own permission
+            if (permission.user.toString() !== ctx.user.id) {
+                throw new Error('No tienes las validaciones necesarias para consultar el permiso')
+            }
+
             // delete permission
             await Permission.findOneAndDelete({ _id: id });
-            
             return "Permiso eliminado";
 
         }
