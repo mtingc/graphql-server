@@ -1,0 +1,25 @@
+"Root type definitions"
+type Query {
+    "List of registered users"
+    users: [User!]!
+}
+
+"""
+User details.
+Dates in ISO format.
+"""
+type User {
+    "Unique identifier"
+    id: ID!
+    "Username"
+    name: String!
+    lastname: String!
+    "Account data"
+    email: String!
+    password: String!
+    "User information"
+    birthday: String!
+    phone: Int
+    "Registration date in the app"
+    registerDate: String!
+}
