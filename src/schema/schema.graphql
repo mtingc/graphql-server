@@ -1,11 +1,28 @@
 "Root type definitions"
 type Query {
     "List of registered users"
-    users: [User!]!
+    users: ResultUsers
 }
 
 type Mutation {
     register(user: UserInput!): User
+}
+
+"Interface to specify the required properties in the response"
+interface Result {
+    "Operation status"
+    status: Boolean!
+    "Operation message"
+    message: String!
+}
+
+type ResultUsers implements Result {
+    "Operation status"
+    status: Boolean!
+    "Operation message"
+    message: String!
+    "List of registered users"
+    users: [User!]!
 }
 
 """

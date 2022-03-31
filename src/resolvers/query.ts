@@ -1,19 +1,22 @@
 import { IResolvers } from '@graphql-tools/utils';
+import { COLLECTIONS } from '../config/constants';
 
 const resolversQuery: IResolvers = {
     Query: {
-        users() {
-            return [
-                {
-                    id: 1,
-                    name: 'Martin',
-                    lastname: 'Garnica',
-                    email: 'majok5040@gmail.com',
-                    password: '1234',
-                    birthday: '18/02/01',
-                    registerDate: ''
+        async users(_, __, { db }) {
+            try {
+                return {
+                    status: true,
+                    message: 'Lista de usuarios cargada correctamente.',
+                    users: await db.collection(COLLECTIONS.USERS).find().toArray()
+                };
+            } catch(error) {
+                return {
+                    status: false,
+                    message: 'Error al cargar los usuarios.',
+                    users: []
                 }
-            ];
+            }
         }
     }
 };
