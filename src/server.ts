@@ -9,6 +9,7 @@ import { createServer } from 'http';
 import { ApolloServer } from 'apollo-server-express';
 
 import environments from './config/environments';
+import Database from './lib/database';
 
 // Set environment variables
 if(process.env.NODE_ENV !== 'production') {
@@ -23,9 +24,14 @@ async function init() {
     app.use(cors());
     app.use(compression());
 
+    const database = new Database();
+    const db = await database.init();
+    const context = { db };
+
     const server = new ApolloServer({
         schema,
-        introspection: true
+        introspection: true,
+        context
     });
 
     await server.start();
