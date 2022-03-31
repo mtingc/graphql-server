@@ -2,6 +2,8 @@
 type Query {
     "List of registered users"
     users: ResultUsers
+    "Iniciar sesion del usuario"
+    login(email: String!, password: String!): ResultLogin
 }
 
 type Mutation {
@@ -23,6 +25,15 @@ type ResultUsers implements Result {
     message: String!
     "List of registered users"
     users: [User!]!
+}
+
+type ResultLogin implements Result {
+    "Operation status"
+    status: Boolean!
+    "Operation message"
+    message: String!
+    "Logged in user information"
+    user: User
 }
 
 """
