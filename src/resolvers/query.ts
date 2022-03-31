@@ -1,5 +1,6 @@
 import { IResolvers } from '@graphql-tools/utils';
-import { COLLECTIONS } from '../config/constants';
+import { COLLECTIONS, EXPIRETIME } from '../config/constants';
+import JWT from '../lib/jwt';
 
 const resolversQuery: IResolvers = {
     Query: {
@@ -21,20 +22,40 @@ const resolversQuery: IResolvers = {
         },
         async login(_, { email, password }, { db }) {
             try {
-                const user = await db.collection(COLLECTIONS.USERS).findOne({email, password});
+                const emailVerification = await db
+                                                .collection(COLLECTIONS.USERS)
+                                                .findOne({ email });
+                if(emailVerification === null) {
+                    return {
+                        status: false,
+                        message: 'El usuario no existe',
+                        token: null
+                    };
+                }
+                const user = await db
+                                    .collection(COLLECTIONS.USERS)
+                                    .findOne({ email, password });
+                if(user !== null) {
+                    delete user.password;
+                    delete user.birthday;
+                    delete user.registerDate;
+                }
                 return {
                     status: true,
                     message: 
                         user === null
                             ? 'Contraseña y correo no correctos, sesión no iniciada'
                             : 'Usuario cargado correctamente.',
-                    user
+                    token:
+                        user === null
+                            ? null
+                            : new JWT().sign({ user }, EXPIRETIME.H24)
                 };
             } catch(error) {
                 return {
                     status: false,
                     message: 'Error al cargar el usuario.',
-                    user: null
+                    token: null
                 };
             }
         }
