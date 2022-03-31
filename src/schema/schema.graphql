@@ -4,6 +4,10 @@ type Query {
     users: [User!]!
 }
 
+type Mutation {
+    register(user: UserInput!): User
+}
+
 """
 User details.
 Dates in ISO format.
@@ -22,4 +26,29 @@ type User {
     phone: Int
     "Registration date in the app"
     registerDate: String!
+    "User permissions"
+    role: Role!
+}
+
+"Input for the registration of user data"
+input UserInput {
+    "Unique identifier"
+    id: ID
+    "Username"
+    name: String!
+    lastname: String!
+    "Account data"
+    email: String!
+    password: String!
+    "User information"
+    birthday: String!
+    phone: Int
+    "User permissions"
+    role: Role=USER
+}
+
+"User types"
+enum Role {
+    USER
+    ADMIN
 }
