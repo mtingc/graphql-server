@@ -1,5 +1,6 @@
+import bcrypt from 'bcrypt';
 import { IResolvers } from '@graphql-tools/utils';
-import { COLLECTIONS, EXPIRETIME } from '../config/constants';
+import { COLLECTIONS, EXPIRETIME, MESSAGES } from '../config/constants';
 import JWT from '../lib/jwt';
 
 const resolversQuery: IResolvers = {
@@ -22,32 +23,36 @@ const resolversQuery: IResolvers = {
         },
         async login(_, { email, password }, { db }) {
             try {
-                const emailVerification = await db
-                                                .collection(COLLECTIONS.USERS)
-                                                .findOne({ email });
-                if(emailVerification === null) {
+                // Verify that the email is registered
+                const user = await db
+                                    .collection(COLLECTIONS.USERS)
+                                    .findOne({ email });
+                if(user === null) {
                     return {
                         status: false,
                         message: 'El usuario no existe',
                         token: null
                     };
                 }
-                const user = await db
-                                    .collection(COLLECTIONS.USERS)
-                                    .findOne({ email, password });
-                if(user !== null) {
+
+                // Verify encrypted password
+                const passwordCheck = bcrypt.compareSync(password, user.password);
+
+                // Hide properties
+                if(passwordCheck !== null) {
                     delete user.password;
                     delete user.birthday;
                     delete user.registerDate;
                 }
+
                 return {
                     status: true,
                     message: 
-                        user === null
+                        !passwordCheck
                             ? 'Contraseña y correo no correctos, sesión no iniciada'
                             : 'Usuario cargado correctamente.',
                     token:
-                        user === null
+                        !passwordCheck
                             ? null
                             : new JWT().sign({ user }, EXPIRETIME.H24)
                 };
@@ -58,7 +63,23 @@ const resolversQuery: IResolvers = {
                     token: null
                 };
             }
+        },
+        async me(_, __, { token }) {
+            let info = new JWT().verify(token);
+            if(info === MESSAGES.TOKEN_VERIFICATION_FAILED) {
+                return {
+                    status: false,
+                    message: info,
+                    user: null
+                };
+            }
+            return {
+                status: true,
+                message: 'Usuario authenticado mediante token.',
+                user: Object.values(info)[0]
+            };
         }
+
     }
 };
 

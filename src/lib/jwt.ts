@@ -16,7 +16,7 @@ class JWT {
 
     verify(token: string) {
         try {
-            return jwt.verify(token, this.secretKey) as string;
+            return jwt.verify(token, this.secretKey);
         } catch(e) {
             return MESSAGES.TOKEN_VERIFICATION_FAILED;
         }

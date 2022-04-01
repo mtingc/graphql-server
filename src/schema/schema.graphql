@@ -4,10 +4,12 @@ type Query {
     users: ResultUsers
     "Iniciar sesion del usuario"
     login(email: String!, password: String!): ResultLogin
+    "Token Authentication"
+    me: ResultUser
 }
 
 type Mutation {
-    register(user: UserInput!): User
+    register(user: UserInput!): ResultUser
 }
 
 "Interface to specify the required properties in the response"
@@ -16,6 +18,15 @@ interface Result {
     status: Boolean!
     "Operation message"
     message: String!
+}
+
+type ResultUser implements Result {
+    "Operation status"
+    status: Boolean!
+    "Operation message"
+    message: String!
+    "List of registered users"
+    user: User
 }
 
 type ResultUsers implements Result {
