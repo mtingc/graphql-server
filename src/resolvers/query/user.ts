@@ -1,7 +1,9 @@
 import { IResolvers } from '@graphql-tools/utils';
 import bcrypt from 'bcrypt';
 import { COLLECTIONS, EXPIRETIME, MESSAGES } from './../../config/constants';
+import { findElements, findOneElement } from './../../lib/db-operations';
 import JWT from './../../lib/jwt';
+import { IUser } from './../../interfaces/user.interface';
 
 const queryUserResolvers: IResolvers = {
     Query: {
@@ -11,7 +13,7 @@ const queryUserResolvers: IResolvers = {
                 return {
                     status: true,
                     message: 'Lista de usuarios cargada correctamente.',
-                    users: await db.collection(COLLECTIONS.USERS).find().toArray()
+                    users: await findElements(db, COLLECTIONS.USERS)
                 };
             } catch(error) {
                 return {
@@ -24,9 +26,7 @@ const queryUserResolvers: IResolvers = {
         async login(_, { email, password }, { db }) {
             try {
                 // Verify that the email is registered
-                const user = await db
-                                    .collection(COLLECTIONS.USERS)
-                                    .findOne({ email });
+                const user: IUser = await findOneElement(db, COLLECTIONS.USERS, { email}) as unknown as IUser;
                 if(user === null) {
                     return {
                         status: false,
@@ -36,7 +36,7 @@ const queryUserResolvers: IResolvers = {
                 }
 
                 // Verify encrypted password
-                const passwordCheck = bcrypt.compareSync(password, user.password);
+                const passwordCheck = bcrypt.compareSync(password, user.password || '');
 
                 // Hide properties
                 if(passwordCheck !== null) {
