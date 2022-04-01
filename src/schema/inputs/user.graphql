@@ -1,0 +1,16 @@
+"Input for the registration of user data"
+input UserInput {
+    "Unique identifier"
+    id: ID
+    "Username"
+    name: String!
+    lastname: String!
+    "Account data"
+    email: String!
+    password: String!
+    "User information"
+    birthday: String!
+    phone: Int
+    "User permissions"
+    role: Role=USER
+}

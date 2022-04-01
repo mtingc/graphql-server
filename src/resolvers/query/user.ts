@@ -1,9 +1,9 @@
-import bcrypt from 'bcrypt';
 import { IResolvers } from '@graphql-tools/utils';
-import { COLLECTIONS, EXPIRETIME, MESSAGES } from '../config/constants';
-import JWT from '../lib/jwt';
+import bcrypt from 'bcrypt';
+import { COLLECTIONS, EXPIRETIME, MESSAGES } from './../../config/constants';
+import JWT from './../../lib/jwt';
 
-const resolversQuery: IResolvers = {
+const queryUserResolvers: IResolvers = {
     Query: {
 
         async users(_, __, { db }) {
@@ -65,7 +65,7 @@ const resolversQuery: IResolvers = {
             }
         },
         async me(_, __, { token }) {
-            let info = new JWT().verify(token);
+            const info = new JWT().verify(token);
             if(info === MESSAGES.TOKEN_VERIFICATION_FAILED) {
                 return {
                     status: false,
@@ -83,4 +83,4 @@ const resolversQuery: IResolvers = {
     }
 };
 
-export default resolversQuery;
+export default queryUserResolvers;

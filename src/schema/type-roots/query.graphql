@@ -1,0 +1,10 @@
+type Query {
+    "List of registered users"
+    users: ResultUsers
+    "Login user"
+    login(email: String!, password: String!): ResultLogin
+    "Token Authentication"
+    me: ResultUser
+    "Show list of permissions"
+    permissions: String
+}
