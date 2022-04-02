@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import compression from 'compression';
-import expressPlayground from 'graphql-playground-middleware-express';
 
 import schema from './schema';
 
@@ -43,9 +42,9 @@ async function init() {
 
     server.applyMiddleware({app});
 
-    app.get('/', expressPlayground({
-        endpoint: '/graphql'
-    }));
+    app.get('/', function(_, res) {
+        res.redirect('/graphql');
+    });
 
     const httpServer = createServer(app);
     const PORT = process.env.PORT || 2001;
