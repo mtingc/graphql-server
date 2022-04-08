@@ -15,8 +15,8 @@ export const assignDocumentId = async (
     const lastElement = await database
         .collection(collection)
         .find()
-        .limit(1)
         .sort(sort.key, sort.order as SortDirection)
+        .limit(1)
         .toArray();
 
     if(lastElement.length === 0) {
@@ -73,6 +73,43 @@ export const insertManyElement = async (
     return await database
         .collection(collection)
         .insertMany(documents);
+};
+
+/**
+ * Update an element.
+ * @param database Database with which you work.
+ * @param collection Collection to filter the item.
+ * @param filter Search filter.
+ * @param updateObject Updated object.
+ */
+export const updateOneElement = async (
+    database: Db,
+    collection: string,
+    filter: object,
+    updateObject: object
+) => {
+    return await database
+        .collection(collection)
+        .updateOne(
+            filter,
+            { $set: updateObject }
+        );
+};
+
+/**
+ * Delete an element.
+ * @param database Database with which you work.
+ * @param collection Collection to filter the item.
+ * @param filter Search filter.
+ */
+export const deleteOneElement = async (
+    database: Db,
+    collection: string,
+    filter: object
+) => {
+    return await database
+        .collection(collection)
+        .deleteOne(filter);
 };
 
 /**

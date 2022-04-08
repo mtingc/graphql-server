@@ -1,0 +1,8 @@
+type ResultPermissions implements Result {
+    "Operation status"
+    status: Boolean!
+    "Operation message"
+    message: String!
+    "List of permissions"
+    permissions: [Permission!]
+}

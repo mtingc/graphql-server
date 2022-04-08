@@ -1,9 +1,15 @@
 import { IResolvers } from '@graphql-tools/utils';
+import PermissionsService from './../../services/permissions.service';
 
 const queryPermissionResolvers: IResolvers = {
     Query: {
 
-        permissions() {return 'Hola';}
+        async permission(_, { id }, { db }) {
+            return new PermissionsService(_, { id }, { db }).details();
+        },
+        async permissions(_, __, context) {
+            return new PermissionsService(_, __, context).items();
+        }
 
     }
 };

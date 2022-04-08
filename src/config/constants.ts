@@ -8,7 +8,8 @@ if(process.env.NODE_ENV !== 'production') {
 export const SECRET_KEY = process.env.SECRET || 'lagalmInd2022';
 
 export enum COLLECTIONS {
-    USERS='users'
+    USERS='users',
+    PERMISSIONS='permissions'
 }
 
 export enum MESSAGES {
