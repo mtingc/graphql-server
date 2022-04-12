@@ -1,83 +1,17 @@
 import { IResolvers } from '@graphql-tools/utils';
-import bcrypt from 'bcrypt';
-import { COLLECTIONS, EXPIRETIME, MESSAGES } from './../../config/constants';
-import { findElements, findOneElement } from './../../lib/db-operations';
-import JWT from './../../lib/jwt';
-import { IUser } from './../../interfaces/user.interface';
+import UsersService from './../../services/users.service';
 
 const queryUserResolvers: IResolvers = {
     Query: {
 
-        async users(_, __, { db }) {
-            try {
-                return {
-                    status: true,
-                    message: 'Lista de usuarios cargada correctamente.',
-                    users: await findElements(db, COLLECTIONS.USERS)
-                };
-            } catch(error) {
-                return {
-                    status: false,
-                    message: 'Error al cargar los usuarios.',
-                    users: []
-                };
-            }
+        async users(_, __, context) {
+            return new UsersService(_, __, context).items();
         },
-        async login(_, { email, password }, { db }) {
-            try {
-                // Verify that the email is registered
-                const user: IUser = await findOneElement(db, COLLECTIONS.USERS, { email}) as unknown as IUser;
-                if(user === null) {
-                    return {
-                        status: false,
-                        message: 'El usuario no existe',
-                        token: null
-                    };
-                }
-
-                // Verify encrypted password
-                const passwordCheck = bcrypt.compareSync(password, user.password || '');
-
-                // Hide properties
-                if(passwordCheck !== null) {
-                    delete user.password;
-                    delete user.birthday;
-                    delete user.registerDate;
-                }
-
-                return {
-                    status: true,
-                    message: 
-                        !passwordCheck
-                            ? 'Contraseña y correo no correctos, sesión no iniciada'
-                            : 'Usuario cargado correctamente.',
-                    token:
-                        !passwordCheck
-                            ? null
-                            : new JWT().sign({ user }, EXPIRETIME.H24)
-                };
-            } catch(error) {
-                return {
-                    status: false,
-                    message: 'Error al cargar el usuario.',
-                    token: null
-                };
-            }
+        async login(_, { email, password }, context) {
+            return new UsersService(_, { user: { email, password }}, context).login();
         },
         async me(_, __, { token }) {
-            const info = new JWT().verify(token);
-            if(info === MESSAGES.TOKEN_VERIFICATION_FAILED) {
-                return {
-                    status: false,
-                    message: info,
-                    user: null
-                };
-            }
-            return {
-                status: true,
-                message: 'Usuario authenticado mediante token.',
-                user: Object.values(info)[0]
-            };
+            return new UsersService(_, __, { token }).auth();
         }
 
     }

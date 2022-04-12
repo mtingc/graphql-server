@@ -1,6 +1,10 @@
 type Mutation {
     "register users"
     register(user: UserInput!): ResultUser
+    "Update user"
+    updateUser(id: ID!, user: UserInput!): ResultUser
+    "Delete user"
+    deleteUser(id: ID!): ResultUser
     "New permission"
     addPermission(permission: PermissionInput!): ResultPermission
     "Update permission"

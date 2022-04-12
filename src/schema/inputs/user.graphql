@@ -7,7 +7,7 @@ input UserInput {
     lastname: String!
     "Account data"
     email: String!
-    password: String!
+    password: String
     "User information"
     birthday: String!
     phone: Int
