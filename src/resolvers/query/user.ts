@@ -4,8 +4,10 @@ import UsersService from './../../services/users.service';
 const queryUserResolvers: IResolvers = {
     Query: {
 
-        async users(_, __, context) {
-            return new UsersService(_, __, context).items();
+        async users(_, variables, context) {
+            return new UsersService(_, {
+                pagination: variables
+            }, context).items();
         },
         async login(_, { email, password }, context) {
             return new UsersService(_, { user: { email, password }}, context).login();

@@ -6,3 +6,14 @@ type ResultPermission implements Result {
     "Permission"
     permission: Permission
 }
+
+type ResultPermissions implements Result {
+    "Paging system information"
+    info: ResultInfo
+    "Operation status"
+    status: Boolean!
+    "Operation message"
+    message: String!
+    "List of permissions"
+    permissions: [Permission!]
+}

@@ -1,4 +1,5 @@
 import { Db, SortDirection } from 'mongodb';
+import { IPaginationOptions } from './../interfaces/pagination-options.interface';
 
 /**
  * Get the new ID for the new item.
@@ -121,7 +122,30 @@ export const deleteOneElement = async (
 export const findElements = async (
     database: Db,
     collection: string,
-    filter: object = {}
+    filter: object = {},
+    paginationOptions: IPaginationOptions = {
+        page: 1,
+        pages: 1,
+        itemsPage: -1,
+        skip: 0,
+        total: -1
+    }
 ) => {
-    return await database.collection(collection).find(filter).toArray();
+    if(paginationOptions.total === -1) {
+        return await database.collection(collection).find(filter).toArray();
+    }
+    return await database.collection(collection).find(filter).limit(paginationOptions.itemsPage)
+                        .skip(paginationOptions.skip).toArray();
+};
+
+/**
+ * Count elements
+ * @param database Database with which you work.
+ * @param collection Collection where the search for elements is performed.
+ */
+export const countElements = async (
+    database: Db,
+    collection: string
+) => {
+    return await database.collection(collection).countDocuments();
 };

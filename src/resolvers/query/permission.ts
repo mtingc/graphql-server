@@ -7,8 +7,10 @@ const queryPermissionResolvers: IResolvers = {
         async permission(_, { id }, { db }) {
             return new PermissionsService(_, { id }, { db }).details();
         },
-        async permissions(_, __, context) {
-            return new PermissionsService(_, __, context).items();
+        async permissions(_, variables, context) {
+            return new PermissionsService(_, {
+                pagination: variables
+            }, context).items();
         }
 
     }

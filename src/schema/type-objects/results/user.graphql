@@ -6,3 +6,14 @@ type ResultUser implements Result {
     "List of registered users"
     user: User
 }
+
+type ResultUsers implements Result {
+    "Paging system information"
+    info: ResultInfo
+    "Operation status"
+    status: Boolean!
+    "Operation message"
+    message: String!
+    "List of registered users"
+    users: [User!]!
+}
