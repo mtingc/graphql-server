@@ -13,7 +13,7 @@ type User {
     password: String!
     "User information"
     birthday: String!
-    phone: Int
+    phone: String
     "Registration date in the app"
     registerDate: String!
     "User permissions"

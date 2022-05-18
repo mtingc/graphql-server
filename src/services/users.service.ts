@@ -70,11 +70,11 @@ class UsersService extends ResolversOperationsService {
             const passwordCheck = bcrypt.compareSync(variables?.password || '', user.password || '');
 
             // Hide properties
-            if(passwordCheck !== null) {
+            /* if(passwordCheck !== null) {
                 delete user.password;
                 delete user.birthday;
                 delete user.registerDate;
-            }
+            } */
 
             return {
                 status: passwordCheck,

@@ -10,7 +10,7 @@ input UserInput {
     password: String
     "User information"
     birthday: String!
-    phone: Int
+    phone: String
     "User permissions"
     role: Role=USER
 }
