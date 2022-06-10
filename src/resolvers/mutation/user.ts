@@ -7,6 +7,9 @@ const mutationUserResolvers: IResolvers = {
         async register(_, variables, context) {
             return new UsersService(_, variables, context).register();
         },
+        async login(_, { email, password }, context) {
+            return new UsersService(_, { user: { email, password }}, context).login();
+        },
         async updateUser(_, variables, context) {
             return new UsersService(_, variables, context).modify();
         },

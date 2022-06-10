@@ -9,9 +9,6 @@ const queryUserResolvers: IResolvers = {
                 pagination: variables
             }, context).items();
         },
-        async login(_, { email, password }, context) {
-            return new UsersService(_, { user: { email, password }}, context).login();
-        },
         async me(_, __, { token }) {
             return new UsersService(_, __, { token }).auth();
         }

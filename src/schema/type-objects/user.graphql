@@ -18,4 +18,6 @@ type User {
     registerDate: String!
     "User permissions"
     role: Role!
+    "Last user session"
+    lastSession: String!
 }

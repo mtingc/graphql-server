@@ -10,6 +10,7 @@ import { ApolloServer } from 'apollo-server-express';
 import environments from './config/environments';
 import Database from './lib/database';
 import { IContext } from './interfaces/context.interface';
+/* import JWT from './lib/jwt'; */
 
 // Set environment variables
 if(process.env.NODE_ENV !== 'production') {
@@ -29,6 +30,9 @@ async function init() {
 
     const context = async({req, connection}: IContext) => {
         const token = (req) ? req.headers.authorization : connection.authorization;
+        /* console.log(req.headers)
+        const user = new JWT().verify(token.replace('Bearer ', ''))
+        console.log(user) */
         return { db, token };
     };
 

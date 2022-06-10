@@ -1,8 +1,6 @@
 type Query {
     "List of registered users"
     users(page: Int = 1, itemsPage: Int = 20): ResultUsers
-    "Login user"
-    login(email: String!, password: String!): ResultLogin
     "Token Authentication"
     me: ResultUser
     "Show item permission"

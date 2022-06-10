@@ -8,4 +8,5 @@ export interface IUser {
     phone: string;
     registerDate?: string;
     role: string;
+    lastSession?: string; 
 }

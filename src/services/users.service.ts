@@ -3,7 +3,8 @@ import { IContextData } from './../interfaces/context-data.interface';
 import { COLLECTIONS, EXPIRETIME, MESSAGES } from './../config/constants';
 import { 
     assignDocumentId,
-    findOneElement
+    findOneElement,
+    updateOneElement
 } from './../lib/db-operations';
 import JWT from './../lib/jwt';
 import bcrypt from 'bcrypt';
@@ -70,11 +71,17 @@ class UsersService extends ResolversOperationsService {
             const passwordCheck = bcrypt.compareSync(variables?.password || '', user.password || '');
 
             // Hide properties
-            /* if(passwordCheck !== null) {
+            if(passwordCheck !== null) {
                 delete user.password;
                 delete user.birthday;
                 delete user.registerDate;
-            } */
+            }
+
+            // Assign the date in ISO format in the lastSession property
+            user.lastSession = new Date().toISOString();
+            passwordCheck
+                ? await updateOneElement(this.getDb(), this.collection, {email: variables?.email}, {lastSession: user.lastSession})
+                : null
 
             return {
                 status: passwordCheck,
@@ -138,6 +145,8 @@ class UsersService extends ResolversOperationsService {
 
         // Assign the date in ISO format in the registerDate property
         user!.registerDate = new Date().toISOString();
+        // Assign the date in ISO format in the lastSession property
+        user!.lastSession = new Date().toISOString();
 
         // Encrypt password
         user!.password = bcrypt.hashSync(user!.password || '', 10);
