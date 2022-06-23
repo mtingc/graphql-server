@@ -1,6 +1,6 @@
 import environment from './environments';
 
-if(process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
     const env = environment;
     console.log(env);
 }
@@ -8,8 +8,10 @@ if(process.env.NODE_ENV !== 'production') {
 export const SECRET_KEY = process.env.SECRET || 'lagalmInd2022';
 
 export enum COLLECTIONS {
-    USERS='users',
-    PERMISSIONS='permissions'
+    USERS = 'users',
+    PERMISSIONS = 'permissions',
+    CONTACTS = 'contacts',
+    VACANTS = 'vacants'
 }
 
 export enum MESSAGES {

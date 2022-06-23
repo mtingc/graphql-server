@@ -1,8 +1,9 @@
 "Permission types"
 enum TypePermission {
-    FALTA
-    AUSENCIA
-    RETIRARSE
-    LLEGAR_TARDE
-    CAMBIO_TURNO
+  undefined
+  FALTA
+  AUSENCIA
+  RETIRARSE
+  LLEGAR_TARDE
+  CAMBIO_TURNO
 }

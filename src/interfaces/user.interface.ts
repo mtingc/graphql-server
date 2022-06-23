@@ -6,7 +6,7 @@ export interface IUser {
     password?: string;
     birthday?: string;
     phone: string;
-    registerDate?: string;
     role: string;
-    lastSession?: string; 
+    lastSession?: string;
+    creationDate?: string;
 }

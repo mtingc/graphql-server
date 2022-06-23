@@ -3,21 +3,21 @@ User details.
 Dates in ISO format.
 """
 type User {
-    "Unique identifier"
-    id: ID!
-    "Username"
-    name: String!
-    lastname: String!
-    "Account data"
-    email: String!
-    password: String!
-    "User information"
-    birthday: String!
-    phone: String
-    "Registration date in the app"
-    registerDate: String!
-    "User permissions"
-    role: Role!
-    "Last user session"
-    lastSession: String!
+  "Unique identifier"
+  id: ID!
+  "Username"
+  name: String!
+  lastname: String!
+  "Account data"
+  email: String!
+  password: String!
+  "User information"
+  birthday: String!
+  phone: String
+  "User permissions"
+  role: Role!
+  "Last user session"
+  lastSession: String!
+  "Creation date in the app"
+  creationDate: String!
 }

@@ -1,0 +1,12 @@
+"Purpose of contact"
+enum WorkPosition {
+  undefined
+  VENTAS
+  COMPRAS
+  GERENTE
+  MERCADOTECNIA
+  DESARROLLADOR
+  RECURSOS_HUMANOS
+  SISTEMAS
+  OTROS
+}

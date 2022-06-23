@@ -3,8 +3,8 @@ export interface IPermission {
     type: string;
     reason: string;
     user: string;
-    date: string;
     from: string;
     to: string;
     authorization: boolean;
+    creationDate: string;
 }

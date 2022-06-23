@@ -1,11 +1,11 @@
-import ResolversOperationsService from './resolvers-operations.service';
-import { IContextData } from './../interfaces/context-data.interface';
-import { COLLECTIONS } from './../config/constants';
+import ResolversOperationsService from '../resolvers-operations.service';
+import { IContextData } from '../../interfaces/context-data.interface';
+import { COLLECTIONS } from '../../config/constants';
 import {
     assignDocumentId
-} from '../lib/db-operations';
+} from '../../lib/db-operations';
 
-class PermissionsService extends ResolversOperationsService {
+class PermissionService extends ResolversOperationsService {
 
     private collection = COLLECTIONS.PERMISSIONS;
 
@@ -33,7 +33,7 @@ class PermissionsService extends ResolversOperationsService {
 
     // Get a permit
     async details() {
-        const result = await this.get(this.collection);
+        const result = await this.get(this.collection, 'permiso');
         return {
             status: result.status,
             message: result.message,
@@ -45,7 +45,7 @@ class PermissionsService extends ResolversOperationsService {
     async insert() {
         const permission = this.getVariables().permission;
         // Check not to be empty
-        if(permission === null) {
+        if (permission === null) {
             return {
                 status: false,
                 message: 'El permiso no se ha especificado correctamente.',
@@ -54,20 +54,20 @@ class PermissionsService extends ResolversOperationsService {
         }
 
         // The user must be assigned a permission
-        if(permission?.user === null ||
+        if (permission?.user === null ||
             permission?.user === undefined ||
             permission?.user === '') {
-                return {
-                    status: false,
-                    message: 'Permiso sin usuario asigando.',
-                    permission: null
-                };
+            return {
+                status: false,
+                message: 'Permiso sin usuario asigando.',
+                permission: null
+            };
         }
 
         // Create the document
-        permission!.id = await assignDocumentId(this.getDb(), this.collection, {key: 'date', order: -1});
+        permission!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'creationDate', order: -1 });
         // Assign the date in ISO format in the date property
-        permission!.date = new Date().toISOString();
+        permission!.creationDate = new Date().toISOString();
 
         const result = await this.add(this.collection, permission || {}, 'permiso');
         return {
@@ -83,7 +83,7 @@ class PermissionsService extends ResolversOperationsService {
         const permission = this.getVariables().permission;
 
         // Validate an id
-        if(!this.checkData(String(id) || '')){
+        if (!this.checkData(String(id) || '')) {
             return {
                 status: false,
                 message: 'El ID del permiso no se ha especificado correctamente.',
@@ -91,14 +91,14 @@ class PermissionsService extends ResolversOperationsService {
             };
         }
         // Validate an existing element
-        if(permission === null){
+        if (permission === null) {
             return {
                 status: false,
                 message: 'El permiso no se ha especificado correctamente.',
                 permission: null
             };
         }
-        
+
         // Assignment of the id as a search filter
         const result = await this.update(this.collection, { id }, permission || {}, 'permiso');
         return {
@@ -113,7 +113,7 @@ class PermissionsService extends ResolversOperationsService {
         const id = this.getVariables().id;
 
         // Validate ID
-        if(!this.checkData(String(id) || '')) {
+        if (!this.checkData(String(id) || '')) {
             return {
                 status: false,
                 message: 'El ID del permiso no se ha especificado correctamente.'
@@ -121,7 +121,7 @@ class PermissionsService extends ResolversOperationsService {
         }
 
         const result = await this.del(this.collection, { id }, 'permiso');
-        return { 
+        return {
             status: result.status,
             message: result.message
         };
@@ -130,7 +130,7 @@ class PermissionsService extends ResolversOperationsService {
     private checkData(value: string) {
         return (value === '' || value === undefined) ? false : true;
     }
-    
+
 }
 
-export default PermissionsService;
+export default PermissionService;

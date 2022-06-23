@@ -1,0 +1,23 @@
+"Contact input for vacancies or sales"
+input ContactInput {
+  "Unique identifier"
+  id: ID
+  "Purpose of contact"
+  type: Purpose! = undefined
+  "Contact name"
+  name: String!
+  "Contact email"
+  email: String!
+  "Contact phone"
+  phone: String
+  "Contact age"
+  age: String
+  "Contact company"
+  company: String
+  "Contact work position"
+  workPosition: WorkPosition
+  "Contact message"
+  message: String
+  "Contact status"
+  status: Boolean = false
+}

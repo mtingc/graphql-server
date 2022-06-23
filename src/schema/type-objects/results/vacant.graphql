@@ -1,19 +1,19 @@
-type ResultPermission implements Result {
+type ResultVacant implements Result {
   "Operation status"
   status: Boolean!
   "Operation message"
   message: String!
-  "Permission"
-  permission: Permission
+  "Vacant"
+  vacant: Vacant
 }
 
-type ResultPermissions implements Result {
+type ResultVacants implements Result {
   "Paging system information"
   info: ResultInfo
   "Operation status"
   status: Boolean!
   "Operation message"
   message: String!
-  "List of permissions"
-  permissions: [Permission!]
+  "List of Vacants"
+  vacants: [Vacant!]
 }

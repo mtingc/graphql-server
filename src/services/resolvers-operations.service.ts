@@ -1,7 +1,7 @@
 import { Db } from 'mongodb';
 import { IContextData } from './../interfaces/context-data.interface';
 import { IVariables } from './../interfaces/variables.interface';
-import { 
+import {
     deleteOneElement,
     findElements,
     findOneElement,
@@ -29,12 +29,12 @@ class ResolversOperationsService {
     protected getVariables(): IVariables { return this.variables; }
     protected getDb(): Db { return this.context.db!; }
     protected getContext(): IContextData { return this.context; }
-    
+
     // List items
     protected async list(collection: string, listElement: string, page: number = 1, itemsPage: number = 20) {
         try {
             const paginationData = await pagination(this.getDb(), collection, page, itemsPage);
-            
+
             return {
                 info: {
                     page: paginationData.page,
@@ -43,36 +43,35 @@ class ResolversOperationsService {
                     total: paginationData.total,
                 },
                 status: true,
-                message: `Lista de ${ listElement } cargada.`,
+                message: `Lista de ${listElement} cargada.`,
                 items: await findElements(this.getDb(), collection, {}, paginationData)
             };
         } catch (error) {
             return {
                 info: null,
                 status: false,
-                message: `Lista de ${ listElement } no cargada: ${ error }`,
+                message: `Lista de ${listElement} no cargada: ${error}`,
                 items: null
             };
         }
     }
 
     // Get item details
-    protected async get(collection: string) {
+    protected async get(collection: string, listElement: string) {
 
-        const collectionLabel = collection.toLocaleLowerCase();
         try {
             return await findOneElement(this.getDb(), collection, { id: this.variables.id }).then(
                 res => {
-                    if(res) {
+                    if (res) {
                         return {
                             status: true,
-                            message: `${collectionLabel} ha sido cargada correctamente con sus detalles.`,
+                            message: `El ${listElement} ha sido cargada correctamente con sus detalles.`,
                             item: res
                         };
                     }
                     return {
                         status: true,
-                        message: `${collectionLabel} no ha obtenido ningun detalle por que no existe.`,
+                        message: `El ${listElement} no ha obtenido ningun detalle por que no existe.`,
                         item: null
                     };
                 }
@@ -80,11 +79,11 @@ class ResolversOperationsService {
         } catch (error) {
             return {
                 status: false,
-                message: `Error al cargar los detalles de ${collectionLabel}`,
+                message: `Error al cargar los detalles de ${listElement}`,
                 item: null
             };
         }
-        
+
     }
 
     // Add item
@@ -92,16 +91,16 @@ class ResolversOperationsService {
         try {
             return await insertOneElement(this.getDb(), collection, document).then(
                 res => {
-                    if(res.insertedId) {
+                    if (res.insertedId) {
                         return {
                             status: true,
-                            message: `Añadido correctamente el ${ item }.`,
+                            message: `Añadido correctamente el ${item}.`,
                             item: document
                         };
                     }
                     return {
                         status: false,
-                        message: `No se ha insertado el ${ item }. Intentelo de nuevo.`,
+                        message: `No se ha insertado el ${item}. Intentelo de nuevo.`,
                         item: null
                     };
                 }
@@ -109,7 +108,7 @@ class ResolversOperationsService {
         } catch (error) {
             return {
                 status: false,
-                message: `Error inesperado el crear el ${ item }. Intentelo de nuevo.`,
+                message: `Error inesperado el crear el ${item}. Intentelo de nuevo.`,
                 item: null
             };
         }
@@ -125,7 +124,7 @@ class ResolversOperationsService {
                 objectUpdate
             ).then(
                 res => {
-                    if(res.modifiedCount === 1 && res.acknowledged) {
+                    if (res.modifiedCount === 1 && res.acknowledged) {
                         return {
                             status: true,
                             message: `Elemento del ${item} actualizado correctamente.`,
@@ -137,11 +136,11 @@ class ResolversOperationsService {
                         message: `Elemento del ${item} no se ha actualizado correctamente.`,
                         item: null
                     };
-            });
+                });
         } catch (error) {
             return {
                 status: false,
-                message: `Error inesperado el actualizar el ${ item }. Intentelo de nuevo.`,
+                message: `Error inesperado el actualizar el ${item}. Intentelo de nuevo.`,
                 item: null
             };
         }
@@ -153,7 +152,7 @@ class ResolversOperationsService {
             return await deleteOneElement(this.getDb(), collection, filter)
                 .then(
                     res => {
-                        if(res.deletedCount === 1) {
+                        if (res.deletedCount === 1) {
                             return {
                                 status: true,
                                 message: `El elemento del ${item} se ha eliminado correctamente.`

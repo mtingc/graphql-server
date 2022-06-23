@@ -1,16 +1,20 @@
 type Mutation {
-    "register users"
-    register(user: UserInput!): ResultUser
-    "Login user"
-    login(email: String!, password: String!): ResultLogin
-    "Update user"
-    updateUser(id: ID!, user: UserInput!): ResultUser
-    "Delete user"
-    deleteUser(id: ID!): ResultUser
-    "New permission"
-    addPermission(permission: PermissionInput!): ResultPermission
-    "Update permission"
-    updatePermission(id: ID!, permission: PermissionInput!): ResultPermission
-    "Delete permission"
-    deletePermission(id: ID!): ResultPermission
+  "register users"
+  register(user: UserInput!): ResultUser
+  "Login user"
+  login(email: String!, password: String!): ResultLogin
+  "Update user"
+  updateUser(id: ID!, user: UserInput!): ResultUser
+  "Delete user"
+  deleteUser(id: ID!): ResultUser
+  "New permission"
+  addPermission(permission: PermissionInput!): ResultPermission
+  "Update permission"
+  updatePermission(id: ID!, permission: PermissionInput!): ResultPermission
+  "Delete permission"
+  deletePermission(id: ID!): ResultPermission
+  "New contact"
+  addContact(contact: ContactInput!): ResultContact
+  "New vacant"
+  addVacant(vacant: VacantInput!): ResultVacant
 }

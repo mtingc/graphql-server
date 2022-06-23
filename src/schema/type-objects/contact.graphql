@@ -1,0 +1,25 @@
+"Type of object to contact the company."
+type Contact {
+  "Unique identifier"
+  id: ID
+  "Purpose of contact"
+  type: Purpose!
+  "Contact name"
+  name: String!
+  "Contact email"
+  email: String!
+  "Contact phone"
+  phone: String
+  "Contact age"
+  age: String
+  "Contact company"
+  company: String
+  "Contact work position"
+  workPosition: String
+  "Contact message"
+  message: String
+  "Contact status"
+  status: Boolean!
+  "Creation date in the app"
+  creationDate: String!
+}

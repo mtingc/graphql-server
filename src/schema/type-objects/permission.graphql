@@ -1,19 +1,19 @@
 "Type of object to make permission requests."
 type Permission {
-    "Unique identifier"
-    id: ID!
-    "Permit type"
-    type: TypePermission!
-    "Reason for permission"
-    reason: String!
-    "Requesting user"
-    user: ID!
-    "Permission date"
-    date: String!
-    "From what time"
-    from: String!
-    "Until what time?"
-    to: String!
-    "Permit authorization"
-    authorization: Boolean!
+  "Unique identifier"
+  id: ID!
+  "Permit type"
+  type: TypePermission!
+  "Reason for permission"
+  reason: String!
+  "Requesting user"
+  user: ID!
+  "From what time"
+  from: String!
+  "Until what time?"
+  to: String!
+  "Permit authorization"
+  authorization: Boolean!
+  "Creation date in the app"
+  creationDate: String!
 }

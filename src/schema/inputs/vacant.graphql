@@ -1,0 +1,11 @@
+"Vacant input"
+input VacantInput {
+  "Unique identifier"
+  id: ID
+  "Vacant title"
+  title: String!
+  "Vacant description"
+  description: String!
+  "Vacant status"
+  status: Boolean = true
+}

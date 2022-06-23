@@ -1,10 +1,18 @@
 type Query {
-    "List of registered users"
-    users(page: Int = 1, itemsPage: Int = 20): ResultUsers
-    "Token Authentication"
-    me: ResultUser
-    "Show item permission"
-    permission(id: ID!): ResultPermission
-    "Show list of permissions"
-    permissions(page: Int = 1, itemsPage: Int = 20): ResultPermissions
+  "List of registered users"
+  users(page: Int = 1, itemsPage: Int = 20): ResultUsers
+  "Token Authentication"
+  me: ResultUser
+  "Show item permission"
+  permission(id: ID!): ResultPermission
+  "Show list of permissions"
+  permissions(page: Int = 1, itemsPage: Int = 20): ResultPermissions
+  "Show item contact"
+  contact(id: ID!): ResultContact
+  "Show list of contacts"
+  contacts(page: Int = 1, itemsPage: Int = 20): ResultContacts
+  "Show item vacant"
+  vacant(id: ID!): ResultVacant
+  "Show list of vacants"
+  vacants(page: Int = 1, itemsPage: Int = 20): ResultVacants
 }

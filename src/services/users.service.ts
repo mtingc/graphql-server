@@ -1,7 +1,7 @@
 import ResolversOperationsService from './resolvers-operations.service';
 import { IContextData } from './../interfaces/context-data.interface';
 import { COLLECTIONS, EXPIRETIME, MESSAGES } from './../config/constants';
-import { 
+import {
     assignDocumentId,
     findOneElement,
     updateOneElement
@@ -39,7 +39,7 @@ class UsersService extends ResolversOperationsService {
     // Auth Token
     async auth() {
         const info = new JWT().verify(this.getContext().token!);
-        if(info === MESSAGES.TOKEN_VERIFICATION_FAILED) {
+        if (info === MESSAGES.TOKEN_VERIFICATION_FAILED) {
             return {
                 status: false,
                 message: info,
@@ -59,7 +59,7 @@ class UsersService extends ResolversOperationsService {
             const variables = this.getVariables().user;
             // Verify that the email is registered
             const user: IUser = await findOneElement(this.getDb(), this.collection, { email: variables?.email }) as unknown as IUser;
-            if(user === null) {
+            if (user === null) {
                 return {
                     status: false,
                     message: 'El usuario no existe.',
@@ -71,21 +71,21 @@ class UsersService extends ResolversOperationsService {
             const passwordCheck = bcrypt.compareSync(variables?.password || '', user.password || '');
 
             // Hide properties
-            if(passwordCheck !== null) {
+            if (passwordCheck !== null) {
                 delete user.password;
                 delete user.birthday;
-                delete user.registerDate;
+                delete user.creationDate;
             }
 
             // Assign the date in ISO format in the lastSession property
             user.lastSession = new Date().toISOString();
             passwordCheck
-                ? await updateOneElement(this.getDb(), this.collection, {email: variables?.email}, {lastSession: user.lastSession})
+                ? await updateOneElement(this.getDb(), this.collection, { email: variables?.email }, { lastSession: user.lastSession })
                 : null
 
             return {
                 status: passwordCheck,
-                message: 
+                message:
                     !passwordCheck
                         ? 'Contraseña y correo no correctos, sesión no iniciada'
                         : 'Usuario cargado correctamente.',
@@ -93,12 +93,12 @@ class UsersService extends ResolversOperationsService {
                     !passwordCheck
                         ? null
                         : new JWT().sign({ user }, EXPIRETIME.H24),
-                user: 
+                user:
                     !passwordCheck
                         ? null
                         : user
             };
-        } catch(error) {
+        } catch (error) {
             return {
                 status: false,
                 message: 'Error al cargar el usuario.',
@@ -112,7 +112,7 @@ class UsersService extends ResolversOperationsService {
 
         const user = this.getVariables().user;
         // Check not to be empty
-        if(user === null) {
+        if (user === null) {
             return {
                 status: false,
                 messege: 'Usuario no definido.',
@@ -120,19 +120,19 @@ class UsersService extends ResolversOperationsService {
             };
         }
 
-        if(user?.password === null ||
+        if (user?.password === null ||
             user?.password === undefined ||
             user?.password === '') {
-                return {
-                    status: false,
-                    message: 'La contraseña es obligatoria.',
-                    user: null
-                };
+            return {
+                status: false,
+                message: 'La contraseña es obligatoria.',
+                user: null
+            };
         }
 
         // Check that the user does not exist
         const userCheck = await findOneElement(this.getDb(), this.collection, { email: user?.email });
-        if(userCheck !== null) {
+        if (userCheck !== null) {
             return {
                 status: false,
                 message: `El email ${user?.email} ya esta registrado.`,
@@ -141,10 +141,10 @@ class UsersService extends ResolversOperationsService {
         }
 
         // Check the last registered user to assign ID
-        user!.id = await assignDocumentId(this.getDb(), this.collection, {key: 'registerDate', order: -1});
+        user!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'creationDate', order: -1 });
 
         // Assign the date in ISO format in the registerDate property
-        user!.registerDate = new Date().toISOString();
+        user!.creationDate = new Date().toISOString();
         // Assign the date in ISO format in the lastSession property
         user!.lastSession = new Date().toISOString();
 
@@ -165,7 +165,7 @@ class UsersService extends ResolversOperationsService {
         const user = this.getVariables().user;
 
         // Validate an id
-        if(!this.checkData(String(id) || '')){
+        if (!this.checkData(String(id) || '')) {
             return {
                 status: false,
                 message: 'El ID del usuario no se ha especificado correctamente.',
@@ -174,7 +174,7 @@ class UsersService extends ResolversOperationsService {
         }
 
         // Validate an existing element
-        if(user === null) {
+        if (user === null) {
             return {
                 status: false,
                 message: 'El usuario no existe.',
@@ -195,7 +195,7 @@ class UsersService extends ResolversOperationsService {
         const id = this.getVariables().id;
 
         // Validate ID
-        if(!this.checkData(String(id) || '')) {
+        if (!this.checkData(String(id) || '')) {
             return {
                 status: false,
                 message: 'El ID del permiso no se ha especificado correctamente.'

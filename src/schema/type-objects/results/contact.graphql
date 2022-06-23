@@ -1,19 +1,19 @@
-type ResultPermission implements Result {
+type ResultContact implements Result {
   "Operation status"
   status: Boolean!
   "Operation message"
   message: String!
-  "Permission"
-  permission: Permission
+  "Contact"
+  contact: Contact
 }
 
-type ResultPermissions implements Result {
+type ResultContacts implements Result {
   "Paging system information"
   info: ResultInfo
   "Operation status"
   status: Boolean!
   "Operation message"
   message: String!
-  "List of permissions"
-  permissions: [Permission!]
+  "List of contacts"
+  contacts: [Contact!]
 }

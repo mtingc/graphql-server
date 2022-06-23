@@ -1,0 +1,6 @@
+"Purpose of contact"
+enum Purpose {
+  undefined
+  SALES
+  RRHH
+}

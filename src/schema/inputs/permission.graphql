@@ -1,17 +1,17 @@
 "Input for the registration of user data"
 input PermissionInput {
-    "Unique identifier"
-    id: ID
-    "Permit type"
-    type: TypePermission=FALTA
-    "Reason for permission"
-    reason: String!
-    "Requesting user"
-    user: ID
-    "From what time"
-    from: String!
-    "Until what time?"
-    to: String!
-    "Permit authorization"
-    authorization: Boolean!
+  "Unique identifier"
+  id: ID
+  "Permit type"
+  type: TypePermission! = undefined
+  "Reason for permission"
+  reason: String!
+  "Requesting user"
+  user: ID
+  "From what time"
+  from: String!
+  "Until what time?"
+  to: String!
+  "Permit authorization"
+  authorization: Boolean = false
 }

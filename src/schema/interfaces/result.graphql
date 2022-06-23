@@ -1,7 +1,7 @@
 "Interface to specify the required properties in the response"
 interface Result {
-    "Operation status"
-    status: Boolean!
-    "Operation message"
-    message: String!
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
 }
