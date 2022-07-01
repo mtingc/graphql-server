@@ -31,7 +31,7 @@ class ResolversOperationsService {
     protected getContext(): IContextData { return this.context; }
 
     // List items
-    protected async list(collection: string, listElement: string, page: number = 1, itemsPage: number = 20) {
+    protected async list(collection: string, listElement: string, page = 1, itemsPage = 20) {
         try {
             const paginationData = await pagination(this.getDb(), collection, page, itemsPage);
 

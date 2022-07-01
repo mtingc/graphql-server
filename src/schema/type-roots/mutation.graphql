@@ -15,6 +15,8 @@ type Mutation {
   deletePermission(id: ID!): ResultPermission
   "New contact"
   addContact(contact: ContactInput!): ResultContact
+  "New job"
+  addJob(job: JobInput!): ResultJob
   "New vacant"
   addVacant(vacant: VacantInput!): ResultVacant
 }

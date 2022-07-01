@@ -2,6 +2,8 @@
 type Contact {
   "Unique identifier"
   id: ID
+  "Unique identifier of a vacancy"
+  vacantId: Vacant
   "Purpose of contact"
   type: Purpose!
   "Contact name"
@@ -15,7 +17,7 @@ type Contact {
   "Contact company"
   company: String
   "Contact work position"
-  workPosition: String
+  workPosition: WorkPosition
   "Contact message"
   message: String
   "Contact status"

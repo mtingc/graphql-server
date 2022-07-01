@@ -3,7 +3,7 @@ input PermissionInput {
   "Unique identifier"
   id: ID
   "Permit type"
-  type: TypePermission! = undefined
+  type: TypePermission!
   "Reason for permission"
   reason: String!
   "Requesting user"

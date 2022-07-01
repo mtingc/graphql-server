@@ -12,6 +12,7 @@ import { IUser } from './../interfaces/user.interface';
 
 class UsersService extends ResolversOperationsService {
 
+    private element = 'usuario';
     private collection = COLLECTIONS.USERS;
 
     constructor(
@@ -27,7 +28,7 @@ class UsersService extends ResolversOperationsService {
         const page = await this.getVariables().pagination?.page;
         const itemsPage = await this.getVariables().pagination?.itemsPage;
 
-        const result = await this.list(this.collection, 'usuarios', page, itemsPage);
+        const result = await this.list(this.collection, `${this.element}s`, page, itemsPage);
         return {
             info: result.info,
             status: result.status,
@@ -48,7 +49,7 @@ class UsersService extends ResolversOperationsService {
         }
         return {
             status: true,
-            message: 'Usuario authenticado mediante token.',
+            message: `${this.element} authenticado mediante token.`,
             user: Object.values(info)[0]
         };
     }
@@ -62,7 +63,7 @@ class UsersService extends ResolversOperationsService {
             if (user === null) {
                 return {
                     status: false,
-                    message: 'El usuario no existe.',
+                    message: `El ${this.element} no existe.`,
                     token: null
                 };
             }
@@ -74,7 +75,6 @@ class UsersService extends ResolversOperationsService {
             if (passwordCheck !== null) {
                 delete user.password;
                 delete user.birthday;
-                delete user.creationDate;
             }
 
             // Assign the date in ISO format in the lastSession property
@@ -101,7 +101,7 @@ class UsersService extends ResolversOperationsService {
         } catch (error) {
             return {
                 status: false,
-                message: 'Error al cargar el usuario.',
+                message: `Error al cargar el ${this.element}.`,
                 token: null
             };
         }
@@ -115,7 +115,7 @@ class UsersService extends ResolversOperationsService {
         if (user === null) {
             return {
                 status: false,
-                messege: 'Usuario no definido.',
+                messege: `${this.element} no definido.`,
                 user: null
             };
         }
@@ -151,7 +151,7 @@ class UsersService extends ResolversOperationsService {
         // Encrypt password
         user!.password = bcrypt.hashSync(user!.password || '', 10);
 
-        const result = await this.add(this.collection, user || {}, 'usuario');
+        const result = await this.add(this.collection, user || {}, this.element);
         return {
             status: result.status,
             message: result.message,
@@ -168,7 +168,7 @@ class UsersService extends ResolversOperationsService {
         if (!this.checkData(String(id) || '')) {
             return {
                 status: false,
-                message: 'El ID del usuario no se ha especificado correctamente.',
+                message: `El ID del ${this.element} no se ha especificado correctamente.`,
                 permission: null
             };
         }
@@ -177,7 +177,7 @@ class UsersService extends ResolversOperationsService {
         if (user === null) {
             return {
                 status: false,
-                message: 'El usuario no existe.',
+                message: `El ${this.element} no existe.`,
                 token: null
             };
         }
@@ -198,11 +198,11 @@ class UsersService extends ResolversOperationsService {
         if (!this.checkData(String(id) || '')) {
             return {
                 status: false,
-                message: 'El ID del permiso no se ha especificado correctamente.'
+                message: `El ID del ${this.element} no se ha especificado correctamente.`
             };
         }
 
-        const result = await this.del(this.collection, { id }, 'usuario');
+        const result = await this.del(this.collection, { id }, this.element);
         return {
             status: result.message,
             message: result.message

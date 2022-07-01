@@ -11,6 +11,10 @@ type Query {
   contact(id: ID!): ResultContact
   "Show list of contacts"
   contacts(page: Int = 1, itemsPage: Int = 20): ResultContacts
+  "Show item job"
+  job(id: ID!): ResultJob
+  "Show list of job"
+  jobs(page: Int = 1, itemsPage: Int = 20): ResultJobs
   "Show item vacant"
   vacant(id: ID!): ResultVacant
   "Show list of vacants"

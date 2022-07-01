@@ -4,6 +4,7 @@ export interface IContact {
     name: string;
     email: string;
     phone: string;
+    vacantId: string;
     age: number;
     company: string;
     workPosition: string;

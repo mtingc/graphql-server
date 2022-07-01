@@ -11,6 +11,7 @@ export enum COLLECTIONS {
     USERS = 'users',
     PERMISSIONS = 'permissions',
     CONTACTS = 'contacts',
+    JOB = 'jobs',
     VACANTS = 'vacants'
 }
 

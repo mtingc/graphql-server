@@ -7,6 +7,7 @@ import {
 
 class PermissionService extends ResolversOperationsService {
 
+    private element = 'permiso';
     private collection = COLLECTIONS.PERMISSIONS;
 
     constructor(
@@ -22,7 +23,7 @@ class PermissionService extends ResolversOperationsService {
         const page = this.getVariables().pagination?.page;
         const itemsPage = this.getVariables().pagination?.itemsPage;
 
-        const result = await this.list(this.collection, 'permisos', page, itemsPage);
+        const result = await this.list(this.collection, `${this.element}s`, page, itemsPage);
         return {
             info: result.info,
             status: result.status,
@@ -33,7 +34,7 @@ class PermissionService extends ResolversOperationsService {
 
     // Get a permit
     async details() {
-        const result = await this.get(this.collection, 'permiso');
+        const result = await this.get(this.collection, this.element);
         return {
             status: result.status,
             message: result.message,
@@ -48,7 +49,7 @@ class PermissionService extends ResolversOperationsService {
         if (permission === null) {
             return {
                 status: false,
-                message: 'El permiso no se ha especificado correctamente.',
+                message: `El ${this.element} no se ha especificado correctamente.`,
                 permission: null
             };
         }
@@ -59,7 +60,7 @@ class PermissionService extends ResolversOperationsService {
             permission?.user === '') {
             return {
                 status: false,
-                message: 'Permiso sin usuario asigando.',
+                message: `${this.element} sin usuario asigando.`,
                 permission: null
             };
         }
@@ -69,7 +70,7 @@ class PermissionService extends ResolversOperationsService {
         // Assign the date in ISO format in the date property
         permission!.creationDate = new Date().toISOString();
 
-        const result = await this.add(this.collection, permission || {}, 'permiso');
+        const result = await this.add(this.collection, permission || {}, this.element);
         return {
             status: result.status,
             message: result.message,
@@ -86,7 +87,7 @@ class PermissionService extends ResolversOperationsService {
         if (!this.checkData(String(id) || '')) {
             return {
                 status: false,
-                message: 'El ID del permiso no se ha especificado correctamente.',
+                message: `El ID del ${this.element} no se ha especificado correctamente.`,
                 permission: null
             };
         }
@@ -94,13 +95,13 @@ class PermissionService extends ResolversOperationsService {
         if (permission === null) {
             return {
                 status: false,
-                message: 'El permiso no se ha especificado correctamente.',
+                message: `El ${this.element} no se ha especificado correctamente.`,
                 permission: null
             };
         }
 
         // Assignment of the id as a search filter
-        const result = await this.update(this.collection, { id }, permission || {}, 'permiso');
+        const result = await this.update(this.collection, { id }, permission || {}, this.element);
         return {
             status: result.status,
             message: result.message,
@@ -116,11 +117,11 @@ class PermissionService extends ResolversOperationsService {
         if (!this.checkData(String(id) || '')) {
             return {
                 status: false,
-                message: 'El ID del permiso no se ha especificado correctamente.'
+                message: `El ID del ${this.element} no se ha especificado correctamente.`
             };
         }
 
-        const result = await this.del(this.collection, { id }, 'permiso');
+        const result = await this.del(this.collection, { id }, this.element);
         return {
             status: result.status,
             message: result.message

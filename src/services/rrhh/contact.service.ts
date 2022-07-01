@@ -7,6 +7,7 @@ import {
 
 class ContactService extends ResolversOperationsService {
 
+    private element = 'contacto';
     private collection = COLLECTIONS.CONTACTS;
 
     constructor(
@@ -22,7 +23,7 @@ class ContactService extends ResolversOperationsService {
         const page = this.getVariables().pagination?.page;
         const itemsPage = this.getVariables().pagination?.itemsPage;
 
-        const result = await this.list(this.collection, 'contactos', page, itemsPage);
+        const result = await this.list(this.collection, `${this.element}s`, page, itemsPage);
         return {
             info: result.info,
             status: result.status,
@@ -33,7 +34,7 @@ class ContactService extends ResolversOperationsService {
 
     // Get a contact
     async details() {
-        const result = await this.get(this.collection, 'contacto');
+        const result = await this.get(this.collection, this.element);
         return {
             status: result.status,
             message: result.message,
@@ -58,7 +59,7 @@ class ContactService extends ResolversOperationsService {
         // Assign the date in ISO format in the date property
         contact!.creationDate = new Date().toISOString();
 
-        const result = await this.add(this.collection, contact || {}, 'contacto');
+        const result = await this.add(this.collection, contact || {}, this.element);
         return {
             status: result.status,
             message: result.message,

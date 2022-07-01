@@ -1,0 +1,12 @@
+type Job {
+  "Unique identifier"
+  id: ID
+  "Job title"
+  title: String!
+  "Job description"
+  description: String
+  "Job image"
+  image: String
+  "Creation date in the app"
+  creationDate: String!
+}

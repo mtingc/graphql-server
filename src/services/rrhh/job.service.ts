@@ -5,10 +5,10 @@ import {
     assignDocumentId
 } from '../../lib/db-operations';
 
-class VacantService extends ResolversOperationsService {
+class JobService extends ResolversOperationsService {
 
-    private element = 'vacante';
-    private collection = COLLECTIONS.VACANTS;
+    private element = 'trabajo';
+    private collection = COLLECTIONS.JOB;
 
     constructor(
         root: object,
@@ -28,7 +28,7 @@ class VacantService extends ResolversOperationsService {
             info: result.info,
             status: result.status,
             message: result.message,
-            vacants: result.items
+            jobs: result.items
         };
     }
 
@@ -38,35 +38,35 @@ class VacantService extends ResolversOperationsService {
         return {
             status: result.status,
             message: result.message,
-            vacant: result.item
+            job: result.item
         };
     }
 
     // Create contact
     async insert() {
-        const vacant = this.getVariables().vacant;
+        const job = this.getVariables().job;
         // Check not to be empty
-        if (vacant === null) {
+        if (job === null) {
             return {
                 status: false,
-                message: `La ${this.element} no se ha especificado correctamente.`,
-                vacant: null
+                message: `El ${this.element} no se ha especificado correctamente.`,
+                job: null
             };
         }
 
         // Create the document
-        vacant!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'creationDate', order: -1 });
+        job!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'creationDate', order: -1 });
         // Assign the date in ISO format in the date property
-        vacant!.creationDate = new Date().toISOString();
+        job!.creationDate = new Date().toISOString();
 
-        const result = await this.add(this.collection, vacant || {}, this.element);
+        const result = await this.add(this.collection, job || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            vacant: result.item
+            job: result.item
         };
     }
 
 }
 
-export default VacantService;
+export default JobService;

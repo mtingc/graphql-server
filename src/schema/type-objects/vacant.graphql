@@ -2,12 +2,16 @@
 type Vacant {
   "Unique identifier"
   id: ID
+  "Unique identifier of a Job"
+  jobId: Job!
   "Vacant name"
   title: String!
   "Vacant name"
   description: String!
   "Vacant status"
   status: Boolean!
+  "Vacant available"
+  available: Boolean!
   "Creation date in the app"
   creationDate: String!
 }

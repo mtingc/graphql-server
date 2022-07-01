@@ -1,6 +1,5 @@
 "Purpose of contact"
 enum WorkPosition {
-  undefined
   VENTAS
   COMPRAS
   GERENTE

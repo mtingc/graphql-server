@@ -1,6 +1,5 @@
 "Permission types"
 enum TypePermission {
-  undefined
   FALTA
   AUSENCIA
   RETIRARSE

@@ -2,8 +2,10 @@
 input ContactInput {
   "Unique identifier"
   id: ID
+  "Unique identifier of a vacancy"
+  vacantId: String
   "Purpose of contact"
-  type: Purpose! = undefined
+  type: Purpose!
   "Contact name"
   name: String!
   "Contact email"
@@ -18,6 +20,6 @@ input ContactInput {
   workPosition: WorkPosition
   "Contact message"
   message: String
-  "Contact status"
-  status: Boolean = false
+  "If the contact was answered"
+  attended: Boolean = false
 }
