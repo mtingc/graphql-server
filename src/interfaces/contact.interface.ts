@@ -1,6 +1,5 @@
 export interface IContact {
     id: string;
-    type: string;
     name: string;
     email: string;
     phone: string;
@@ -9,6 +8,6 @@ export interface IContact {
     company: string;
     workPosition: string;
     message: string;
-    status: boolean;
+    attended: boolean;
     creationDate: string;
 }

@@ -5,15 +5,6 @@ type ResultJob implements Result {
   message: String!
   "Job"
   job: Job
-}
-
-type ResultJobs implements Result {
-  "Paging system information"
-  info: ResultInfo
-  "Operation status"
-  status: Boolean!
-  "Operation message"
-  message: String!
   "List of jobs"
   jobs: [Job!]
 }

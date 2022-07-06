@@ -5,15 +5,15 @@ type ResultUser implements Result {
   message: String!
   "List of registered users"
   user: User
+  "List of registered users"
+  users: [User!]
 }
 
-type ResultUsers implements Result {
-  "Paging system information"
-  info: ResultInfo
+type ResultLogin implements Result {
   "Operation status"
   status: Boolean!
   "Operation message"
   message: String!
-  "List of registered users"
-  users: [User!]!
+  "Logged user token information"
+  token: String
 }

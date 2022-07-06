@@ -1,0 +1,10 @@
+type Mutation {
+  "register users"
+  register(user: UserInput!): ResultUser
+  "Login user"
+  login(email: String!, password: String!): ResultLogin
+  "Update user"
+  updateUser(id: ID!, user: UserInput!): ResultUser
+  "Delete user"
+  deleteUser(id: ID!): ResultUser
+}

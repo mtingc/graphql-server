@@ -1,0 +1,13 @@
+"Interface to specify the required properties in the response"
+interface Contact {
+  "Contact name"
+  name: String!
+  "Contact email"
+  email: String!
+  "Contact phone"
+  phone: String!
+  "Contact status"
+  attended: Boolean!
+  "Creation date in the app"
+  creationDate: String!
+}

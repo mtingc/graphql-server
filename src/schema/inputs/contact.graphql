@@ -3,15 +3,13 @@ input ContactInput {
   "Unique identifier"
   id: ID
   "Unique identifier of a vacancy"
-  vacantId: String
-  "Purpose of contact"
-  type: Purpose!
+  vacantId: ID
   "Contact name"
   name: String!
   "Contact email"
   email: String!
   "Contact phone"
-  phone: String
+  phone: String!
   "Contact age"
   age: String
   "Contact company"

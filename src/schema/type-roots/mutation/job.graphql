@@ -1,0 +1,4 @@
+type Mutation {
+  "New job"
+  addJob(job: JobInput!): ResultJob
+}

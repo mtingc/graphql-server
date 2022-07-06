@@ -5,15 +5,6 @@ type ResultVacant implements Result {
   message: String!
   "Vacant"
   vacant: Vacant
-}
-
-type ResultVacants implements Result {
-  "Paging system information"
-  info: ResultInfo
-  "Operation status"
-  status: Boolean!
-  "Operation message"
-  message: String!
   "List of Vacants"
   vacants: [Vacant!]
 }

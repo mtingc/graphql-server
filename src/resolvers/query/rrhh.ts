@@ -1,9 +1,7 @@
 import { IResolvers } from '@graphql-tools/utils';
 import PermissionService from '../../services/rrhh/permission.service';
-import ContactService from '../../services/rrhh/contact.service';
 import JobService from '../../services/rrhh/job.service';
 import VacantService from '../../services/rrhh/vacant.service';
-import { findOneElement } from '../../lib/db-operations';
 
 const queryRrhhResolvers: IResolvers = {
     Query: {
@@ -13,14 +11,6 @@ const queryRrhhResolvers: IResolvers = {
         },
         async permissions(_, variables, context) {
             return new PermissionService(_, {
-                pagination: variables
-            }, context).items();
-        },
-        async contact(_, { id }, { db }) {
-            return new ContactService(_, { id }, { db }).details();
-        },
-        async contacts(_, variables, context) {
-            return new ContactService(_, {
                 pagination: variables
             }, context).items();
         },
@@ -41,16 +31,6 @@ const queryRrhhResolvers: IResolvers = {
             }, context).items();
         }
 
-    },
-    Vacant: {
-        jobId: ({ jobId }, _, { db }) => {
-            return findOneElement(db, 'jobs', { id: jobId });
-        }
-    },
-    Contact: {
-        vacantId: ({ vacantId }, _, { db }) => {
-            return findOneElement(db, 'vacants', { id: vacantId });
-        }
     }
 };
 

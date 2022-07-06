@@ -1,27 +1,40 @@
 "Type of object to contact the company."
-type Contact {
+type ContactRrhh implements Contact {
   "Unique identifier"
   id: ID
-  "Unique identifier of a vacancy"
-  vacantId: Vacant
-  "Purpose of contact"
-  type: Purpose!
   "Contact name"
   name: String!
   "Contact email"
   email: String!
   "Contact phone"
-  phone: String
+  phone: String!
+  "Contact status"
+  attended: Boolean!
+  "Creation date in the app"
+  creationDate: String!
+  "Unique identifier of a vacancy"
+  vacantId: Vacant
   "Contact age"
   age: String
+}
+
+type ContactSales implements Contact {
+  "Unique identifier"
+  id: ID
+  "Contact name"
+  name: String!
+  "Contact email"
+  email: String!
+  "Contact phone"
+  phone: String!
+  "Contact status"
+  attended: Boolean!
+  "Creation date in the app"
+  creationDate: String!
   "Contact company"
   company: String
   "Contact work position"
   workPosition: WorkPosition
   "Contact message"
   message: String
-  "Contact status"
-  status: Boolean!
-  "Creation date in the app"
-  creationDate: String!
 }

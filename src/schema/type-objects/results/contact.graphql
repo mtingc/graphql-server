@@ -5,15 +5,6 @@ type ResultContact implements Result {
   message: String!
   "Contact"
   contact: Contact
-}
-
-type ResultContacts implements Result {
-  "Paging system information"
-  info: ResultInfo
-  "Operation status"
-  status: Boolean!
-  "Operation message"
-  message: String!
   "List of contacts"
   contacts: [Contact!]
 }
