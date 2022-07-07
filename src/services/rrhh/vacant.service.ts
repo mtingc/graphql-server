@@ -60,7 +60,7 @@ class VacantService extends ResolversOperationsService {
         }
 
         // Create the document
-        vacant!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'creationDate', order: -1 });
+        vacant!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 
         const result = await this.add(this.collection, vacant || {}, this.element);
         return {

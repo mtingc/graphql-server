@@ -156,7 +156,7 @@ class UsersService extends ResolversOperationsService {
         }
 
         // Check the last registered user to assign ID
-        user!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'creationDate', order: -1 });
+        user!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
         // Assign the date in ISO format in the lastSession property
         user!.lastSession = new Date().toISOString();
 

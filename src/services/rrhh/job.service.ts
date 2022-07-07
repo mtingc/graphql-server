@@ -60,7 +60,7 @@ class JobService extends ResolversOperationsService {
         }
 
         // Create the document
-        job!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'creationDate', order: -1 });
+        job!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 
         const result = await this.add(this.collection, job || {}, this.element);
         return {

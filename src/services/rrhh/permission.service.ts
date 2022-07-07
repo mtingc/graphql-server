@@ -71,7 +71,7 @@ class PermissionService extends ResolversOperationsService {
         }
 
         // Create the document
-        permission!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'creationDate', order: -1 });
+        permission!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 
         const result = await this.add(this.collection, permission || {}, this.element);
         return {

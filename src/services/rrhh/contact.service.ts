@@ -60,7 +60,7 @@ class ContactService extends ResolversOperationsService {
         }
 
         // Create the document
-        contact!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'creationDate', order: -1 });
+        contact!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 
         const result = await this.add(this.collection, contact || {}, this.element);
         return {
