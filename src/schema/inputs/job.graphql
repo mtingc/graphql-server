@@ -1,7 +1,5 @@
 "Job input"
 input JobInput {
-  "Unique identifier"
-  id: ID
   "Job title"
   title: String!
   "Job description"

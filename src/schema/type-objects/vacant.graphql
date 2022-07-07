@@ -8,10 +8,8 @@ type Vacant {
   title: String!
   "Vacant name"
   description: String!
-  "Vacant status"
-  status: Boolean!
   "Vacant available"
   available: Boolean!
-  "Creation date in the app"
-  creationDate: String!
+  "Item details"
+  details: Details!
 }

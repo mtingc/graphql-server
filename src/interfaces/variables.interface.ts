@@ -13,5 +13,5 @@ export interface IVariables {
     contact?: IContact;
     job?: IJob;
     vacant?: IVacant;
-    pagination?: IPaginationOptions
+    pagination?: IPaginationOptions;
 }

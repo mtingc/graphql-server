@@ -9,6 +9,7 @@ import {
 import JWT from './../lib/jwt';
 import bcrypt from 'bcrypt';
 import { IUser } from './../interfaces/user.interface';
+import { libDetails } from '../lib/details';
 
 class UsersService extends ResolversOperationsService {
 
@@ -34,6 +35,16 @@ class UsersService extends ResolversOperationsService {
             status: result.status,
             message: result.message,
             users: result.items
+        };
+    }
+
+    // Get a user
+    async details() {
+        const result = await this.get(this.collection, this.element);
+        return {
+            status: result.status,
+            message: result.message,
+            vacant: result.item
         };
     }
 
@@ -111,6 +122,10 @@ class UsersService extends ResolversOperationsService {
     async register() {
 
         const user = this.getVariables().user;
+        const details = await libDetails();
+
+        user!.details = details;
+
         // Check not to be empty
         if (user === null) {
             return {
@@ -142,9 +157,6 @@ class UsersService extends ResolversOperationsService {
 
         // Check the last registered user to assign ID
         user!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'creationDate', order: -1 });
-
-        // Assign the date in ISO format in the registerDate property
-        user!.creationDate = new Date().toISOString();
         // Assign the date in ISO format in the lastSession property
         user!.lastSession = new Date().toISOString();
 

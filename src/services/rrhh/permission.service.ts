@@ -4,6 +4,7 @@ import { COLLECTIONS } from '../../config/constants';
 import {
     assignDocumentId
 } from '../../lib/db-operations';
+import { libDetails } from '../../lib/details';
 
 class PermissionService extends ResolversOperationsService {
 
@@ -45,6 +46,10 @@ class PermissionService extends ResolversOperationsService {
     // Create permission
     async insert() {
         const permission = this.getVariables().permission;
+        const details = await libDetails();
+
+        permission!.details = details;
+
         // Check not to be empty
         if (permission === null) {
             return {
@@ -55,9 +60,9 @@ class PermissionService extends ResolversOperationsService {
         }
 
         // The user must be assigned a permission
-        if (permission?.user === null ||
-            permission?.user === undefined ||
-            permission?.user === '') {
+        if (permission?.userId === null ||
+            permission?.userId === undefined ||
+            permission?.userId === '') {
             return {
                 status: false,
                 message: `${this.element} sin usuario asigando.`,
@@ -67,8 +72,6 @@ class PermissionService extends ResolversOperationsService {
 
         // Create the document
         permission!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'creationDate', order: -1 });
-        // Assign the date in ISO format in the date property
-        permission!.creationDate = new Date().toISOString();
 
         const result = await this.add(this.collection, permission || {}, this.element);
         return {

@@ -1,15 +1,11 @@
 "Vacant input"
 input VacantInput {
-  "Unique identifier"
-  id: ID
   "Unique identifier of a Job"
   jobId: String!
   "Vacant title"
   title: String!
   "Vacant description"
   description: String!
-  "Vacant status"
-  status: Boolean = true
   "Vacant available"
   available: Boolean = true
 }

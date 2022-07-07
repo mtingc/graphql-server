@@ -1,7 +1,5 @@
 "Contact input for vacancies or sales"
 input ContactInput {
-  "Unique identifier"
-  id: ID
   "Unique identifier of a vacancy"
   vacantId: ID
   "Contact name"

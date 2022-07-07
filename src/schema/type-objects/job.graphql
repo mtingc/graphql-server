@@ -7,6 +7,6 @@ type Job {
   description: String
   "Job image"
   image: String
-  "Creation date in the app"
-  creationDate: String!
+  "Item details"
+  details: Details!
 }

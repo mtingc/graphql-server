@@ -1,3 +1,5 @@
+import { IDetails } from './details.interface';
+
 export interface IUser {
     id?: string;
     name: string;
@@ -8,5 +10,5 @@ export interface IUser {
     phone: string;
     role: string;
     lastSession?: string;
-    creationDate?: string;
+    details: IDetails;
 }

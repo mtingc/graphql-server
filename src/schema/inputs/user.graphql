@@ -1,7 +1,5 @@
 "Input for the registration of user data"
 input UserInput {
-  "Unique identifier"
-  id: ID
   "Username"
   name: String!
   lastname: String!

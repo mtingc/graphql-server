@@ -1,0 +1,6 @@
+type Details {
+  "Availability"
+  status: Boolean
+  "Creation date"
+  creationDate: String
+}

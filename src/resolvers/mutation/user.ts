@@ -8,7 +8,7 @@ const mutationUserResolvers: IResolvers = {
             return new UsersService(_, variables, context).register();
         },
         async login(_, { email, password }, context) {
-            return new UsersService(_, { user: { email, password }}, context).login();
+            return new UsersService(_, { user: { email, password } }, context).login();
         },
         async updateUser(_, variables, context) {
             return new UsersService(_, variables, context).modify();
@@ -16,7 +16,7 @@ const mutationUserResolvers: IResolvers = {
         async deleteUser(_, variables, context) {
             return new UsersService(_, variables, context).delete();
         }
-        
+
     }
 };
 

@@ -8,6 +8,6 @@ interface Contact {
   phone: String!
   "Contact status"
   attended: Boolean!
-  "Creation date in the app"
-  creationDate: String!
+  "Item details"
+  details: Details!
 }

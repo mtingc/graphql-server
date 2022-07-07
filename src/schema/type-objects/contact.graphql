@@ -10,8 +10,8 @@ type ContactRrhh implements Contact {
   phone: String!
   "Contact status"
   attended: Boolean!
-  "Creation date in the app"
-  creationDate: String!
+  "Item details"
+  details: Details!
   "Unique identifier of a vacancy"
   vacantId: Vacant
   "Contact age"
@@ -29,8 +29,8 @@ type ContactSales implements Contact {
   phone: String!
   "Contact status"
   attended: Boolean!
-  "Creation date in the app"
-  creationDate: String!
+  "Item details"
+  details: Details!
   "Contact company"
   company: String
   "Contact work position"

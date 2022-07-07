@@ -1,10 +1,12 @@
+import { IDetails } from './details.interface';
+
 export interface IPermission {
     id: string;
     type: string;
     reason: string;
-    user: string;
+    userId: string;
     from: string;
     to: string;
     authorization: boolean;
-    creationDate: string;
+    details: IDetails;
 }

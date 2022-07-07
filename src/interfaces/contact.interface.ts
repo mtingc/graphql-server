@@ -1,3 +1,5 @@
+import { IDetails } from './details.interface';
+
 export interface IContact {
     id: string;
     name: string;
@@ -9,5 +11,5 @@ export interface IContact {
     workPosition: string;
     message: string;
     attended: boolean;
-    creationDate: string;
+    details: IDetails;
 }

@@ -4,6 +4,7 @@ import { COLLECTIONS } from '../../config/constants';
 import {
     assignDocumentId
 } from '../../lib/db-operations';
+import { libDetails } from '../../lib/details';
 
 class ContactService extends ResolversOperationsService {
 
@@ -45,6 +46,10 @@ class ContactService extends ResolversOperationsService {
     // Create contact
     async insert() {
         const contact = this.getVariables().contact;
+        const details = await libDetails();
+
+        contact!.details = details;
+
         // Check not to be empty
         if (contact === null) {
             return {
@@ -56,8 +61,6 @@ class ContactService extends ResolversOperationsService {
 
         // Create the document
         contact!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'creationDate', order: -1 });
-        // Assign the date in ISO format in the date property
-        contact!.creationDate = new Date().toISOString();
 
         const result = await this.add(this.collection, contact || {}, this.element);
         return {
