@@ -11,7 +11,7 @@ import { IPaginationOptions } from './../interfaces/pagination-options.interface
 export const assignDocumentId = async (
     database: Db,
     collection: string,
-    sort: { key: string, order: SortDirection } = {key: 'registerDate', order: 1}
+    sort: { key: string, order: SortDirection } = { key: 'details.creationDate', order: 1 }
 ) => {
     const lastElement = await database
         .collection(collection)
@@ -20,7 +20,7 @@ export const assignDocumentId = async (
         .limit(1)
         .toArray();
 
-    if(lastElement.length === 0) {
+    if (lastElement.length === 0) {
         return '1';
     }
     return String(+lastElement[0].id + 1);
@@ -131,11 +131,11 @@ export const findElements = async (
         total: -1
     }
 ) => {
-    if(paginationOptions.total === -1) {
+    if (paginationOptions.total === -1) {
         return await database.collection(collection).find(filter).toArray();
     }
     return await database.collection(collection).find(filter).limit(paginationOptions.itemsPage)
-                        .skip(paginationOptions.skip).toArray();
+        .skip(paginationOptions.skip).toArray();
 };
 
 /**

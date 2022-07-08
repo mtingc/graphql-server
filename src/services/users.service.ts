@@ -9,7 +9,7 @@ import {
 import JWT from './../lib/jwt';
 import bcrypt from 'bcrypt';
 import { IUser } from './../interfaces/user.interface';
-import { libDetails } from '../lib/details';
+import { createDetails, editDetails } from '../lib/details';
 
 class UsersService extends ResolversOperationsService {
 
@@ -122,7 +122,9 @@ class UsersService extends ResolversOperationsService {
     async register() {
 
         const user = this.getVariables().user;
-        const details = await libDetails();
+
+        const idD = '1';
+        const details = await createDetails(idD);
 
         user!.details = details;
 
@@ -176,8 +178,8 @@ class UsersService extends ResolversOperationsService {
         const id = this.getVariables().id;
         const user = this.getVariables().user;
 
-        const details = await libDetails();
-
+        const creUsId = '2';
+        const details = await editDetails(creUsId, '1');
         user!.details = details;
 
         // Validate an id

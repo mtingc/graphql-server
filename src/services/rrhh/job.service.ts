@@ -4,7 +4,7 @@ import { COLLECTIONS } from '../../config/constants';
 import {
     assignDocumentId
 } from '../../lib/db-operations';
-import { libDetails } from '../../lib/details';
+import { createDetails, editDetails } from '../../lib/details';
 
 class JobService extends ResolversOperationsService {
 
@@ -46,7 +46,9 @@ class JobService extends ResolversOperationsService {
     // Create contact
     async insert() {
         const job = this.getVariables().job;
-        const details = await libDetails();
+
+        const idD = '1';
+        const details = await createDetails(idD);
 
         job!.details = details;
 

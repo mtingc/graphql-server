@@ -4,7 +4,7 @@ import { COLLECTIONS } from '../../config/constants';
 import {
     assignDocumentId
 } from '../../lib/db-operations';
-import { libDetails } from '../../lib/details';
+import { createDetails, editDetails } from '../../lib/details';
 
 class PermissionService extends ResolversOperationsService {
 
@@ -46,7 +46,9 @@ class PermissionService extends ResolversOperationsService {
     // Create permission
     async insert() {
         const permission = this.getVariables().permission;
-        const details = await libDetails();
+
+        const idD = '1';
+        const details = await createDetails(idD);
 
         permission!.details = details;
 
@@ -86,8 +88,8 @@ class PermissionService extends ResolversOperationsService {
         const id = this.getVariables().id;
         const permission = this.getVariables().permission;
 
-        const details = await libDetails();
-
+        const creUsId = '2';
+        const details = await editDetails(creUsId, '1');
         permission!.details = details;
 
         // Validate an id
