@@ -1,4 +1,7 @@
 export interface IDetails {
-    status: boolean;
-    creationDate: string;
+    status?: boolean;
+    creatorUserId?: string;
+    creationDate?: string;
+    modifierUserId?: string;
+    lastModification?: string;
 }

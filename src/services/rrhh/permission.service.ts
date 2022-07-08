@@ -86,6 +86,10 @@ class PermissionService extends ResolversOperationsService {
         const id = this.getVariables().id;
         const permission = this.getVariables().permission;
 
+        const details = await libDetails();
+
+        permission!.details = details;
+
         // Validate an id
         if (!this.checkData(String(id) || '')) {
             return {

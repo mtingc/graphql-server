@@ -1,6 +1,12 @@
 type Details {
   "Availability"
   status: Boolean
+  "Creator user of item"
+  creatorUserId: User
   "Creation date"
   creationDate: String
+  "Last modification"
+  modifierUserId: User
+  "Last modification"
+  lastModification: String
 }

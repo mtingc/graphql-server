@@ -9,7 +9,7 @@ const typePermissionResolvers: IResolvers = {
                 { id: userId },
                 { db }
             ).details();
-            return result.vacant;
+            return result.user;
         }
     }
 };

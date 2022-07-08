@@ -44,7 +44,7 @@ class UsersService extends ResolversOperationsService {
         return {
             status: result.status,
             message: result.message,
-            vacant: result.item
+            user: result.item
         };
     }
 
@@ -92,7 +92,7 @@ class UsersService extends ResolversOperationsService {
             user.lastSession = new Date().toISOString();
             passwordCheck
                 ? await updateOneElement(this.getDb(), this.collection, { email: variables?.email }, { lastSession: user.lastSession })
-                : null
+                : null;
 
             return {
                 status: passwordCheck,
@@ -175,6 +175,10 @@ class UsersService extends ResolversOperationsService {
     async modify() {
         const id = this.getVariables().id;
         const user = this.getVariables().user;
+
+        const details = await libDetails();
+
+        user!.details = details;
 
         // Validate an id
         if (!this.checkData(String(id) || '')) {
