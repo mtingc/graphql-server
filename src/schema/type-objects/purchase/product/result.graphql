@@ -1,0 +1,10 @@
+type PurchaseProductResult implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Contact"
+  product: PurchaseProduct
+  "List of contacts"
+  products: [PurchaseProduct!]
+}

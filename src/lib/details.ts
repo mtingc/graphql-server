@@ -7,7 +7,9 @@ export async function createDetails(creatorUserId: string) {
         // Assign the date in ISO format in the date property
         creationDate: new Date().toISOString(),
         // FIX 👇
-        creatorUserId
+        creatorUserId,
+        modifierUserId: '',
+        lastModification: ''
     };
 
     return details;

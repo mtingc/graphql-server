@@ -1,0 +1,6 @@
+type Query {
+  "Show item product"
+  product(id: ID!): PurchaseProductResult
+  "Show list of products"
+  products(page: Int = 1, itemsPage: Int = 20): PurchaseProductResult
+}

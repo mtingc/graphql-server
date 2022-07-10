@@ -1,0 +1,6 @@
+type Query {
+  "Show item supplier"
+  supplier(id: ID!): PurchaseSupplierResult
+  "Show list of suppliers"
+  suppliers(page: Int = 1, itemsPage: Int = 20): PurchaseSupplierResult
+}

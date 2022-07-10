@@ -1,0 +1,10 @@
+input SupplierAddressInput {
+  street: String!
+  number: AddressNumberInput!
+  colony: String!
+  municipality: String!
+  state: String!
+  country: String!
+  zipCode: String!
+  streets: AddressStreetsInput
+}

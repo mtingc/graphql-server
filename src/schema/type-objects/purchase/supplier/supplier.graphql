@@ -1,0 +1,12 @@
+type PurchaseSupplier {
+  id: ID!
+  name: String!
+  logo: String
+  infoContact: SupplierContact
+  address: SupplierAddress
+  taxes: SupplierTaxes
+  deliveryTime: Int
+  passed: Boolean
+  classification: SupplierClassificationEnum
+  details: Details
+}

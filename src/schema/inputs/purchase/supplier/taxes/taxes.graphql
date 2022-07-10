@@ -1,0 +1,4 @@
+input SupplierTaxesInput {
+  type: SupplierTypeTaxesEnum!
+  rfc: String
+}

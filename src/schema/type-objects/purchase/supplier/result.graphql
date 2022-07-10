@@ -1,0 +1,10 @@
+type PurchaseSupplierResult implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Contact"
+  supplier: PurchaseSupplier
+  "List of contacts"
+  suppliers: [PurchaseSupplier!]
+}

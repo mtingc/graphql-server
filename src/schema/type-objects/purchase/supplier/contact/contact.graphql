@@ -1,0 +1,6 @@
+type SupplierContact {
+  email: String
+  phone: String
+  web: String
+  personalizedContact: ContactPersonalized
+}

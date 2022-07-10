@@ -1,0 +1,10 @@
+type SupplierAddress {
+  street: String
+  number: AddressNumber
+  colony: String
+  municipality: String
+  state: String
+  country: String
+  zipCode: String
+  streets: AddressStreets
+}

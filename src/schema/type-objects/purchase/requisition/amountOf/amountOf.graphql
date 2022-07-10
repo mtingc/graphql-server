@@ -1,0 +1,4 @@
+type RequisitionAmountOf {
+  type: RequisitionAmountOfEnum
+  number: Int
+}

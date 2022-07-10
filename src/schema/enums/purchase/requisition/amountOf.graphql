@@ -1,0 +1,5 @@
+enum RequisitionAmountOfEnum {
+  PZ
+  LTS
+  KG
+}

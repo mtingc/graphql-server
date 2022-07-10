@@ -70,7 +70,7 @@ class ResolversOperationsService {
                         };
                     }
                     return {
-                        status: true,
+                        status: false,
                         message: `El ${listElement} no ha obtenido ningun detalle por que no existe.`,
                         item: null
                     };

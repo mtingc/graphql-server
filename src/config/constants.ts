@@ -12,7 +12,10 @@ export enum COLLECTIONS {
     PERMISSIONS = 'permissions',
     CONTACTS = 'contacts',
     JOB = 'jobs',
-    VACANTS = 'vacants'
+    VACANTS = 'vacants',
+    PURCHASES_SUPPLIERS = 'purchases_suppliers',
+    PURCHASES_PRODUCTS = 'purchases_products',
+    PURCHASES_REQUISITIONS = 'purchases_requisitions'
 }
 
 export enum MESSAGES {

@@ -1,0 +1,10 @@
+input PurchaseSupplierInput {
+  name: String!
+  logo: String
+  infoContact: SupplierContactInput!
+  address: SupplierAddressInput!
+  taxes: SupplierTaxesInput!
+  deliveryTime: Int
+  passed: Boolean!
+  classification: SupplierClassificationEnum!
+}

@@ -1,0 +1,4 @@
+input RequisitionAmountOfInput {
+  type: RequisitionAmountOfEnum!
+  number: Int!
+}

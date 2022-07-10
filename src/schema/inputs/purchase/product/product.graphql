@@ -1,0 +1,7 @@
+input PurchaseProductInput {
+  name: String!
+  description: String
+  brand: String
+  audited: Boolean!
+  supplierId: String!
+}

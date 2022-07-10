@@ -1,0 +1,6 @@
+input SupplierContactInput {
+  email: String!
+  phone: String!
+  web: String
+  personalizedContact: ContactPersonalizedInput
+}

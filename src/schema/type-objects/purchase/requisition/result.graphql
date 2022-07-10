@@ -1,0 +1,10 @@
+type PurchaseRequisitionResult implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Contact"
+  requisition: PurchaseRequisition
+  "List of contacts"
+  requisitions: [PurchaseRequisition!]
+}

@@ -1,0 +1,6 @@
+type Mutation {
+  "New requisition"
+  addRequisition(
+    requisition: PurchaseRequisitionInput!
+  ): PurchaseRequisitionResult
+}

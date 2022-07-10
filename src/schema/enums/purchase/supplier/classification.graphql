@@ -1,0 +1,5 @@
+enum SupplierClassificationEnum {
+  A
+  B
+  C
+}

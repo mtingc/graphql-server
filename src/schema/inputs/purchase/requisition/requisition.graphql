@@ -1,0 +1,6 @@
+input PurchaseRequisitionInput {
+  productId: [String]
+  amountOf: RequisitionAmountOfInput!
+  userId: String!
+  autorization: Boolean = false
+}

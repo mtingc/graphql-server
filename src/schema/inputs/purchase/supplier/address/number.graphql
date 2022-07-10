@@ -1,0 +1,4 @@
+input AddressNumberInput {
+  exterior: String!
+  interior: String
+}

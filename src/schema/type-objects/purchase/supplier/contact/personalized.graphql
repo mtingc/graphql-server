@@ -1,0 +1,5 @@
+type ContactPersonalized {
+  name: String
+  email: String
+  phone: String
+}

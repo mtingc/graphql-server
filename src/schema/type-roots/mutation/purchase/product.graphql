@@ -1,0 +1,4 @@
+type Mutation {
+  "New product"
+  addProduct(product: PurchaseProductInput!): PurchaseProductResult
+}
