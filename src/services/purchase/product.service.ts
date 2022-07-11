@@ -9,7 +9,7 @@ import { createDetails, editDetails } from '../../lib/details';
 class PurchaseProductService extends ResolversOperationsService {
 
     private element = 'producto';
-    private collection = COLLECTIONS.PURCHASES_PRODUCTS;
+    private collection = COLLECTIONS.PURCHASES_PRODUCTSSERVICES;
 
     constructor(
         root: object,

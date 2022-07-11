@@ -1,9 +1,20 @@
-type PurchaseProduct {
+type PurchaseProduct implements PurchaseProductInterface {
   id: ID!
   name: String!
   description: String
   brand: String
-  audited: Boolean
-  supplierId: PurchaseSupplier
-  details: Details
+  audited: Boolean!
+  supplierId: PurchaseSupplier!
+  details: Details!
+}
+
+type PurchaseProductService implements PurchaseProductInterface {
+  id: ID!
+  name: String!
+  description: String
+  typeService: ProductTypeService
+  brand: String
+  audited: Boolean!
+  supplierId: PurchaseSupplier!
+  details: Details!
 }

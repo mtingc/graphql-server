@@ -7,7 +7,41 @@ import PurchaseSupplierService from '../../../services/purchase/supplier.service
 import UsersService from '../../../services/users.service';
 
 const typeContactResolvers: IResolvers = {
+    PurchaseSupplier: {
+        productId: async ({ id }, _, { db }) => {
+
+            return await findElements(
+                db,
+                COLLECTIONS.PURCHASES_PRODUCTSSERVICES,
+                {
+                    $and: [
+                        { supplierId: id }
+                    ]
+                }
+            );
+
+        }
+    },
+    PurchaseProductInterface: {
+        __resolveType: (product: IPurchaseProduct) => {
+            if (product.typeService) {
+                return 'PurchaseProductService';
+            }
+
+            return 'PurchaseProduct';
+        }
+    },
     PurchaseProduct: {
+        supplierId: async ({ supplierId }, _, { db }) => {
+            const result = await new PurchaseSupplierService(
+                {},
+                { id: supplierId },
+                { db }
+            ).details();
+            return result.supplier;
+        }
+    },
+    PurchaseProductService: {
         supplierId: async ({ supplierId }, _, { db }) => {
             const result = await new PurchaseSupplierService(
                 {},

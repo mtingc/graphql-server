@@ -1,0 +1,9 @@
+interface PurchaseProductInterface {
+  id: ID!
+  name: String!
+  description: String
+  brand: String
+  audited: Boolean!
+  supplierId: PurchaseSupplier!
+  details: Details!
+}

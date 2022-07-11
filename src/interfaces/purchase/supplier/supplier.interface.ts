@@ -2,6 +2,7 @@ import { ISupplierContact } from './contact/contact.interface';
 import { ISupplierAddress } from './address/address.interface';
 import { ISupplierTaxex } from './taxes/taxex.interface';
 
+import { IPurchaseProduct } from '../product/product.interface';
 import { IDetails } from './../../details.interface';
 
 export interface IPurchaseSupplier {
@@ -14,5 +15,6 @@ export interface IPurchaseSupplier {
     deliveryTime: number;
     passed: boolean;
     classification: string;
+    productId: IPurchaseProduct[];
     details: IDetails;
 }

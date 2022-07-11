@@ -1,0 +1,6 @@
+enum ProductTypeServiceEnum {
+  TECNOLOGICO
+  TRANSPORTE
+  CARGA
+  FINANCIERO
+}

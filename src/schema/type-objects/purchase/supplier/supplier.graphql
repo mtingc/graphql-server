@@ -8,5 +8,6 @@ type PurchaseSupplier {
   deliveryTime: Int
   passed: Boolean
   classification: SupplierClassificationEnum
+  productId: [PurchaseProductInterface]
   details: Details
 }

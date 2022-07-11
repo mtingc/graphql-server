@@ -1,0 +1,4 @@
+input ProductTypeServiceInput {
+  type: ProductTypeServiceEnum
+  description: String
+}

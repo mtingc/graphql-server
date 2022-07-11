@@ -4,7 +4,7 @@ type PurchaseProductResult implements Result {
   "Operation message"
   message: String!
   "Contact"
-  product: PurchaseProduct
+  product: PurchaseProductInterface
   "List of contacts"
-  products: [PurchaseProduct!]
+  products: [PurchaseProductInterface!]
 }

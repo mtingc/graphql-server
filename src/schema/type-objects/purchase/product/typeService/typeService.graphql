@@ -1,0 +1,4 @@
+type ProductTypeService {
+  type: ProductTypeServiceEnum
+  description: String
+}

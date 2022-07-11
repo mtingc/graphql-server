@@ -1,6 +1,7 @@
 input PurchaseProductInput {
   name: String!
   description: String
+  typeService: ProductTypeServiceInput
   brand: String
   audited: Boolean!
   supplierId: String!

@@ -14,7 +14,7 @@ export enum COLLECTIONS {
     JOB = 'jobs',
     VACANTS = 'vacants',
     PURCHASES_SUPPLIERS = 'purchases_suppliers',
-    PURCHASES_PRODUCTS = 'purchases_products',
+    PURCHASES_PRODUCTSSERVICES = 'purchases_products_services',
     PURCHASES_REQUISITIONS = 'purchases_requisitions'
 }
 
