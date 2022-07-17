@@ -9,7 +9,7 @@ import {
 import JWT from './../lib/jwt';
 import bcrypt from 'bcrypt';
 import { IUser } from './../interfaces/user.interface';
-import { createDetails, editDetails } from '../lib/details';
+import { createDetails, modifierDetails } from '../lib/details';
 
 class UsersService extends ResolversOperationsService {
 
@@ -123,16 +123,11 @@ class UsersService extends ResolversOperationsService {
 
         const user = this.getVariables().user;
 
-        const idD = '1';
-        const details = await createDetails(idD);
-
-        user!.details = details;
-
         // Check not to be empty
         if (user === null) {
             return {
                 status: false,
-                messege: `${this.element} no definido.`,
+                message: `${this.element} no definido.`,
                 user: null
             };
         }
@@ -157,10 +152,22 @@ class UsersService extends ResolversOperationsService {
             };
         }
 
+        // DETAILS
+        const creationDetail = await createDetails(user!.details);
+        if (!creationDetail.status) {
+            return {
+                status: false,
+                message: creationDetail.message,
+                user: null
+            };
+        }
+        user.details = creationDetail.item;
+        // DETAILS
+
         // Check the last registered user to assign ID
         user!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
         // Assign the date in ISO format in the lastSession property
-        user!.lastSession = new Date().toISOString();
+        user!.lastSession = '';
 
         // Encrypt password
         user!.password = bcrypt.hashSync(user!.password || '', 10);
@@ -177,10 +184,6 @@ class UsersService extends ResolversOperationsService {
     async modify() {
         const id = this.getVariables().id;
         const user = this.getVariables().user;
-
-        const creUsId = '2';
-        const details = await editDetails(creUsId, '1');
-        user!.details = details;
 
         // Validate an id
         if (!this.checkData(String(id) || '')) {
@@ -199,6 +202,20 @@ class UsersService extends ResolversOperationsService {
                 token: null
             };
         }
+
+        // DETAILS
+        const modificationDetails = await modifierDetails(user!.details);
+        if (!modificationDetails.status) {
+            return {
+                status: false,
+                message: modificationDetails.message,
+                user: null
+            };
+        }
+        user!.details = modificationDetails.item;
+        // DETAILS
+
+        user!.password = bcrypt.hashSync(user!.password || '', 10);
 
         const result = await this.update(this.collection, { id }, user || {}, 'usuario');
         return {

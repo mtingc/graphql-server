@@ -4,7 +4,7 @@ import { COLLECTIONS } from '../../config/constants';
 import {
     assignDocumentId
 } from '../../lib/db-operations';
-import { createDetails, editDetails } from '../../lib/details';
+import { createDetails } from '../../lib/details';
 
 class PurchaseRequisitionService extends ResolversOperationsService {
 
@@ -55,12 +55,6 @@ class PurchaseRequisitionService extends ResolversOperationsService {
                 requisition: null
             };
         }
-
-        // Create the document
-        const idD = '1';
-        const details = await createDetails(idD);
-
-        requisition!.details = details;
 
         requisition!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 

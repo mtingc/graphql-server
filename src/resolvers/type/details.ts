@@ -3,7 +3,7 @@ import UsersService from '../../services/users.service';
 
 const typeDetailsResolvers: IResolvers = {
     Details: {
-        creatorUserId: async ({ creatorUserId }, _, { db }) => {
+        creatorUser: async ({ creatorUserId }, _, { db }) => {
             const result = await new UsersService(
                 {},
                 { id: creatorUserId },

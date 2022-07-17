@@ -4,7 +4,7 @@ import { COLLECTIONS } from '../../config/constants';
 import {
     assignDocumentId
 } from '../../lib/db-operations';
-import { createDetails, editDetails } from '../../lib/details';
+import { createDetails } from '../../lib/details';
 
 class VacantService extends ResolversOperationsService {
 
@@ -46,11 +46,6 @@ class VacantService extends ResolversOperationsService {
     // Create contact
     async insert() {
         const vacant = this.getVariables().vacant;
-
-        const idD = '1';
-        const details = await createDetails(idD);
-
-        vacant!.details = details;
 
         // Check not to be empty
         if (vacant === null) {

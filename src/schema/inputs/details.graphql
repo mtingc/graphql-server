@@ -1,13 +1,10 @@
-type Details {
+input DetailsInput {
   "Availability"
   status: Boolean
   "Creator user of item"
   creatorUserId: String
-  creatorUser: User
-  "Creation date"
+  "Creation date of item"
   creationDate: String
   "Last modification"
-  modifierUserId: User
-  "Last modification"
-  lastModification: String
+  modifierUserId: String
 }

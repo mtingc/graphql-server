@@ -11,4 +11,7 @@ input UserInput {
   phone: String
   "User permissions"
   role: Role = USER
+  "Last session user"
+  lastSession: String
+  details: DetailsInput
 }

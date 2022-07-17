@@ -12,7 +12,7 @@ const typeContactResolvers: IResolvers = {
 
             return await findElements(
                 db,
-                COLLECTIONS.PURCHASES_PRODUCTSSERVICES,
+                COLLECTIONS.PURCHASES_PRODUCTS_SERVICES,
                 {
                     $and: [
                         { supplierId: id }

@@ -6,4 +6,5 @@ input JobInput {
   description: String!
   "Job image"
   image: String!
+  details: DetailsInput
 }
