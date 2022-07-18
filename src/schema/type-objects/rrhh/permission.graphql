@@ -3,7 +3,7 @@ type Permission {
   "Unique identifier"
   id: ID!
   "Permit type"
-  type: TypePermission!
+  type: TypePermissionEnum!
   "Reason for permission"
   reason: String!
   "Requesting user"

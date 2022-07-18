@@ -9,5 +9,6 @@ type PurchaseSupplier {
   passed: Boolean
   classification: SupplierClassificationEnum
   productId: [PurchaseProductInterface]
-  details: Details
+  "Item details"
+  details: Details!
 }

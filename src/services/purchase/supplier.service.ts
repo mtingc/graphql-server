@@ -4,7 +4,7 @@ import { COLLECTIONS } from '../../config/constants';
 import {
     assignDocumentId
 } from '../../lib/db-operations';
-import { createDetails } from '../../lib/details';
+import { createDetails, modifierDetails } from '../../lib/details';
 
 class PurchaseSupplierService extends ResolversOperationsService {
 
@@ -56,6 +56,19 @@ class PurchaseSupplierService extends ResolversOperationsService {
             };
         }
 
+        // DETAILS
+        const creationDetail = await createDetails(supplier!.details);
+        if (!creationDetail.status) {
+            return {
+                status: false,
+                message: creationDetail.message,
+                supplier: null
+            };
+        }
+        supplier!.details = creationDetail.item;
+        // DETAILS
+
+        // Check the last registered user to assign ID
         supplier!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 
         const result = await this.add(this.collection, supplier || {}, this.element);

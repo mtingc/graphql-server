@@ -8,4 +8,6 @@ input VacantInput {
   description: String!
   "Vacant available"
   available: Boolean = true
+  "Item creator and modifier details"
+  details: DetailsInput
 }

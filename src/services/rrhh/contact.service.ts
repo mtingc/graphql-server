@@ -4,7 +4,7 @@ import { COLLECTIONS } from '../../config/constants';
 import {
     assignDocumentId
 } from '../../lib/db-operations';
-import { createDetails } from '../../lib/details';
+import { createDetails, modifierDetails } from '../../lib/details';
 
 class ContactService extends ResolversOperationsService {
 
@@ -56,7 +56,19 @@ class ContactService extends ResolversOperationsService {
             };
         }
 
-        // Create the document
+        // DETAILS
+        const creationDetail = await createDetails(contact!.details);
+        if (!creationDetail.status) {
+            return {
+                status: false,
+                message: creationDetail.message,
+                contact: null
+            };
+        }
+        contact!.details = creationDetail.item;
+        // DETAILS
+
+        // Check the last registered user to assign ID
         contact!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 
         const result = await this.add(this.collection, contact || {}, this.element);

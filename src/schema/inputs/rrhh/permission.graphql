@@ -1,7 +1,7 @@
 "Input for the registration of user data"
 input PermissionInput {
   "Permit type"
-  type: TypePermission!
+  type: TypePermissionEnum!
   "Reason for permission"
   reason: String!
   "Requesting user"
@@ -12,4 +12,6 @@ input PermissionInput {
   to: String!
   "Permit authorization"
   authorization: Boolean = false
+  "Item creator and modifier details"
+  details: DetailsInput
 }

@@ -4,7 +4,7 @@ import { COLLECTIONS } from '../../config/constants';
 import {
     assignDocumentId
 } from '../../lib/db-operations';
-import { createDetails } from '../../lib/details';
+import { createDetails, modifierDetails } from '../../lib/details';
 
 class PermissionService extends ResolversOperationsService {
 
@@ -67,7 +67,19 @@ class PermissionService extends ResolversOperationsService {
             };
         }
 
-        // Create the document
+        // DETAILS
+        const creationDetail = await createDetails(permission!.details);
+        if (!creationDetail.status) {
+            return {
+                status: false,
+                message: creationDetail.message,
+                user: null
+            };
+        }
+        permission!.details = creationDetail.item;
+        // DETAILS
+
+        // Check the last registered user to assign ID
         permission!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 
         const result = await this.add(this.collection, permission || {}, this.element);
@@ -99,6 +111,18 @@ class PermissionService extends ResolversOperationsService {
                 permission: null
             };
         }
+
+        // DETAILS
+        const modificationDetails = await modifierDetails(permission!.details);
+        if (!modificationDetails.status) {
+            return {
+                status: false,
+                message: modificationDetails.message,
+                permission: null
+            };
+        }
+        permission!.details = modificationDetails.item;
+        // DETAILS
 
         // Assignment of the id as a search filter
         const result = await this.update(this.collection, { id }, permission || {}, this.element);

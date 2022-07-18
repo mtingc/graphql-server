@@ -4,5 +4,6 @@ type PurchaseRequisition {
   amountOf: RequisitionAmountOf
   userId: User
   autorization: Boolean
-  details: Details
+  "Item details"
+  details: Details!
 }

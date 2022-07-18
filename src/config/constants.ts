@@ -9,21 +9,17 @@ export const SECRET_KEY = process.env.SECRET || 'lagalmInd2022';
 
 export enum COLLECTIONS {
     USERS = 'users',
-    PERMISSIONS = 'permissions',
-    CONTACTS = 'contacts',
-    JOB = 'jobs',
-    VACANTS = 'vacants',
+    PERMISSIONS = 'rrhh_permissions',
+    CONTACTS = 'rrhh_contacts',
+    JOB = 'rrhh_jobs',
+    VACANTS = 'rrhh_vacants',
     PURCHASES_SUPPLIERS = 'purchases_suppliers',
     PURCHASES_PRODUCTS_SERVICES = 'purchases_products_services',
     PURCHASES_REQUISITIONS = 'purchases_requisitions'
 }
 
 export enum MESSAGES {
-    TOKEN_VERIFICATION_FAILED = 'Token no valido, inicia sesion de nuevo.',
-    DETAILS_UNDEFINED = 'Detalles no definidos.',
-    DETAILS_STATUS = 'El estado debe ser true.',
-    DETAILS_USER_CREATOR = 'Usuario creador no definido.',
-    DETAILS_USER_MODIFIER = 'El usuario modificador debe ir vacio.'
+    TOKEN_VERIFICATION_FAILED = 'Token no valido, inicia sesion de nuevo.'
 }
 
 /**

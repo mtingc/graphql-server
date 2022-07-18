@@ -2,7 +2,7 @@ import { IDetails } from '../interfaces/details.interface';
 
 export async function createDetails(createDetails: IDetails) {
 
-    if (createDetails === {} || createDetails === undefined) {
+    if (createDetails === {} || createDetails === undefined || createDetails === null) {
         return {
             status: false,
             message: 'Detalles no definidos.',
@@ -67,7 +67,7 @@ export async function createDetails(createDetails: IDetails) {
 
 export async function modifierDetails(createDetails: IDetails) {
 
-    if (createDetails === {} || createDetails === undefined) {
+    if (createDetails === {} || createDetails === undefined || createDetails === null) {
         return {
             status: false,
             message: 'Detalles no definidos.',

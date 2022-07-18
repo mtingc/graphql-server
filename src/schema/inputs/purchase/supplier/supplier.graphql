@@ -7,4 +7,6 @@ input PurchaseSupplierInput {
   deliveryTime: Int
   passed: Boolean!
   classification: SupplierClassificationEnum!
+  "Item creator and modifier details"
+  details: DetailsInput
 }

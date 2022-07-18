@@ -3,4 +3,6 @@ input PurchaseRequisitionInput {
   amountOf: RequisitionAmountOfInput!
   userId: String!
   autorization: Boolean = false
+  "Item creator and modifier details"
+  details: DetailsInput
 }

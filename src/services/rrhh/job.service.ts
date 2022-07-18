@@ -4,7 +4,7 @@ import { COLLECTIONS } from '../../config/constants';
 import {
     assignDocumentId
 } from '../../lib/db-operations';
-import { createDetails } from '../../lib/details';
+import { createDetails, modifierDetails } from '../../lib/details';
 
 class JobService extends ResolversOperationsService {
 
@@ -56,19 +56,20 @@ class JobService extends ResolversOperationsService {
             };
         }
 
-        // Create the document
-        job!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
-
         // DETAILS
-        /* const createDetail = await createDetails(job!.details);
-        if (createDetail !== {}) {
+        const creationDetail = await createDetails(job!.details);
+        if (!creationDetail.status) {
             return {
                 status: false,
-                message: createDetail,
-                user: null
+                message: creationDetail.message,
+                job: null
             };
         }
-        job!.details = createDetail; */
+        job!.details = creationDetail.item;
+        // DETAILS
+
+        // Check the last registered user to assign ID
+        job!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 
         const result = await this.add(this.collection, job || {}, this.element);
         return {

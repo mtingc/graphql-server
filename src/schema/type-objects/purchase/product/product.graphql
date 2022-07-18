@@ -5,6 +5,7 @@ type PurchaseProduct implements PurchaseProductInterface {
   brand: String
   audited: Boolean!
   supplierId: PurchaseSupplier!
+  "Item details"
   details: Details!
 }
 
@@ -16,5 +17,6 @@ type PurchaseProductService implements PurchaseProductInterface {
   brand: String
   audited: Boolean!
   supplierId: PurchaseSupplier!
+  "Item details"
   details: Details!
 }

@@ -18,4 +18,6 @@ input ContactInput {
   message: String
   "If the contact was answered"
   attended: Boolean = false
+  "Item creator and modifier details"
+  details: DetailsInput
 }

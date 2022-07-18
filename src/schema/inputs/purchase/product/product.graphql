@@ -5,4 +5,6 @@ input PurchaseProductInput {
   brand: String
   audited: Boolean!
   supplierId: String!
+  "Item creator and modifier details"
+  details: DetailsInput
 }

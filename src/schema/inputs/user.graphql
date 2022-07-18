@@ -13,5 +13,6 @@ input UserInput {
   role: Role = USER
   "Last session user"
   lastSession: String
+  "Item creator and modifier details"
   details: DetailsInput
 }
