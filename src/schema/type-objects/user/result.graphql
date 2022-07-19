@@ -4,8 +4,6 @@ type ResultUser implements Result {
   "Operation message"
   message: String!
   "List of registered users"
-  user: User
-  "List of registered users"
   users: [User!]
 }
 
