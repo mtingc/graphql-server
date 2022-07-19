@@ -1,0 +1,15 @@
+"Type of object to vacants."
+type RrhhVacant {
+  "Unique identifier"
+  id: ID
+  "Unique identifier of a Job"
+  jobId: RrhhJob!
+  "Vacant name"
+  title: String!
+  "Vacant name"
+  description: String!
+  "Vacant available"
+  available: Boolean!
+  "Item details"
+  details: Details!
+}

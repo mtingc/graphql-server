@@ -9,7 +9,7 @@ import { createDetails, modifierDetails } from '../../lib/details';
 class VacantService extends ResolversOperationsService {
 
     private element = 'vacante';
-    private collection = COLLECTIONS.VACANTS;
+    private collection = COLLECTIONS.RRHH_VACANTS;
 
     constructor(
         root: object,
@@ -70,6 +70,7 @@ class VacantService extends ResolversOperationsService {
 
         // Check the last registered user to assign ID
         vacant!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
+        vacant!.available = false;
 
         const result = await this.add(this.collection, vacant || {}, this.element);
         return {

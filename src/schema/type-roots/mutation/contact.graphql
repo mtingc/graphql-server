@@ -1,4 +1,0 @@
-type Mutation {
-  "New contact"
-  addContact(contact: ContactInput!): ResultContact
-}

@@ -1,4 +1,0 @@
-type Mutation {
-  "New vacant"
-  addVacant(vacant: VacantInput!): ResultVacant
-}

@@ -9,7 +9,7 @@ import { createDetails, modifierDetails } from '../../lib/details';
 class PermissionService extends ResolversOperationsService {
 
     private element = 'permiso';
-    private collection = COLLECTIONS.PERMISSIONS;
+    private collection = COLLECTIONS.RRHH_PERMISSIONS;
 
     constructor(
         root: object,

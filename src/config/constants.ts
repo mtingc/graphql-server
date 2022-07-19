@@ -9,10 +9,10 @@ export const SECRET_KEY = process.env.SECRET || 'lagalmInd2022';
 
 export enum COLLECTIONS {
     USERS = 'users',
-    PERMISSIONS = 'rrhh_permissions',
-    CONTACTS = 'rrhh_contacts',
-    JOB = 'rrhh_jobs',
-    VACANTS = 'rrhh_vacants',
+    RRHH_PERMISSIONS = 'rrhh_permissions',
+    RRHH_CONTACTS = 'rrhh_contacts',
+    RRHH_JOB = 'rrhh_jobs',
+    RRHH_VACANTS = 'rrhh_vacants',
     PURCHASES_SUPPLIERS = 'purchases_suppliers',
     PURCHASES_PRODUCTS_SERVICES = 'purchases_products_services',
     PURCHASES_REQUISITIONS = 'purchases_requisitions'

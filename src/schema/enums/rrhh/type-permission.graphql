@@ -1,5 +1,5 @@
 "Permission types"
-enum TypePermissionEnum {
+enum PermissionTypePermissionEnum {
   FALTA
   AUSENCIA
   RETIRARSE

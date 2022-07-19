@@ -1,0 +1,40 @@
+"Type of object to contact the company."
+type RrhhContactRrhh implements RrhhContact {
+  "Unique identifier"
+  id: ID
+  "Contact name"
+  name: String!
+  "Contact email"
+  email: String!
+  "Contact phone"
+  phone: String!
+  "Contact status"
+  attended: Boolean!
+  "Unique identifier of a vacancy"
+  vacantId: RrhhVacant
+  "Contact age"
+  age: String
+  "Item details"
+  details: Details!
+}
+
+type RrhhContactSales implements RrhhContact {
+  "Unique identifier"
+  id: ID
+  "Contact name"
+  name: String!
+  "Contact email"
+  email: String!
+  "Contact phone"
+  phone: String!
+  "Contact status"
+  attended: Boolean!
+  "Contact company"
+  company: String
+  "Contact work position"
+  workPosition: ContactWorkPositionEnum
+  "Contact message"
+  message: String
+  "Item details"
+  details: Details!
+}

@@ -1,56 +1,8 @@
 import { IResolvers } from '@graphql-tools/utils';
-import { COLLECTIONS } from '../../../config/constants';
-import { IPurchaseProduct } from '../../../interfaces/purchase/product/product.interface';
-import { findElements } from '../../../lib/db-operations';
 import PurchaseProductService from '../../../services/purchase/product.service';
-import PurchaseSupplierService from '../../../services/purchase/supplier.service';
 import UsersService from '../../../services/users.service';
 
-const typeContactResolvers: IResolvers = {
-    PurchaseSupplier: {
-        productId: async ({ id }, _, { db }) => {
-
-            return await findElements(
-                db,
-                COLLECTIONS.PURCHASES_PRODUCTS_SERVICES,
-                {
-                    $and: [
-                        { supplierId: id }
-                    ]
-                }
-            );
-
-        }
-    },
-    PurchaseProductInterface: {
-        __resolveType: (product: IPurchaseProduct) => {
-            if (product.typeService) {
-                return 'PurchaseProductService';
-            }
-
-            return 'PurchaseProduct';
-        }
-    },
-    PurchaseProduct: {
-        supplierId: async ({ supplierId }, _, { db }) => {
-            const result = await new PurchaseSupplierService(
-                {},
-                { id: supplierId },
-                { db }
-            ).details();
-            return result.supplier;
-        }
-    },
-    PurchaseProductService: {
-        supplierId: async ({ supplierId }, _, { db }) => {
-            const result = await new PurchaseSupplierService(
-                {},
-                { id: supplierId },
-                { db }
-            ).details();
-            return result.supplier;
-        }
-    },
+const typePurchaseRequisitionResolvers: IResolvers = {
     PurchaseRequisition: {
         productId: async ({ productId: productsId }, _, { db }) => {
 
@@ -76,4 +28,4 @@ const typeContactResolvers: IResolvers = {
     },
 };
 
-export default typeContactResolvers;
+export default typePurchaseRequisitionResolvers;

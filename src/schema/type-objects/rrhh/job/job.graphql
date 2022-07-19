@@ -1,0 +1,12 @@
+type RrhhJob {
+  "Unique identifier"
+  id: ID
+  "Job title"
+  title: String!
+  "Job description"
+  description: String
+  "Job image"
+  image: String
+  "Item details"
+  details: Details!
+}

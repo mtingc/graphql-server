@@ -1,0 +1,11 @@
+type Mutation {
+  "New permission"
+  addPermission(permission: RrhhPermissionInput!): RrhhPermissionResult
+  "Update permission"
+  updatePermission(
+    id: ID!
+    permission: RrhhPermissionInput!
+  ): RrhhPermissionResult
+  "Delete permission"
+  deletePermission(id: ID!): RrhhPermissionResult
+}

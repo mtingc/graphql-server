@@ -1,0 +1,13 @@
+"Interface to specify the required properties in the response"
+interface RrhhContact {
+  "Contact name"
+  name: String!
+  "Contact email"
+  email: String!
+  "Contact phone"
+  phone: String!
+  "Contact status"
+  attended: Boolean!
+  "Item details"
+  details: Details!
+}

@@ -1,6 +1,0 @@
-type Query {
-  "Show item vacant"
-  vacant(id: ID!): ResultVacant
-  "Show list of vacants"
-  vacants(page: Int = 1, itemsPage: Int = 20): ResultVacant
-}

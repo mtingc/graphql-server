@@ -1,0 +1,19 @@
+"Type of object to make permission requests."
+type RrhhPermission {
+  "Unique identifier"
+  id: ID!
+  "Permit type"
+  type: PermissionTypePermissionEnum!
+  "Reason for permission"
+  reason: String!
+  "Requesting user"
+  userId: User!
+  "From what time"
+  from: String!
+  "Until what time?"
+  to: String!
+  "Permit authorization"
+  authorization: Boolean!
+  "Item details"
+  details: Details!
+}

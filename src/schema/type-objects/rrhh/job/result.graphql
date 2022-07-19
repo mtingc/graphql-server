@@ -1,0 +1,10 @@
+type RrhhJobResult implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Job"
+  job: RrhhJob
+  "List of jobs"
+  jobs: [RrhhJob!]
+}

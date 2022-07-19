@@ -1,0 +1,10 @@
+type RrhhVacantResult implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Vacant"
+  vacant: RrhhVacant
+  "List of Vacants"
+  vacants: [RrhhVacant!]
+}

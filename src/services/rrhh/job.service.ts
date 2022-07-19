@@ -9,7 +9,7 @@ import { createDetails, modifierDetails } from '../../lib/details';
 class JobService extends ResolversOperationsService {
 
     private element = 'trabajo';
-    private collection = COLLECTIONS.JOB;
+    private collection = COLLECTIONS.RRHH_JOB;
 
     constructor(
         root: object,

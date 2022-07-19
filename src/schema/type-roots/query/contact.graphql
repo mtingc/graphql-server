@@ -1,6 +1,0 @@
-type Query {
-  "Show item contact"
-  contact(id: ID!): ResultContact
-  "Show list of contacts"
-  contacts(page: Int = 1, itemsPage: Int = 20): ResultContact
-}

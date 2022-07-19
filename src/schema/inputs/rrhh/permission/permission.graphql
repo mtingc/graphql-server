@@ -1,0 +1,15 @@
+"Input for the registration of user data"
+input RrhhPermissionInput {
+  "Permit type"
+  type: PermissionTypePermissionEnum!
+  "Reason for permission"
+  reason: String!
+  "Requesting user"
+  userId: ID!
+  "From what time"
+  from: String!
+  "Until what time?"
+  to: String!
+  "Item creator and modifier details"
+  details: DetailsInput
+}

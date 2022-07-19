@@ -1,0 +1,10 @@
+type RrhhContactResult implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Contact"
+  contact: RrhhContact
+  "List of contacts"
+  contacts: [RrhhContact!]
+}
