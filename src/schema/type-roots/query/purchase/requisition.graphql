@@ -2,5 +2,5 @@ type Query {
   "Show item requisition"
   requisition(id: ID!): PurchaseRequisitionResult
   "Show list of suppliers"
-  requisitions(page: Int = 1, itemsPage: Int = 20): PurchaseRequisitionResult
+  requisitions(page: Int = 1, itemsPage: Int = 20): PurchaseRequisitionsResult
 }

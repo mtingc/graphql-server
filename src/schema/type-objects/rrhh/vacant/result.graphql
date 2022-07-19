@@ -5,6 +5,13 @@ type RrhhVacantResult implements Result {
   message: String!
   "Vacant"
   vacant: RrhhVacant
+}
+
+type RrhhVacantsResult implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
   "List of Vacants"
   vacants: [RrhhVacant!]
 }

@@ -1,7 +1,11 @@
 input PurchaseRequisitionInput {
+  "List of products"
   productId: [String]
+  "Quantity"
   amountOf: RequisitionAmountOfInput!
+  "Requesting user"
   userId: String!
+  "Authorized"
   autorization: Boolean = false
   "Item creator and modifier details"
   details: DetailsInput

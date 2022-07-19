@@ -1,11 +1,19 @@
 input PurchaseSupplierInput {
+  "Supplier name"
   name: String!
+  "Logo"
   logo: String
+  "Contact information"
   infoContact: SupplierContactInput!
+  "Address"
   address: SupplierAddressInput!
+  "RFC"
   taxes: SupplierTaxesInput!
+  "Approximate delivery time"
   deliveryTime: Int
+  "Approved"
   passed: Boolean!
+  "Classification"
   classification: SupplierClassificationEnum!
   "Item creator and modifier details"
   details: DetailsInput

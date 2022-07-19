@@ -5,6 +5,13 @@ type RrhhContactResult implements Result {
   message: String!
   "Contact"
   contact: RrhhContact
-  "List of contacts"
+}
+
+type RrhhContactsResult implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of Contacts"
   contacts: [RrhhContact!]
 }

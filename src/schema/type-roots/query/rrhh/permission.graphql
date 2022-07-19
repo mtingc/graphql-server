@@ -2,5 +2,5 @@ type Query {
   "Show item permission"
   permission(id: ID!): RrhhPermissionResult
   "Show list of permissions"
-  permissions(page: Int = 1, itemsPage: Int = 20): RrhhPermissionResult
+  permissions(page: Int = 1, itemsPage: Int = 20): RrhhPermissionsResult
 }

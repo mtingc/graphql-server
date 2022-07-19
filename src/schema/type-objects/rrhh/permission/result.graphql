@@ -5,6 +5,13 @@ type RrhhPermissionResult implements Result {
   message: String!
   "Permission"
   permission: RrhhPermission
-  "List of permissions"
+}
+
+type RrhhPermissionsResult implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of Permissions"
   permissions: [RrhhPermission!]
 }

@@ -1,9 +1,15 @@
 input PurchaseProductInput {
+  "Name of the product/service"
   name: String!
+  "Description of the product/service"
   description: String
+  "If it is a service, what type of service"
   typeService: ProductTypeServiceInput
+  "Brand"
   brand: String
+  "Auditable product/service"
   audited: Boolean!
+  "Supplier"
   supplierId: String!
   "Item creator and modifier details"
   details: DetailsInput

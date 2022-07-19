@@ -1,4 +1,6 @@
 input RequisitionAmountOfInput {
+  "Quantity type"
   type: RequisitionAmountOfEnum!
+  "Quantity"
   number: Int!
 }

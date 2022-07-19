@@ -2,5 +2,5 @@ type Query {
   "Show item contact"
   contact(id: ID!): RrhhContactResult
   "Show list of contacts"
-  contacts(page: Int = 1, itemsPage: Int = 20): RrhhContactResult
+  contacts(page: Int = 1, itemsPage: Int = 20): RrhhContactsResult
 }
