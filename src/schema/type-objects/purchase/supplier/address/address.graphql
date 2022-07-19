@@ -1,10 +1,18 @@
 type SupplierAddress {
+  "Street"
   street: String
+  "Number (interior and exterior)"
   number: AddressNumber
+  "Colony"
   colony: String
+  "Municipality"
   municipality: String
+  "State"
   state: String
+  "Country"
   country: String
+  "Postal code"
   zipCode: String
+  "Between which streets is it located (a and b)"
   streets: AddressStreets
 }

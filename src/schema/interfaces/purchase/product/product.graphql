@@ -1,9 +1,15 @@
 interface PurchaseProductInterface {
   id: ID!
+  "Name of the product/service"
   name: String!
+  "Description of the product/service"
   description: String
+  "Brand"
   brand: String
+  "Auditable product/service"
   audited: Boolean!
+  "Supplier"
   supplierId: PurchaseSupplier!
+  "Item creator and modifier details"
   details: Details!
 }

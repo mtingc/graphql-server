@@ -1,4 +1,6 @@
 type SupplierTaxes {
+  "Direct/indirect"
   type: SupplierTypeTaxesEnum
+  "Your RFC if direct"
   rfc: String
 }

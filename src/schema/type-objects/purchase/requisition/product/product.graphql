@@ -1,0 +1,8 @@
+type RequisitionProduct {
+  "Product"
+  productId: PurchaseProduct
+  "Quantity type"
+  type: RequisitionAmountOfEnum
+  "Quantity"
+  number: Int
+}

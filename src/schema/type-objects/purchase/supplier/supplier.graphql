@@ -1,14 +1,23 @@
 type PurchaseSupplier {
   id: ID!
+  "Supplier name"
   name: String!
+  "Logo"
   logo: String
+  "Contact information"
   infoContact: SupplierContact
+  "Address"
   address: SupplierAddress
+  "RFC"
   taxes: SupplierTaxes
+  "Approximate delivery time"
   deliveryTime: Int
+  "Approved"
   passed: Boolean
+  "Classification"
   classification: SupplierClassificationEnum
+  "List of your products"
   productId: [PurchaseProductInterface]
-  "Item details"
+  "Item creator and modifier details"
   details: Details!
 }

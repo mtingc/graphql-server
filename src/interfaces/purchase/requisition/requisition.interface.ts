@@ -1,11 +1,10 @@
-import { IRequisitionAmountOf } from './amountOf/amountOf.interface';
+import { IRequisitionProduct } from './product/product.interface';
 
 import { IDetails } from '../../details.interface';
 
 export interface IPurchaseRequisition {
     id: string;
-    productId: string[];
-    amountOf: IRequisitionAmountOf;
+    product: IRequisitionProduct[];
     userId: string;
     autorization: boolean;
     details: IDetails;

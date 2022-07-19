@@ -4,19 +4,6 @@ import UsersService from '../../../services/users.service';
 
 const typePurchaseRequisitionResolvers: IResolvers = {
     PurchaseRequisition: {
-        productId: async ({ productId: productsId }, _, { db }) => {
-
-            const productId: string[] = productsId;
-            return productId.map(async id => {
-                const result = await new PurchaseProductService(
-                    {},
-                    { id },
-                    { db }
-                ).details();
-                return result.product;
-            });
-
-        },
         userId: async ({ userId }, _, { db }) => {
             const result = await new UsersService(
                 {},
@@ -26,6 +13,18 @@ const typePurchaseRequisitionResolvers: IResolvers = {
             return result.user;
         }
     },
+    RequisitionProduct: {
+        productId: async ({ productId }, _, { db }) => {
+
+            const result = await new PurchaseProductService(
+                {},
+                { id: productId },
+                { db }
+            ).details();
+            return result.product;
+
+        },
+    }
 };
 
 export default typePurchaseRequisitionResolvers;

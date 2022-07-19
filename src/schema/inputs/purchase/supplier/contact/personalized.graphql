@@ -1,5 +1,8 @@
 input ContactPersonalizedInput {
+  "Contact name"
   name: String!
+  "Contact email"
   email: String!
+  "Contact phone"
   phone: String
 }

@@ -1,9 +1,11 @@
 type PurchaseRequisition {
   id: ID!
-  productId: [PurchaseProduct]
-  amountOf: RequisitionAmountOf
+  "Product"
+  product: [RequisitionProduct]
+  "Requesting user"
   userId: User
+  "If it was authorized"
   autorization: Boolean
-  "Item details"
+  "Item creator and modifier details"
   details: Details!
 }

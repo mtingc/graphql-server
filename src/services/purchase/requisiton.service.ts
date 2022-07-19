@@ -70,6 +70,7 @@ class PurchaseRequisitionService extends ResolversOperationsService {
 
         // Check the last registered user to assign ID
         requisition!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
+        requisition!.autorization = false;
 
         const result = await this.add(this.collection, requisition || {}, this.element);
         return {

@@ -1,4 +1,6 @@
-input RequisitionAmountOfInput {
+input RequisitionProductInput {
+  "Product"
+  productId: String
   "Quantity type"
   type: RequisitionAmountOfEnum!
   "Quantity"
