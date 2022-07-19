@@ -6,5 +6,5 @@ type SupplierContact {
   "Provider website"
   web: String
   "Personalized contacts"
-  personalizedContact: ContactPersonalized
+  personalizedContact: [ContactPersonalized]
 }

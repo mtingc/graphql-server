@@ -6,5 +6,5 @@ input SupplierContactInput {
   "Provider website"
   web: String
   "Personalized contacts"
-  personalizedContact: ContactPersonalizedInput
+  personalizedContact: [ContactPersonalizedInput]
 }

@@ -1,0 +1,10 @@
+enum SupplierPersonalizedTitleEnum {
+  Lic
+  Ing
+  PhD
+  Mtro
+  Mtr
+  Sr
+  Sra
+  undefined
+}

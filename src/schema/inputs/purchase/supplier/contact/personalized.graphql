@@ -1,6 +1,10 @@
 input ContactPersonalizedInput {
+  "Title of the person"
+  title: SupplierPersonalizedTitleEnum
   "Contact name"
   name: String!
+  "Job position"
+  position: String
   "Contact email"
   email: String!
   "Contact phone"
