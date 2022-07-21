@@ -16,6 +16,4 @@ input RrhhContactInput {
   workPosition: ContactWorkPositionEnum
   "Contact message"
   message: String
-  "Item creator and modifier details"
-  details: DetailsInput
 }

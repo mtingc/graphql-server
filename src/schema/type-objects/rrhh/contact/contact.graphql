@@ -14,8 +14,7 @@ type RrhhContactRrhh implements RrhhContact {
   vacantId: RrhhVacant
   "Contact age"
   age: String
-  "Item details"
-  details: Details!
+  creationDate: String!
 }
 
 type RrhhContactSales implements RrhhContact {
@@ -35,6 +34,5 @@ type RrhhContactSales implements RrhhContact {
   workPosition: ContactWorkPositionEnum
   "Contact message"
   message: String
-  "Item details"
-  details: Details!
+  creationDate: String!
 }

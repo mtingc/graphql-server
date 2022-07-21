@@ -8,6 +8,5 @@ interface RrhhContact {
   phone: String!
   "Contact status"
   attended: Boolean!
-  "Item details"
-  details: Details!
+  creationDate: String!
 }

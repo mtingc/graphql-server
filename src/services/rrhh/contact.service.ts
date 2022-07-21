@@ -56,20 +56,10 @@ class ContactService extends ResolversOperationsService {
             };
         }
 
-        // DETAILS
-        const creationDetail = await createDetails(contact!.details);
-        if (!creationDetail.status) {
-            return {
-                status: false,
-                message: creationDetail.message,
-                contact: null
-            };
-        }
-        contact!.details = creationDetail.item;
-        // DETAILS
+        contact!.creationDate = new Date().toISOString();
 
         // Check the last registered user to assign ID
-        contact!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
+        contact!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'creationDate', order: -1 });
         contact!.attended = false;
 
         const result = await this.add(this.collection, contact || {}, this.element);

@@ -1,5 +1,3 @@
-import { IDetails } from '../details.interface';
-
 export interface IRrhhContact {
     id: string;
     name: string;
@@ -11,5 +9,5 @@ export interface IRrhhContact {
     workPosition: string;
     message: string;
     attended: boolean;
-    details: IDetails;
+    creationDate: string;
 }
