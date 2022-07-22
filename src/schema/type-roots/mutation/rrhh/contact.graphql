@@ -1,4 +1,8 @@
 type Mutation {
   "New contact"
   addContact(contact: RrhhContactInput!): RrhhContactResult
+  "Update contact"
+  updateContact(id: ID!, contact: RrhhContactInput!): RrhhContactResult
+  "Delete contact"
+  deleteContact(id: ID!): RrhhContactResult
 }

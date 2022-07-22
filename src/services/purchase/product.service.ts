@@ -19,7 +19,7 @@ class PurchaseProductService extends ResolversOperationsService {
         super(root, variables, context);
     }
 
-    // Contact list
+    // Product list
     async items() {
         const page = this.getVariables().pagination?.page;
         const itemsPage = this.getVariables().pagination?.itemsPage;
@@ -33,7 +33,7 @@ class PurchaseProductService extends ResolversOperationsService {
         };
     }
 
-    // Get a contact
+    // Get a product
     async details() {
         const result = await this.get(this.collection, this.element);
         return {
@@ -43,7 +43,7 @@ class PurchaseProductService extends ResolversOperationsService {
         };
     }
 
-    // Create contact
+    // Create product
     async insert() {
         const product = this.getVariables().product;
 
@@ -77,6 +77,72 @@ class PurchaseProductService extends ResolversOperationsService {
             message: result.message,
             product: result.item
         };
+    }
+
+    // Update product
+    async modify() {
+        const id = this.getVariables().id;
+        const product = this.getVariables().product;
+
+        // Validate an id
+        if (!this.checkData(String(id) || '')) {
+            return {
+                status: false,
+                message: `El ID del ${this.element} no se ha especificado correctamente.`,
+                product: null
+            };
+        }
+
+        // Validate an existing element
+        if (product === null) {
+            return {
+                status: false,
+                message: `El ${this.element} no existe.`,
+                product: null
+            };
+        }
+
+        // DETAILS
+        const modificationDetails = await modifierDetails(product!.details);
+        if (!modificationDetails.status) {
+            return {
+                status: false,
+                message: modificationDetails.message,
+                product: null
+            };
+        }
+        product!.details = modificationDetails.item;
+        // DETAILS
+
+        const result = await this.update(this.collection, { id }, product || {}, this.element);
+        return {
+            status: result.status,
+            message: result.message,
+            product: result.item
+        };
+    }
+
+    // Delete product
+    async delete() {
+        const id = this.getVariables().id;
+
+        // Validate ID
+        if (!this.checkData(String(id) || '')) {
+            return {
+                status: false,
+                message: `El ID del ${this.element} no se ha especificado correctamente.`
+            };
+        }
+
+        const result = await this.del(this.collection, { id }, this.element);
+        return {
+            status: result.status,
+            message: result.message
+        };
+    }
+
+    private checkData(value: string) {
+        return (value === '' || value === undefined) ? false : true;
     }
 
 }

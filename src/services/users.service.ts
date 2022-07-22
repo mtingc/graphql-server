@@ -190,7 +190,7 @@ class UsersService extends ResolversOperationsService {
             return {
                 status: false,
                 message: `El ID del ${this.element} no se ha especificado correctamente.`,
-                permission: null
+                user: null
             };
         }
 
@@ -199,7 +199,7 @@ class UsersService extends ResolversOperationsService {
             return {
                 status: false,
                 message: `El ${this.element} no existe.`,
-                token: null
+                user: null
             };
         }
 
@@ -217,7 +217,7 @@ class UsersService extends ResolversOperationsService {
 
         user!.password = bcrypt.hashSync(user!.password || '', 10);
 
-        const result = await this.update(this.collection, { id }, user || {}, 'usuario');
+        const result = await this.update(this.collection, { id }, user || {}, this.element);
         return {
             status: result.status,
             message: result.message,
@@ -239,7 +239,7 @@ class UsersService extends ResolversOperationsService {
 
         const result = await this.del(this.collection, { id }, this.element);
         return {
-            status: result.message,
+            status: result.status,
             message: result.message
         };
     }

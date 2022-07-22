@@ -19,7 +19,7 @@ class PurchaseRequisitionService extends ResolversOperationsService {
         super(root, variables, context);
     }
 
-    // Contact list
+    // Requisition list
     async items() {
         const page = this.getVariables().pagination?.page;
         const itemsPage = this.getVariables().pagination?.itemsPage;
@@ -33,7 +33,7 @@ class PurchaseRequisitionService extends ResolversOperationsService {
         };
     }
 
-    // Get a contact
+    // Get a requisition
     async details() {
         const result = await this.get(this.collection, this.element);
         return {
@@ -43,7 +43,7 @@ class PurchaseRequisitionService extends ResolversOperationsService {
         };
     }
 
-    // Create contact
+    // Create requisition
     async insert() {
         const requisition = this.getVariables().requisition;
 
@@ -78,6 +78,72 @@ class PurchaseRequisitionService extends ResolversOperationsService {
             message: result.message,
             requisition: result.item
         };
+    }
+
+    // Update requisition
+    async modify() {
+        const id = this.getVariables().id;
+        const requisition = this.getVariables().requisition;
+
+        // Validate an id
+        if (!this.checkData(String(id) || '')) {
+            return {
+                status: false,
+                message: `El ID del ${this.element} no se ha especificado correctamente.`,
+                requisition: null
+            };
+        }
+
+        // Validate an existing element
+        if (requisition === null) {
+            return {
+                status: false,
+                message: `El ${this.element} no existe.`,
+                requisition: null
+            };
+        }
+
+        // DETAILS
+        const modificationDetails = await modifierDetails(requisition!.details);
+        if (!modificationDetails.status) {
+            return {
+                status: false,
+                message: modificationDetails.message,
+                requisition: null
+            };
+        }
+        requisition!.details = modificationDetails.item;
+        // DETAILS
+
+        const result = await this.update(this.collection, { id }, requisition || {}, this.element);
+        return {
+            status: result.status,
+            message: result.message,
+            requisition: result.item
+        };
+    }
+
+    // Delete requisition
+    async delete() {
+        const id = this.getVariables().id;
+
+        // Validate ID
+        if (!this.checkData(String(id) || '')) {
+            return {
+                status: false,
+                message: `El ID del ${this.element} no se ha especificado correctamente.`
+            };
+        }
+
+        const result = await this.del(this.collection, { id }, this.element);
+        return {
+            status: result.status,
+            message: result.message
+        };
+    }
+
+    private checkData(value: string) {
+        return (value === '' || value === undefined) ? false : true;
     }
 
 }

@@ -16,4 +16,7 @@ input RrhhContactInput {
   workPosition: ContactWorkPositionEnum
   "Contact message"
   message: String
+  "Contact status"
+  attended: Boolean
+  creationDate: String
 }

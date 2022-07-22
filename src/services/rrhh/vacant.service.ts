@@ -6,7 +6,7 @@ import {
 } from '../../lib/db-operations';
 import { createDetails, modifierDetails } from '../../lib/details';
 
-class VacantService extends ResolversOperationsService {
+class RrhhVacantService extends ResolversOperationsService {
 
     private element = 'vacante';
     private collection = COLLECTIONS.RRHH_VACANTS;
@@ -19,7 +19,7 @@ class VacantService extends ResolversOperationsService {
         super(root, variables, context);
     }
 
-    // Contact list
+    // Vacant list
     async items() {
         const page = this.getVariables().pagination?.page;
         const itemsPage = this.getVariables().pagination?.itemsPage;
@@ -33,7 +33,7 @@ class VacantService extends ResolversOperationsService {
         };
     }
 
-    // Get a contact
+    // Get a vacant
     async details() {
         const result = await this.get(this.collection, this.element);
         return {
@@ -43,7 +43,7 @@ class VacantService extends ResolversOperationsService {
         };
     }
 
-    // Create contact
+    // Create vacant
     async insert() {
         const vacant = this.getVariables().vacant;
 
@@ -80,6 +80,72 @@ class VacantService extends ResolversOperationsService {
         };
     }
 
+    // Update vacant
+    async modify() {
+        const id = this.getVariables().id;
+        const vacant = this.getVariables().vacant;
+
+        // Validate an id
+        if (!this.checkData(String(id) || '')) {
+            return {
+                status: false,
+                message: `El ID del ${this.element} no se ha especificado correctamente.`,
+                vacant: null
+            };
+        }
+
+        // Validate an existing element
+        if (vacant === null) {
+            return {
+                status: false,
+                message: `El ${this.element} no existe.`,
+                vacant: null
+            };
+        }
+
+        // DETAILS
+        const modificationDetails = await modifierDetails(vacant!.details);
+        if (!modificationDetails.status) {
+            return {
+                status: false,
+                message: modificationDetails.message,
+                vacant: null
+            };
+        }
+        vacant!.details = modificationDetails.item;
+        // DETAILS
+
+        const result = await this.update(this.collection, { id }, vacant || {}, this.element);
+        return {
+            status: result.status,
+            message: result.message,
+            vacant: result.item
+        };
+    }
+
+    // Delete vacant
+    async delete() {
+        const id = this.getVariables().id;
+
+        // Validate ID
+        if (!this.checkData(String(id) || '')) {
+            return {
+                status: false,
+                message: `El ID del ${this.element} no se ha especificado correctamente.`
+            };
+        }
+
+        const result = await this.del(this.collection, { id }, this.element);
+        return {
+            status: result.status,
+            message: result.message
+        };
+    }
+
+    private checkData(value: string) {
+        return (value === '' || value === undefined) ? false : true;
+    }
+
 }
 
-export default VacantService;
+export default RrhhVacantService;

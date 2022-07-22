@@ -1,4 +1,8 @@
 type Mutation {
   "New vacant"
   addVacant(vacant: RrhhVacantInput!): RrhhVacantResult
+  "Update vacant"
+  updateVacant(id: ID!, vacant: UserInput!): RrhhVacantResult
+  "Delete vacant"
+  deleteVacant(id: ID!): RrhhVacantResult
 }

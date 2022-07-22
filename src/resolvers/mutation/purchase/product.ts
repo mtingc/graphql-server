@@ -6,6 +6,12 @@ const mutationPurchaseProductResolvers: IResolvers = {
 
         addProduct(_, variables, context) {
             return new PurchaseProductService(_, variables, context).insert();
+        },
+        updateProduct(_, variables, context) {
+            return new PurchaseProductService(_, variables, context).modify();
+        },
+        deleteProduct(_, variables, context) {
+            return new PurchaseProductService(_, variables, context).delete();
         }
 
     }

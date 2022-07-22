@@ -4,9 +4,8 @@ import { COLLECTIONS } from '../../config/constants';
 import {
     assignDocumentId
 } from '../../lib/db-operations';
-import { createDetails, modifierDetails } from '../../lib/details';
 
-class ContactService extends ResolversOperationsService {
+class RrhhContactService extends ResolversOperationsService {
 
     private element = 'contacto';
     private collection = COLLECTIONS.RRHH_CONTACTS;
@@ -47,11 +46,29 @@ class ContactService extends ResolversOperationsService {
     async insert() {
         const contact = this.getVariables().contact;
 
+
         // Check not to be empty
         if (contact === null) {
             return {
                 status: false,
                 message: 'Los datos de contacto no se ha especificado correctamente.',
+                contact: null
+            };
+        }
+
+        // Check attended
+        if (contact?.attended !== undefined) {
+            return {
+                status: false,
+                message: 'No especificar el campo attended',
+                contact: null
+            };
+        }
+        // Check creationDate
+        if (contact?.creationDate !== undefined) {
+            return {
+                status: false,
+                message: 'No especificar el campo creationDate',
                 contact: null
             };
         }
@@ -70,6 +87,60 @@ class ContactService extends ResolversOperationsService {
         };
     }
 
+    // Update contact
+    async modify() {
+        const id = this.getVariables().id;
+        const contact = this.getVariables().contact;
+
+        // Validate an id
+        if (!this.checkData(String(id) || '')) {
+            return {
+                status: false,
+                message: `El ID del ${this.element} no se ha especificado correctamente.`,
+                contact: null
+            };
+        }
+
+        // Validate an existing element
+        if (contact === null) {
+            return {
+                status: false,
+                message: `El ${this.element} no existe.`,
+                contact: null
+            };
+        }
+
+        const result = await this.update(this.collection, { id }, contact || {}, this.element);
+        return {
+            status: result.status,
+            message: result.message,
+            contact: result.item
+        };
+    }
+
+    // Delete contact
+    async delete() {
+        const id = this.getVariables().id;
+
+        // Validate ID
+        if (!this.checkData(String(id) || '')) {
+            return {
+                status: false,
+                message: `El ID del ${this.element} no se ha especificado correctamente.`
+            };
+        }
+
+        const result = await this.del(this.collection, { id }, this.element);
+        return {
+            status: result.status,
+            message: result.message
+        };
+    }
+
+    private checkData(value: string) {
+        return (value === '' || value === undefined) ? false : true;
+    }
+
 }
 
-export default ContactService;
+export default RrhhContactService;

@@ -1,11 +1,17 @@
 import { IResolvers } from '@graphql-tools/utils';
-import JobService from '../../../services/rrhh/job.service';
+import RrhhJobService from '../../../services/rrhh/job.service';
 
 const mutationRrhhJobResolvers: IResolvers = {
     Mutation: {
 
         addJob(_, variables, context) {
-            return new JobService(_, variables, context).insert();
+            return new RrhhJobService(_, variables, context).insert();
+        },
+        updateJob(_, variables, context) {
+            return new RrhhJobService(_, variables, context).modify();
+        },
+        deleteJob(_, variables, context) {
+            return new RrhhJobService(_, variables, context).delete();
         }
 
     }

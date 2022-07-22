@@ -1,10 +1,10 @@
 import { IResolvers } from '@graphql-tools/utils';
-import JobService from '../../../services/rrhh/job.service';
+import RrhhJobService from '../../../services/rrhh/job.service';
 
 const typeRrhhVacantResolvers: IResolvers = {
     RrhhVacant: {
         jobId: async ({ jobId }, _, { db }) => {
-            const result = await new JobService(
+            const result = await new RrhhJobService(
                 {},
                 { id: jobId },
                 { db }

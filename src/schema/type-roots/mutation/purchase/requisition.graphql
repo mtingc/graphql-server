@@ -3,4 +3,11 @@ type Mutation {
   addRequisition(
     requisition: PurchaseRequisitionInput!
   ): PurchaseRequisitionResult
+  "Update requisition"
+  updateRequisition(
+    id: ID!
+    requisition: PurchaseRequisitionInput!
+  ): PurchaseRequisitionResult
+  "Delete requisition"
+  deleteRequisition(id: ID!): PurchaseRequisitionResult
 }

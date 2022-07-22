@@ -1,14 +1,14 @@
 import { IResolvers } from '@graphql-tools/utils';
-import JobService from '../../../services/rrhh/job.service';
+import RrhhJobService from '../../../services/rrhh/job.service';
 
 const queryRrhhJobResolvers: IResolvers = {
     Query: {
 
         async job(_, { id }, { db }) {
-            return new JobService(_, { id }, { db }).details();
+            return new RrhhJobService(_, { id }, { db }).details();
         },
         async jobs(_, variables, context) {
-            return new JobService(_, {
+            return new RrhhJobService(_, {
                 pagination: variables
             }, context).items();
         }

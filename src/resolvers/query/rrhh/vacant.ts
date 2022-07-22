@@ -1,14 +1,14 @@
 import { IResolvers } from '@graphql-tools/utils';
-import VacantService from '../../../services/rrhh/vacant.service';
+import RrhhVacantService from '../../../services/rrhh/vacant.service';
 
 const queryRrhhVacantResolvers: IResolvers = {
     Query: {
 
         async vacant(_, { id }, { db }) {
-            return new VacantService(_, { id }, { db }).details();
+            return new RrhhVacantService(_, { id }, { db }).details();
         },
         async vacants(_, variables, context) {
-            return new VacantService(_, {
+            return new RrhhVacantService(_, {
                 pagination: variables
             }, context).items();
         }

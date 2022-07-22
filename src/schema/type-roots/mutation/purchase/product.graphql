@@ -1,4 +1,8 @@
 type Mutation {
   "New product"
   addProduct(product: PurchaseProductInput!): PurchaseProductResult
+  "Update product"
+  updateProduct(id: ID!, product: PurchaseProductInput!): PurchaseProductResult
+  "Delete product"
+  deleteProduct(id: ID!): PurchaseProductResult
 }

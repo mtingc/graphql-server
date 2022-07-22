@@ -6,7 +6,7 @@ import {
 } from '../../lib/db-operations';
 import { createDetails, modifierDetails } from '../../lib/details';
 
-class PermissionService extends ResolversOperationsService {
+class RrhhPermissionService extends ResolversOperationsService {
 
     private element = 'permiso';
     private collection = COLLECTIONS.RRHH_PERMISSIONS;
@@ -129,7 +129,7 @@ class PermissionService extends ResolversOperationsService {
         return {
             status: result.status,
             message: result.message,
-            item: result.item
+            permission: result.item
         };
     }
 
@@ -158,4 +158,4 @@ class PermissionService extends ResolversOperationsService {
 
 }
 
-export default PermissionService;
+export default RrhhPermissionService;

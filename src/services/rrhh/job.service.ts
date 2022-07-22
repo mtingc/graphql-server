@@ -6,7 +6,7 @@ import {
 } from '../../lib/db-operations';
 import { createDetails, modifierDetails } from '../../lib/details';
 
-class JobService extends ResolversOperationsService {
+class RrhhJobService extends ResolversOperationsService {
 
     private element = 'trabajo';
     private collection = COLLECTIONS.RRHH_JOB;
@@ -19,7 +19,7 @@ class JobService extends ResolversOperationsService {
         super(root, variables, context);
     }
 
-    // Contact list
+    // Job list
     async items() {
         const page = this.getVariables().pagination?.page;
         const itemsPage = this.getVariables().pagination?.itemsPage;
@@ -33,7 +33,7 @@ class JobService extends ResolversOperationsService {
         };
     }
 
-    // Get a contact
+    // Get a job
     async details() {
         const result = await this.get(this.collection, this.element);
         return {
@@ -43,7 +43,7 @@ class JobService extends ResolversOperationsService {
         };
     }
 
-    // Create contact
+    // Create job
     async insert() {
         const job = this.getVariables().job;
 
@@ -79,6 +79,72 @@ class JobService extends ResolversOperationsService {
         };
     }
 
+    // Update job
+    async modify() {
+        const id = this.getVariables().id;
+        const job = this.getVariables().job;
+
+        // Validate an id
+        if (!this.checkData(String(id) || '')) {
+            return {
+                status: false,
+                message: `El ID del ${this.element} no se ha especificado correctamente.`,
+                job: null
+            };
+        }
+
+        // Validate an existing element
+        if (job === null) {
+            return {
+                status: false,
+                message: `El ${this.element} no existe.`,
+                job: null
+            };
+        }
+
+        // DETAILS
+        const modificationDetails = await modifierDetails(job!.details);
+        if (!modificationDetails.status) {
+            return {
+                status: false,
+                message: modificationDetails.message,
+                job: null
+            };
+        }
+        job!.details = modificationDetails.item;
+        // DETAILS
+
+        const result = await this.update(this.collection, { id }, job || {}, this.element);
+        return {
+            status: result.status,
+            message: result.message,
+            job: result.item
+        };
+    }
+
+    // Delete job
+    async delete() {
+        const id = this.getVariables().id;
+
+        // Validate ID
+        if (!this.checkData(String(id) || '')) {
+            return {
+                status: false,
+                message: `El ID del ${this.element} no se ha especificado correctamente.`
+            };
+        }
+
+        const result = await this.del(this.collection, { id }, this.element);
+        return {
+            status: result.status,
+            message: result.message
+        };
+    }
+
+    private checkData(value: string) {
+        return (value === '' || value === undefined) ? false : true;
+    }
+
 }
 
-export default JobService;
+export default RrhhJobService;

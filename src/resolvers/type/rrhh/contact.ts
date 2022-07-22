@@ -1,5 +1,5 @@
 import { IResolvers } from '@graphql-tools/utils';
-import VacantService from '../../../services/rrhh/vacant.service';
+import RrhhVacantService from '../../../services/rrhh/vacant.service';
 import { IRrhhContact } from '../../../interfaces/rrhh/contact.interface';
 
 const typeRrhhContactResolvers: IResolvers = {
@@ -14,7 +14,7 @@ const typeRrhhContactResolvers: IResolvers = {
     },
     RrhhContactRrhh: {
         vacantId: async ({ vacantId }, _, { db }) => {
-            const result = await new VacantService(
+            const result = await new RrhhVacantService(
                 {},
                 { id: vacantId },
                 { db }

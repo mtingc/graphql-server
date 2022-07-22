@@ -1,4 +1,11 @@
 type Mutation {
   "New supplier"
   addSupplier(supplier: PurchaseSupplierInput!): PurchaseSupplierResult
+  "Update supplier"
+  updateSupplier(
+    id: ID!
+    supplier: PurchaseSupplierInput!
+  ): PurchaseSupplierResult
+  "Delete supplier"
+  deleteSupplier(id: ID!): PurchaseSupplierResult
 }

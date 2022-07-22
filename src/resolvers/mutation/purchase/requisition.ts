@@ -6,6 +6,12 @@ const mutationPurchaseRequisitionResolvers: IResolvers = {
 
         addRequisition(_, variables, context) {
             return new PurchaseRequisitionService(_, variables, context).insert();
+        },
+        updateRequisition(_, variables, context) {
+            return new PurchaseRequisitionService(_, variables, context).modify();
+        },
+        deleteRequisition(_, variables, context) {
+            return new PurchaseRequisitionService(_, variables, context).delete();
         }
 
     }

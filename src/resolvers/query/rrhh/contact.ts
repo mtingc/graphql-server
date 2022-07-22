@@ -1,14 +1,14 @@
 import { IResolvers } from '@graphql-tools/utils';
-import ContactService from '../../../services/rrhh/contact.service';
+import RrhhContactService from '../../../services/rrhh/contact.service';
 
 const queryRrhhContactResolvers: IResolvers = {
     Query: {
 
         async contact(_, { id }, { db }) {
-            return new ContactService(_, { id }, { db }).details();
+            return new RrhhContactService(_, { id }, { db }).details();
         },
         async contacts(_, variables, context) {
-            return new ContactService(_, {
+            return new RrhhContactService(_, {
                 pagination: variables
             }, context).items();
         },

@@ -6,6 +6,12 @@ const mutationPurchaseSupplierResolvers: IResolvers = {
 
         addSupplier(_, variables, context) {
             return new PurchaseSupplierService(_, variables, context).insert();
+        },
+        updateSupplier(_, variables, context) {
+            return new PurchaseSupplierService(_, variables, context).modify();
+        },
+        deleteSupplier(_, variables, context) {
+            return new PurchaseSupplierService(_, variables, context).delete();
         }
 
     }
