@@ -1,4 +1,4 @@
-import { IProductTypeService } from './typeService/typeService.interface';
+import { IProductType } from './type/type.interface';
 
 import { IDetails } from '../../details.interface';
 
@@ -6,7 +6,7 @@ export interface IPurchaseProduct {
     id: string;
     name: string;
     description: string;
-    typeService: IProductTypeService;
+    type: IProductType;
     brand: string;
     audited: boolean;
     supplierId: string;

@@ -70,7 +70,7 @@ class RrhhVacantService extends ResolversOperationsService {
 
         // Check the last registered user to assign ID
         vacant!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
-        vacant!.available = false;
+        vacant!.available.available = true;
 
         const result = await this.add(this.collection, vacant || {}, this.element);
         return {

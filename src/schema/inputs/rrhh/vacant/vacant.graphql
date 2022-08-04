@@ -5,7 +5,9 @@ input RrhhVacantInput {
   "Vacant title"
   title: String!
   "Vacant description"
-  description: String!
+  description: VacantDescriptionInput!
+  "Vacant available"
+  available: VacantAvailableInput!
   "Item creator and modifier details"
   details: DetailsInput
 }

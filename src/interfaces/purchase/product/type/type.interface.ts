@@ -1,4 +1,4 @@
-export interface IProductTypeService {
+export interface IProductType {
     type: string;
     description: string;
 }

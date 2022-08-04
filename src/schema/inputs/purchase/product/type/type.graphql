@@ -1,6 +1,6 @@
-input ProductTypeServiceInput {
+input ProductTypeInput {
   "Enum for service type"
-  type: ProductTypeServiceEnum
+  type: ProductTypeEnum
   "Service description"
   description: String
 }

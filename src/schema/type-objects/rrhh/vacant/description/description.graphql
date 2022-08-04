@@ -1,0 +1,6 @@
+type VacantDescription {
+  description: [String]!
+  benefits: [String]
+  time: Int
+  salary: Int
+}

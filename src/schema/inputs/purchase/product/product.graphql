@@ -4,7 +4,7 @@ input PurchaseProductInput {
   "Description of the product/service"
   description: String
   "If it is a service, what type of service"
-  typeService: ProductTypeServiceInput
+  type: ProductTypeInput
   "Brand"
   brand: String
   "Auditable product/service"

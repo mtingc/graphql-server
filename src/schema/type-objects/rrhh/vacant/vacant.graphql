@@ -6,10 +6,10 @@ type RrhhVacant {
   jobId: RrhhJob!
   "Vacant name"
   title: String!
-  "Vacant name"
-  description: String!
+  "Vacant description"
+  description: VacantDescription!
   "Vacant available"
-  available: Boolean!
+  available: VacantAvailable!
   "Item details"
   details: Details!
 }

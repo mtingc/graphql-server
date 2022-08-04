@@ -1,0 +1,5 @@
+type VacantAvailable {
+  date: String!
+  candidates: Int!
+  available: Boolean
+}

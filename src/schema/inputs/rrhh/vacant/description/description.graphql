@@ -1,0 +1,6 @@
+input VacantDescriptionInput {
+  description: [String!]!
+  benefits: [String]
+  time: Int
+  salary: Int
+}

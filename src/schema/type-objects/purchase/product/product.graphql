@@ -1,27 +1,11 @@
-type PurchaseProduct implements PurchaseProductInterface {
-  id: ID!
-  "Name of the product/service"
-  name: String!
-  "Description of the product/service"
-  description: String
-  "Brand"
-  brand: String
-  "Auditable product/service"
-  audited: Boolean!
-  "Supplier"
-  supplierId: PurchaseSupplier!
-  "Item details"
-  details: Details!
-}
-
-type PurchaseProductService implements PurchaseProductInterface {
+type PurchaseProduct {
   id: ID!
   "Name of the product/service"
   name: String!
   "Description of the product/service"
   description: String
   "If it is a service, what type of service"
-  typeService: ProductTypeService
+  type: ProductType
   "Brand"
   brand: String
   "Auditable product/service"

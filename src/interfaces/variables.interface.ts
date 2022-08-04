@@ -5,7 +5,7 @@ import { IPaginationOptions } from './pagination-options.interface';
 import { IRrhhPermission } from './rrhh/permission.interface';
 import { IRrhhContact } from './rrhh/contact.interface';
 import { IRrhhJob } from './rrhh/job.interface';
-import { IRrhhVacant } from './rrhh/vacant.interface';
+import { IRrhhVacant } from './rrhh/vacant/vacant.interface';
 
 // Purchases
 import { IPurchaseSupplier } from './purchase/supplier/supplier.interface';

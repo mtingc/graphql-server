@@ -17,7 +17,7 @@ type PurchaseSupplier {
   "Classification"
   classification: SupplierClassificationEnum
   "List of your products"
-  productId: [PurchaseProductInterface]
+  productId: [PurchaseProduct]
   "Item creator and modifier details"
   details: Details!
 }

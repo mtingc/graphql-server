@@ -1,7 +1,0 @@
-"Type of services"
-enum ProductTypeServiceEnum {
-  TECNOLOGICO
-  TRANSPORTE
-  CARGA
-  FINANCIERO
-}

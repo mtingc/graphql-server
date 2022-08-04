@@ -4,7 +4,7 @@ type PurchaseProductResult implements Result {
   "Operation message"
   message: String!
   "Product"
-  product: PurchaseProductInterface
+  product: PurchaseProduct
 }
 
 type PurchaseProductsResult implements Result {
@@ -13,5 +13,5 @@ type PurchaseProductsResult implements Result {
   "Operation message"
   message: String!
   "List of Products"
-  products: [PurchaseProductInterface!]
+  products: [PurchaseProduct!]
 }
