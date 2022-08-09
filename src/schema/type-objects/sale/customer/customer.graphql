@@ -1,0 +1,12 @@
+type SaleCustomer {
+  "Unique identifier"
+  id: ID
+  "Customer name"
+  name: String!
+  "Customer logo"
+  logo: String
+  "Contact information"
+  infoContact: CustomerContact
+  "Item details"
+  details: Details!
+}

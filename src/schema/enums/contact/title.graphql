@@ -1,4 +1,4 @@
-enum SupplierPersonalizedTitleEnum {
+enum PersonalizedTitleEnum {
   Lic
   Ing
   PhD

@@ -1,0 +1,10 @@
+input SaleCustomerInput {
+  "Customer name"
+  name: String!
+  "Customer logo"
+  logo: String!
+  "Contact information"
+  infoContact: CustomerContactInput!
+  "Item creator and modifier details"
+  details: DetailsInput
+}

@@ -12,6 +12,9 @@ import { IPurchaseSupplier } from './purchase/supplier/supplier.interface';
 import { IPurchaseProduct } from './purchase/product/product.interface';
 import { IPurchaseRequisition } from './purchase/requisition/requisition.interface';
 
+// Sales
+import { ISaleCustomer } from './sale/customer/customer.interface';
+
 export interface IVariables {
     id?: string | number;
     user?: IUser;
@@ -22,5 +25,6 @@ export interface IVariables {
     supplier?: IPurchaseSupplier;
     product?: IPurchaseProduct;
     requisition?: IPurchaseRequisition;
+    customer?: ISaleCustomer;
     pagination?: IPaginationOptions;
 }
