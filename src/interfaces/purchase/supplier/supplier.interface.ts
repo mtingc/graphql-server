@@ -1,5 +1,5 @@
+import { IAddress } from '../../address/address.interface';
 import { ISupplierContact } from './contact/contact.interface';
-import { ISupplierAddress } from './address/address.interface';
 import { ISupplierTaxex } from './taxes/taxex.interface';
 
 import { IPurchaseProduct } from '../product/product.interface';
@@ -10,7 +10,7 @@ export interface IPurchaseSupplier {
     name: string;
     logo: string;
     infoContact: ISupplierContact;
-    address: ISupplierAddress;
+    address: IAddress;
     taxes: ISupplierTaxex;
     deliveryTime: number;
     passed: boolean;

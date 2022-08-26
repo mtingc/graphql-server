@@ -45,7 +45,7 @@ class RrhhJobService extends ResolversOperationsService {
 
     // Create job
     async insert() {
-        const job = this.getVariables().job;
+        const job = this.getVariables().workArea;
 
         // Check not to be empty
         if (job === null) {
@@ -82,7 +82,7 @@ class RrhhJobService extends ResolversOperationsService {
     // Update job
     async modify() {
         const id = this.getVariables().id;
-        const job = this.getVariables().job;
+        const job = this.getVariables().workArea;
 
         // Validate an id
         if (!this.checkData(String(id) || '')) {

@@ -13,7 +13,7 @@ import { IContext } from './interfaces/context.interface';
 /* import JWT from './lib/jwt'; */
 
 // Set environment variables
-if(process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
     const env = environments;
     console.log(env);
 }
@@ -28,7 +28,7 @@ async function init() {
     const database = new Database();
     const db = await database.init();
 
-    const context = async({req, connection}: IContext) => {
+    const context = async ({ req, connection }: IContext) => {
         const token = (req) ? req.headers.authorization : connection.authorization;
         /* console.log(req.headers)
         const user = new JWT().verify(token.replace('Bearer ', ''))
@@ -44,9 +44,9 @@ async function init() {
 
     await server.start();
 
-    server.applyMiddleware({app});
+    server.applyMiddleware({ app });
 
-    app.get('/', function(_, res) {
+    app.get('/', function (_, res) {
         res.redirect('/graphql');
     });
 

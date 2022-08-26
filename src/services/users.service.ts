@@ -8,7 +8,7 @@ import {
 } from './../lib/db-operations';
 import JWT from './../lib/jwt';
 import bcrypt from 'bcrypt';
-import { IUser } from './../interfaces/user.interface';
+import { IUser } from '../interfaces/user/user.interface';
 import { createDetails, modifierDetails } from '../lib/details';
 
 class UsersService extends ResolversOperationsService {
@@ -85,7 +85,6 @@ class UsersService extends ResolversOperationsService {
             // Hide properties
             if (passwordCheck !== null) {
                 delete user.password;
-                delete user.birthday;
             }
 
             // Assign the date in ISO format in the lastSession property

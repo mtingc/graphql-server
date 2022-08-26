@@ -1,10 +1,10 @@
-import { IUser } from './user.interface';
+import { IUser } from './user/user.interface';
 import { IPaginationOptions } from './pagination-options.interface';
 
 // RRHH
 import { IRrhhPermission } from './rrhh/permission.interface';
 import { IRrhhContact } from './rrhh/contact.interface';
-import { IRrhhJob } from './rrhh/job.interface';
+import { IRrhhWorkArea } from './rrhh/workArea.interface';
 import { IRrhhVacant } from './rrhh/vacant/vacant.interface';
 
 // Purchases
@@ -20,7 +20,7 @@ export interface IVariables {
     user?: IUser;
     permission?: IRrhhPermission;
     contact?: IRrhhContact;
-    job?: IRrhhJob;
+    workArea?: IRrhhWorkArea;
     vacant?: IRrhhVacant;
     supplier?: IPurchaseSupplier;
     product?: IPurchaseProduct;

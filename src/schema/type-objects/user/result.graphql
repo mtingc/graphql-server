@@ -3,6 +3,17 @@ type ResultUser implements Result {
   status: Boolean!
   "Operation message"
   message: String!
+  "Get user"
+  user: User
+}
+
+type ResultUsers implements Result {
+  "Show paging system information"
+  info: ResultInfo
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
   "List of registered users"
   users: [User!]
 }
