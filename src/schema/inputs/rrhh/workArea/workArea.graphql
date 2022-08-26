@@ -1,0 +1,11 @@
+"Job input"
+input RrhhWorkAreaInput {
+  "Job title"
+  title: String!
+  "Job description"
+  description: String!
+  "Job image"
+  image: ImageInput!
+  "Item creator and modifier details"
+  details: DetailsInput
+}

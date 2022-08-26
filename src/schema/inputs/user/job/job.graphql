@@ -1,0 +1,7 @@
+input UserJobInput {
+  workAreaId: String!
+  description: String
+  schedule: JobScheduleInput!
+  salary: String
+  accountNumber: String!
+}

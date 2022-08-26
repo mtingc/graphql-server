@@ -1,0 +1,4 @@
+type JobSchedule {
+  from: String
+  to: String
+}

@@ -1,0 +1,4 @@
+type AddressStreets {
+  a: String
+  b: String
+}

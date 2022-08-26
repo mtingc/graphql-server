@@ -1,5 +1,5 @@
 import { IAddress } from '../address/address.interface';
-import { IUserJob } from './job.interface';
+import { IUserJob } from './job/job.interface';
 
 import { IImage } from '../image.interface';
 import { IDetails } from '../details.interface';
@@ -8,21 +8,21 @@ export interface IUser {
     id?: string;
     name: string;
     lastname: string;
-    email: string;
-    password?: string;
-    phone: number;
     birthday: string;
     gender: string;
-    address: IAddress;
     maritalStatus: string;
     curp: string;
+    address: IAddress;
+    email: string;
+    password?: string;
+    phone: string;
+    role: string;
+    lastSession?: string;
+    avatar: IImage;
     rfc: string;
     schooling: string;
-    nss: number;
+    nss: string;
     infonavitCredit: boolean;
-    avatar: IImage;
-    role: string;
     job: IUserJob;
-    lastSession?: string;
     details: IDetails;
 }

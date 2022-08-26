@@ -11,7 +11,7 @@ export enum COLLECTIONS {
     USERS = 'users',
     RRHH_PERMISSIONS = 'rrhh_permissions',
     RRHH_CONTACTS = 'rrhh_contacts',
-    RRHH_JOB = 'rrhh_jobs',
+    RRHH_WORKAREAS = 'rrhh_workAreas',
     RRHH_VACANTS = 'rrhh_vacants',
     PURCHASES_SUPPLIERS = 'purchases_suppliers',
     PURCHASES_PRODUCTS_SERVICES = 'purchases_products',

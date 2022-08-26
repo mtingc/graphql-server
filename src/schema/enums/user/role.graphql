@@ -1,0 +1,5 @@
+"User types"
+enum UserRoleEnum {
+  USER
+  ADMIN
+}

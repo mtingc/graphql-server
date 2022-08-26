@@ -1,8 +1,0 @@
-type Mutation {
-  "New job"
-  addJob(job: RrhhJobInput!): RrhhJobResult
-  "Update job"
-  updateJob(id: ID!, job: RrhhJobInput!): RrhhJobResult
-  "Delete job"
-  deleteJob(id: ID!): RrhhJobResult
-}

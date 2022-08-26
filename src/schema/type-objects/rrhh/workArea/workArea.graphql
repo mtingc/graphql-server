@@ -1,0 +1,12 @@
+type RrhhWorkArea {
+  "Unique identifier"
+  id: ID
+  "Work area title"
+  title: String!
+  "Work area description"
+  description: String
+  "Work area image"
+  image: Image
+  "Item details"
+  details: Details!
+}

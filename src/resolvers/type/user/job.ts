@@ -1,8 +1,8 @@
 import { IResolvers } from '@graphql-tools/utils';
 import RrhhWorkAreaService from '../../../services/rrhh/workArea.service';
 
-const typeRrhhVacantResolvers: IResolvers = {
-    RrhhVacant: {
+const typeUserJobResolvers: IResolvers = {
+    UserJob: {
         workAreaId: async ({ workAreaId }, _, { db }) => {
             const result = await new RrhhWorkAreaService(
                 {},
@@ -14,4 +14,4 @@ const typeRrhhVacantResolvers: IResolvers = {
     },
 };
 
-export default typeRrhhVacantResolvers;
+export default typeUserJobResolvers;

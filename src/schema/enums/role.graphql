@@ -1,5 +1,0 @@
-"User types"
-enum Role {
-  USER
-  ADMIN
-}

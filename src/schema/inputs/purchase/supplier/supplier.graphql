@@ -6,7 +6,7 @@ input PurchaseSupplierInput {
   "Contact information"
   infoContact: SupplierContactInput!
   "Address"
-  address: SupplierAddressInput!
+  address: AddressInput!
   "RFC"
   taxes: SupplierTaxesInput!
   "Approximate delivery time"

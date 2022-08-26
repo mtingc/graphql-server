@@ -1,0 +1,17 @@
+type RrhhWorkAreaResult implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Work area"
+  workArea: RrhhWorkArea
+}
+
+type RrhhWorkAreasResult implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of Work areas"
+  workAreas: [RrhhWorkArea!]
+}

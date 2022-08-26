@@ -1,0 +1,5 @@
+type Image {
+  height: Int
+  width: Int
+  url: String
+}

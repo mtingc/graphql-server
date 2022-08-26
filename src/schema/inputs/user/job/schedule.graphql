@@ -1,0 +1,4 @@
+input JobScheduleInput {
+  from: String!
+  to: String!
+}

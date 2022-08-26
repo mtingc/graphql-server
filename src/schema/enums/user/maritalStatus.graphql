@@ -1,0 +1,7 @@
+enum UserMaritalStatusEnum {
+  SOLTERO
+  CASADO
+  UNION_LIBRE
+  VIUDO
+  DIVORCIADO
+}

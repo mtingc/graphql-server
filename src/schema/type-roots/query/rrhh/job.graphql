@@ -1,6 +1,0 @@
-type Query {
-  "Show item job"
-  job(id: ID!): RrhhJobResult
-  "Show list of job"
-  jobs(page: Int = 1, itemsPage: Int = 20): RrhhJobsResult
-}

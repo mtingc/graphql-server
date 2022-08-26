@@ -1,0 +1,6 @@
+type Query {
+  "Show item work area"
+  workArea(id: ID!): RrhhWorkAreaResult
+  "Show list of work areas"
+  workAreas(page: Int = 1, itemsPage: Int = 20): RrhhWorkAreasResult
+}

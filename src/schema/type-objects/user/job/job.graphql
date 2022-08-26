@@ -1,0 +1,7 @@
+type UserJob {
+  workAreaId: RrhhWorkArea!
+  description: String
+  schedule: JobSchedule
+  salary: String
+  accountNumber: String
+}

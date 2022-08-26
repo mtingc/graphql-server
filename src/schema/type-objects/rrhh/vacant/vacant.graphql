@@ -2,8 +2,8 @@
 type RrhhVacant {
   "Unique identifier"
   id: ID
-  "Unique identifier of a Job"
-  jobId: RrhhJob!
+  "Unique identifier of a Work area"
+  workAreaId: RrhhWorkArea!
   "Vacant name"
   title: String!
   "Vacant description"

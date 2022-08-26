@@ -6,10 +6,10 @@ import {
 } from '../../lib/db-operations';
 import { createDetails, modifierDetails } from '../../lib/details';
 
-class RrhhJobService extends ResolversOperationsService {
+class RrhhWorkAreaService extends ResolversOperationsService {
 
-    private element = 'trabajo';
-    private collection = COLLECTIONS.RRHH_JOB;
+    private element = 'area de trabajo';
+    private collection = COLLECTIONS.RRHH_WORKAREAS;
 
     constructor(
         root: object,
@@ -19,7 +19,7 @@ class RrhhJobService extends ResolversOperationsService {
         super(root, variables, context);
     }
 
-    // Job list
+    // Work area list
     async items() {
         const page = this.getVariables().pagination?.page;
         const itemsPage = this.getVariables().pagination?.itemsPage;
@@ -29,100 +29,100 @@ class RrhhJobService extends ResolversOperationsService {
             info: result.info,
             status: result.status,
             message: result.message,
-            jobs: result.items
+            workAreas: result.items
         };
     }
 
-    // Get a job
+    // Get a work area
     async details() {
         const result = await this.get(this.collection, this.element);
         return {
             status: result.status,
             message: result.message,
-            job: result.item
+            workArea: result.item
         };
     }
 
-    // Create job
+    // Create work area
     async insert() {
-        const job = this.getVariables().workArea;
+        const workArea = this.getVariables().workArea;
 
         // Check not to be empty
-        if (job === null) {
+        if (workArea === null) {
             return {
                 status: false,
                 message: `El ${this.element} no se ha especificado correctamente.`,
-                job: null
+                workArea: null
             };
         }
 
         // DETAILS
-        const creationDetail = await createDetails(job!.details);
+        const creationDetail = await createDetails(workArea!.details);
         if (!creationDetail.status) {
             return {
                 status: false,
                 message: creationDetail.message,
-                job: null
+                workArea: null
             };
         }
-        job!.details = creationDetail.item;
+        workArea!.details = creationDetail.item;
         // DETAILS
 
         // Check the last registered user to assign ID
-        job!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
+        workArea!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 
-        const result = await this.add(this.collection, job || {}, this.element);
+        const result = await this.add(this.collection, workArea || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            job: result.item
+            workArea: result.item
         };
     }
 
-    // Update job
+    // Update work area
     async modify() {
         const id = this.getVariables().id;
-        const job = this.getVariables().workArea;
+        const workArea = this.getVariables().workArea;
 
         // Validate an id
         if (!this.checkData(String(id) || '')) {
             return {
                 status: false,
                 message: `El ID del ${this.element} no se ha especificado correctamente.`,
-                job: null
+                workArea: null
             };
         }
 
         // Validate an existing element
-        if (job === null) {
+        if (workArea === null) {
             return {
                 status: false,
                 message: `El ${this.element} no existe.`,
-                job: null
+                workArea: null
             };
         }
 
         // DETAILS
-        const modificationDetails = await modifierDetails(job!.details);
+        const modificationDetails = await modifierDetails(workArea!.details);
         if (!modificationDetails.status) {
             return {
                 status: false,
                 message: modificationDetails.message,
-                job: null
+                workArea: null
             };
         }
-        job!.details = modificationDetails.item;
+        workArea!.details = modificationDetails.item;
         // DETAILS
 
-        const result = await this.update(this.collection, { id }, job || {}, this.element);
+        const result = await this.update(this.collection, { id }, workArea || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            job: result.item
+            workArea: result.item
         };
     }
 
-    // Delete job
+    // Delete work area
     async delete() {
         const id = this.getVariables().id;
 
@@ -147,4 +147,4 @@ class RrhhJobService extends ResolversOperationsService {
 
 }
 
-export default RrhhJobService;
+export default RrhhWorkAreaService;

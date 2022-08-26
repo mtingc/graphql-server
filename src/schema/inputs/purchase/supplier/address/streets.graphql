@@ -1,4 +1,0 @@
-input AddressStreetsInput {
-  a: String
-  b: String
-}

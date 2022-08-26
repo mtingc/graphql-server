@@ -1,27 +1,26 @@
-type User {
-  "Unique identifier"
-  id: ID!
+"Input for the registration of user data"
+input UserInput {
   "Personal information"
   name: String!
   lastname: String!
-  birthday: String
+  birthday: String!
   gender: UserGenderEnum!
   maritalStatus: UserMaritalStatusEnum!
   curp: String!
-  address: Address
+  address: AddressInput
   "Account"
   email: String!
-  password: String!
+  password: String
   phone: String
-  role: UserRoleEnum!
-  lastSession: String!
-  avatar: Image
+  role: UserRoleEnum = USER
+  lastSession: String
+  avatar: ImageInput
   "Employment information"
   rfc: String
   schooling: UserSchoolingEnum!
   nss: String
   infonavitCredit: Boolean
-  job: UserJob
-  "Item details"
-  details: Details!
+  job: UserJobInput
+  "Item creator and modifier details"
+  details: DetailsInput
 }

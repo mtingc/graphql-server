@@ -1,7 +1,7 @@
 "Vacant input"
 input RrhhVacantInput {
-  "Unique identifier of a Job"
-  jobId: String!
+  "Unique identifier of a Work area"
+  workAreaId: String!
   "Vacant title"
   title: String!
   "Vacant description"

@@ -1,0 +1,8 @@
+type Mutation {
+  "New work area"
+  addWorkArea(workArea: RrhhWorkAreaInput!): RrhhWorkAreaResult
+  "Update work area"
+  updateWorkArea(id: ID!, workArea: RrhhWorkAreaInput!): RrhhWorkAreaResult
+  "Delete work area"
+  deleteWorkArea(id: ID!): RrhhWorkAreaResult
+}

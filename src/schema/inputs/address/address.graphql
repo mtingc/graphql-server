@@ -1,0 +1,18 @@
+input AddressInput {
+  "Street"
+  street: String!
+  "Number (interior and exterior)"
+  number: AddressNumberInput!
+  "Colony"
+  colony: String!
+  "Municipality"
+  municipality: String!
+  "State"
+  state: String!
+  "Country"
+  country: String!
+  "Postal code"
+  zipCode: Int!
+  "Between which streets is it located (a and b)"
+  streets: AddressStreetsInput
+}
