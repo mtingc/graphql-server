@@ -1,5 +1,0 @@
-input ImageInput {
-  height: Int
-  width: Int
-  url: String
-}

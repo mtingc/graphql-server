@@ -2,7 +2,7 @@ input PurchaseSupplierInput {
   "Supplier name"
   name: String!
   "Logo"
-  logo: String
+  logo: Upload
   "Contact information"
   infoContact: SupplierContactInput!
   "Address"

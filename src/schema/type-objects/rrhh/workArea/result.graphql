@@ -8,6 +8,8 @@ type RrhhWorkAreaResult implements Result {
 }
 
 type RrhhWorkAreasResult implements Result {
+  "Show paging system information"
+  info: ResultInfo
   "Operation status"
   status: Boolean!
   "Operation message"

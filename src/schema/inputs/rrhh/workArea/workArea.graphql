@@ -5,7 +5,7 @@ input RrhhWorkAreaInput {
   "Job description"
   description: String!
   "Job image"
-  image: ImageInput!
+  image: Upload!
   "Item creator and modifier details"
   details: DetailsInput
 }

@@ -3,7 +3,7 @@ type PurchaseSupplier {
   "Supplier name"
   name: String!
   "Logo"
-  logo: String
+  logo: Image
   "Contact information"
   infoContact: SupplierContact
   "Address"

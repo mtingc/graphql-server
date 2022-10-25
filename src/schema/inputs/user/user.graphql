@@ -14,7 +14,7 @@ input UserInput {
   phone: String
   role: UserRoleEnum = USER
   lastSession: String
-  avatar: ImageInput
+  avatar: Upload
   "Employment information"
   rfc: String
   schooling: UserSchoolingEnum!
