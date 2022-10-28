@@ -1,5 +1,5 @@
 input VacantAvailableInput {
   date: String!
   candidates: Int!
-  available: Boolean
+  available: Boolean = false
 }

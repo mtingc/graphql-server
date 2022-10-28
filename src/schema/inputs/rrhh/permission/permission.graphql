@@ -10,6 +10,8 @@ input RrhhPermissionInput {
   from: String!
   "Until what time?"
   to: String!
+  "Permit authorization"
+  authorization: Boolean = false
   "Item creator and modifier details"
   details: DetailsInput
 }
