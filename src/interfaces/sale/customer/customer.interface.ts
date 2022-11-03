@@ -1,11 +1,10 @@
-import { ICustomerContact } from './contact/contact.interface';
-
-import { IDetails } from '../../details.interface';
+import { IContact } from '../../common/contact/contact.interface';
+import { IDetails } from '../../common/details.interface';
 
 export interface ISaleCustomer {
     id: string;
     name: string;
     logo: string;
-    infoContact: ICustomerContact;
+    infoContact: IContact;
     details: IDetails;
 }

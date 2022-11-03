@@ -6,7 +6,7 @@ type SaleCustomer {
   "Customer logo"
   logo: String
   "Contact information"
-  infoContact: CustomerContact
+  infoContact: Contact
   "Item details"
   details: Details!
 }

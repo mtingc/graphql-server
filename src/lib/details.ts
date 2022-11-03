@@ -1,4 +1,4 @@
-import { IDetails } from '../interfaces/details.interface';
+import { IDetails } from '../interfaces/common/details.interface';
 
 export async function createDetails(createDetails: IDetails) {
 

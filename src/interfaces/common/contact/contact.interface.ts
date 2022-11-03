@@ -1,6 +1,6 @@
 import { IContactPersonalized } from './personalized/personalized.interface';
 
-export interface ISupplierContact {
+export interface IContact {
     email: string;
     phone: string;
     web: string;

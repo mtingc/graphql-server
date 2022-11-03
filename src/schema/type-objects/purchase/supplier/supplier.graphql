@@ -5,7 +5,7 @@ type PurchaseSupplier {
   "Logo"
   logo: Image
   "Contact information"
-  infoContact: SupplierContact
+  infoContact: Contact
   "Address"
   address: Address
   "RFC"

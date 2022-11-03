@@ -1,6 +1,6 @@
-import { IRequisitionProduct } from './product/product.interface';
+import { IDetails } from '../../common/details.interface';
 
-import { IDetails } from '../../details.interface';
+import { IRequisitionProduct } from './product/product.interface';
 
 export interface IPurchaseRequisition {
     id: string;

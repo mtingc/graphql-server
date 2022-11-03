@@ -1,15 +1,15 @@
-import { IAddress } from '../../address/address.interface';
-import { ISupplierContact } from './contact/contact.interface';
-import { ISupplierTaxex } from './taxes/taxex.interface';
+import { IAddress } from '../../common/address/address.interface';
+import { IContact } from '../../common/contact/contact.interface';
+import { IDetails } from './../../common/details.interface';
 
+import { ISupplierTaxex } from './taxes/taxex.interface';
 import { IPurchaseProduct } from '../product/product.interface';
-import { IDetails } from './../../details.interface';
 
 export interface IPurchaseSupplier {
     id: string;
     name: string;
     logo: string;
-    infoContact: ISupplierContact;
+    infoContact: IContact;
     address: IAddress;
     taxes: ISupplierTaxex;
     deliveryTime: number;

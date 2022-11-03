@@ -1,4 +1,4 @@
-input SupplierContactInput {
+input ContactInput {
   "Provider email"
   email: String!
   "Provider phone"

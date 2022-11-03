@@ -1,6 +1,6 @@
-import { IProductType } from './type/type.interface';
+import { IDetails } from '../../common/details.interface';
 
-import { IDetails } from '../../details.interface';
+import { IProductType } from './type/type.interface';
 
 export interface IPurchaseProduct {
     id: string;

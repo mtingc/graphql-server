@@ -1,8 +1,8 @@
-import { IAddress } from '../address/address.interface';
-import { IUserJob } from './job/job.interface';
+import { IAddress } from '../common/address/address.interface';
+import { IImage } from '../common/image.interface';
+import { IDetails } from '../common/details.interface';
 
-import { IImage } from '../image.interface';
-import { IDetails } from '../details.interface';
+import { IUserJob } from './job/job.interface';
 
 export interface IUser {
     id?: string;

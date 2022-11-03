@@ -1,6 +1,7 @@
+import { IDetails } from '../../common/details.interface';
+
 import { IVacantAvailable } from './available/available.interface';
 import { IVacantDescription } from './description/description.interface';
-import { IDetails } from '../../details.interface';
 
 export interface IRrhhVacant {
     id: string;

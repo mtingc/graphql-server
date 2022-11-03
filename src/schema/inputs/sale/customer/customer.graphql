@@ -4,7 +4,7 @@ input SaleCustomerInput {
   "Customer logo"
   logo: String!
   "Contact information"
-  infoContact: CustomerContactInput!
+  infoContact: ContactInput!
   "Item creator and modifier details"
   details: DetailsInput
 }

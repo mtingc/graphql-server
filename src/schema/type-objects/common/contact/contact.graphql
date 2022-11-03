@@ -1,4 +1,4 @@
-type CustomerContact {
+type Contact {
   "Provider email"
   email: String
   "Provider phone"
