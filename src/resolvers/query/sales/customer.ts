@@ -1,7 +1,7 @@
 import { IResolvers } from '@graphql-tools/utils';
-import SaleCustomerService from '../../../services/sale/customer.service';
+import SaleCustomerService from '../../../services/sales/customer.service';
 
-const querySaleCustomerResolvers: IResolvers = {
+const querySalesCustomerResolvers: IResolvers = {
     Query: {
 
         async customer(_, { id }, { db }) {
@@ -16,4 +16,4 @@ const querySaleCustomerResolvers: IResolvers = {
     }
 };
 
-export default querySaleCustomerResolvers;
+export default querySalesCustomerResolvers;

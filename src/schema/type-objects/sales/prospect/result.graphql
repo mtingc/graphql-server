@@ -1,0 +1,17 @@
+type SalesProspectResult implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Prospect"
+  prospect: SalesProspect
+}
+
+type SalesProspectsResult implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of Prospects"
+  prospects: [SalesProspect!]
+}

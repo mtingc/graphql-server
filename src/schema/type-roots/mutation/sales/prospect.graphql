@@ -1,0 +1,8 @@
+type Mutation {
+  "New prospect"
+  addProspect(prospect: SalesProspectInput!): SalesProspectResult
+  "Update prospect"
+  updateProspect(id: ID!, prospect: SalesProspectInput!): SalesProspectResult
+  "Delete prospect"
+  deleteProspect(id: ID!): SalesProspectResult
+}

@@ -1,7 +1,5 @@
-"Contact input for vacancies or sales"
+"Contact input for vacancies"
 input RrhhContactInput {
-  "Unique identifier of a vacancy"
-  vacantId: ID
   "Contact name"
   name: String!
   "Contact email"
@@ -10,13 +8,10 @@ input RrhhContactInput {
   phone: String!
   "Contact age"
   age: String
-  "Contact company"
-  company: String
-  "Contact work position"
-  workPosition: ContactWorkPositionEnum
-  "Contact message"
-  message: String
+  "Unique identifier of a vacancy"
+  vacantId: ID
   "Contact status"
   attended: Boolean
-  creationDate: String
+  "Item creator and modifier details"
+  details: DetailsInput!
 }

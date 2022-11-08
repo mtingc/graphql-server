@@ -6,10 +6,10 @@ import {
 } from '../../lib/db-operations';
 import { createDetails, modifierDetails } from '../../lib/details';
 
-class SaleCustomerService extends ResolversOperationsService {
+class SalesProspectService extends ResolversOperationsService {
 
-    private element = 'cliente';
-    private collection = COLLECTIONS.SALES_CUSTOMERS;
+    private element = 'prospecto';
+    private collection = COLLECTIONS.SALES_PROSPECTS;
 
     constructor(
         root: object,
@@ -19,7 +19,7 @@ class SaleCustomerService extends ResolversOperationsService {
         super(root, variables, context);
     }
 
-    // Customer list
+    // Prospect list
     async items() {
         const page = this.getVariables().pagination?.page;
         const itemsPage = this.getVariables().pagination?.itemsPage;
@@ -29,36 +29,43 @@ class SaleCustomerService extends ResolversOperationsService {
             info: result.info,
             status: result.status,
             message: result.message,
-            customers: result.items
+            prospects: result.items
         };
     }
 
-    // Get a customer
+    // Get a prospect
     async details() {
         const result = await this.get(this.collection, this.element);
         return {
             status: result.status,
             message: result.message,
-            customer: result.item
+            prospect: result.item
         };
     }
 
-    // Create customer
+    // Create prospect
     async insert() {
-        const customer = this.getVariables().customer;
-
+        const prospect = this.getVariables().prospect;
 
         // Check not to be empty
-        if (customer === null) {
+        if (prospect === null) {
             return {
                 status: false,
-                message: `Los datos del ${this.element} no se ha especificado correctamente.`,
-                customer: null
+                message: `Los datos de ${this.element} no se ha especificado correctamente.`,
+                contact: null
             };
         }
 
+        // Check attended
+        if (prospect?.attended !== undefined) {
+            return {
+                status: false,
+                message: 'No especificar el campo attended',
+                contact: null
+            };
+        }
         // DETAILS
-        const creationDetail = await createDetails(customer!.details);
+        const creationDetail = await createDetails(prospect!.details);
         if (!creationDetail.status) {
             return {
                 status: false,
@@ -66,45 +73,55 @@ class SaleCustomerService extends ResolversOperationsService {
                 customer: null
             };
         }
-        customer!.details = creationDetail.item;
+        prospect!.details = creationDetail.item;
         // DETAILS
 
         // Check the last registered user to assign ID
-        customer!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
+        prospect!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
+        prospect!.attended = false;
 
-        const result = await this.add(this.collection, customer || {}, this.element);
+        const result = await this.add(this.collection, prospect || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            customer: result.item
+            prospect: result.item
         };
     }
 
-    // Update customer
+    // Update prospect
     async modify() {
         const id = this.getVariables().id;
-        const customer = this.getVariables().customer;
+        const prospect = this.getVariables().prospect;
 
         // Validate an id
         if (!this.checkData(String(id) || '')) {
             return {
                 status: false,
                 message: `El ID del ${this.element} no se ha especificado correctamente.`,
-                contact: null
+                prospect: null
             };
         }
 
         // Validate an existing element
-        if (customer === null) {
+        if (prospect === null) {
             return {
                 status: false,
                 message: `El ${this.element} no existe.`,
+                prospect: null
+            };
+        }
+
+        // Check attended
+        if (prospect?.attended !== undefined) {
+            return {
+                status: false,
+                message: 'No especificar el campo attended',
                 contact: null
             };
         }
 
         // DETAILS
-        const modificationDetails = await modifierDetails(customer!.details);
+        const modificationDetails = await modifierDetails(prospect!.details);
         if (!modificationDetails.status) {
             return {
                 status: false,
@@ -112,18 +129,19 @@ class SaleCustomerService extends ResolversOperationsService {
                 customer: null
             };
         }
-        customer!.details = modificationDetails.item;
+        prospect!.details = modificationDetails.item;
         // DETAILS
+        prospect!.attended = true;
 
-        const result = await this.update(this.collection, { id }, customer || {}, this.element);
+        const result = await this.update(this.collection, { id }, prospect || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            customer: result.item
+            prospect: result.item
         };
     }
 
-    // Delete customer
+    // Delete prospect
     async delete() {
         const id = this.getVariables().id;
 
@@ -148,4 +166,4 @@ class SaleCustomerService extends ResolversOperationsService {
 
 }
 
-export default SaleCustomerService;
+export default SalesProspectService;

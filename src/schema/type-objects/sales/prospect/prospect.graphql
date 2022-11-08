@@ -1,0 +1,23 @@
+"Type prospects for follow-up"
+type SalesProspect {
+  "Unique identifier"
+  id: ID!
+  "Company"
+  company: String!
+  "Business activity"
+  businessActivity: String
+  "Prospect logo"
+  logo: Image
+  "Propsect contact"
+  contact: Contact
+  "Prospect address"
+  address: Address
+  "Message of prospect"
+  message: String
+  "Contact status"
+  attended: Boolean
+  "Contacts with the prospect"
+  matches: [String]
+  "Item creator and modifier details"
+  details: Details
+}

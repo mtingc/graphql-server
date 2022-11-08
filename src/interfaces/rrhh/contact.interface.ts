@@ -1,13 +1,12 @@
+import { IDetails } from "../common/details.interface";
+
 export interface IRrhhContact {
     id: string;
     name: string;
     email: string;
     phone: string;
-    vacantId: string;
     age: number;
-    company: string;
-    workPosition: string;
-    message: string;
+    vacantId: string;
     attended: boolean;
-    creationDate: string;
+    details: IDetails;
 }

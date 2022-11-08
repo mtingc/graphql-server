@@ -1,5 +1,4 @@
 import { IResolvers } from '@graphql-tools/utils';
-import { IPurchaseProduct } from '../../../interfaces/purchase/product/product.interface';
 import PurchaseSupplierService from '../../../services/purchase/supplier.service';
 
 const typePurchaseProductResolvers: IResolvers = {

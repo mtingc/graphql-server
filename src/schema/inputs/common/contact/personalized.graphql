@@ -4,7 +4,7 @@ input ContactPersonalizedInput {
   "Contact name"
   name: String!
   "Job position"
-  position: String
+  workPosition: WorkPositionEnum
   "Contact email"
   email: String!
   "Contact phone"

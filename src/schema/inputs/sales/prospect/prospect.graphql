@@ -1,0 +1,21 @@
+"Input of prospects for follow-up"
+input SalesProspectInput {
+  "Company"
+  company: String!
+  "Business activity"
+  businessActivity: String!
+  "Prospect logo"
+  logo: Upload
+  "Propsect contact"
+  contact: ContactInput
+  "Prospect address"
+  address: AddressInput
+  "Message of prospect"
+  message: String
+  "Contact status"
+  attended: Boolean
+  "Contacts with the prospect"
+  matches: [String]
+  "Item creator and modifier details"
+  details: DetailsInput!
+}

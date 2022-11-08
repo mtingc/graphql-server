@@ -1,0 +1,6 @@
+type Query {
+  "Show item customer"
+  customer(id: ID!): SalesCustomerResult
+  "Show list of customers"
+  customers(page: Int = 1, itemsPage: Int = 20): SalesCustomersResult
+}

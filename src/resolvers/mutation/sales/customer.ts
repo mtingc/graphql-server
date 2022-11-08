@@ -1,7 +1,7 @@
 import { IResolvers } from '@graphql-tools/utils';
-import SaleCustomerService from '../../../services/sale/customer.service';
+import SaleCustomerService from '../../../services/sales/customer.service';
 
-const mutationSaleCustomerResolvers: IResolvers = {
+const mutationSalesCustomerResolvers: IResolvers = {
     Mutation: {
 
         addCustomer(_, variables, context) {
@@ -17,4 +17,4 @@ const mutationSaleCustomerResolvers: IResolvers = {
     }
 };
 
-export default mutationSaleCustomerResolvers;
+export default mutationSalesCustomerResolvers;

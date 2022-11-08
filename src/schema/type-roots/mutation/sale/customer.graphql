@@ -1,8 +1,0 @@
-type Mutation {
-  "New customer"
-  addCustomer(customer: SaleCustomerInput!): SaleCustomerResult
-  "Update customer"
-  updateCustomer(id: ID!, customer: SaleCustomerInput!): SaleCustomerResult
-  "Delete customer"
-  deleteCustomer(id: ID!): SaleCustomerResult
-}

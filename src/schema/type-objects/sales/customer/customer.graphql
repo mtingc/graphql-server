@@ -1,12 +1,12 @@
-type SaleCustomer {
+type SalesCustomer {
   "Unique identifier"
-  id: ID
+  id: ID!
   "Customer name"
   name: String!
   "Customer logo"
-  logo: String
+  logo: Image
   "Contact information"
   infoContact: Contact
   "Item details"
-  details: Details!
+  details: Details
 }

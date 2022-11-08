@@ -6,10 +6,10 @@ import {
 } from '../../lib/db-operations';
 import { createDetails, modifierDetails } from '../../lib/details';
 
-class RrhhContactService extends ResolversOperationsService {
+class SalesCustomerService extends ResolversOperationsService {
 
-    private element = 'contacto';
-    private collection = COLLECTIONS.RRHH_CONTACTS;
+    private element = 'cliente';
+    private collection = COLLECTIONS.SALES_CUSTOMERS;
 
     constructor(
         root: object,
@@ -19,7 +19,7 @@ class RrhhContactService extends ResolversOperationsService {
         super(root, variables, context);
     }
 
-    // Contact list
+    // Customer list
     async items() {
         const page = this.getVariables().pagination?.page;
         const itemsPage = this.getVariables().pagination?.itemsPage;
@@ -29,44 +29,35 @@ class RrhhContactService extends ResolversOperationsService {
             info: result.info,
             status: result.status,
             message: result.message,
-            contacts: result.items
+            customers: result.items
         };
     }
 
-    // Get a contact
+    // Get a customer
     async details() {
         const result = await this.get(this.collection, this.element);
         return {
             status: result.status,
             message: result.message,
-            contact: result.item
+            customer: result.item
         };
     }
 
-    // Create contact
+    // Create customer
     async insert() {
-        const contact = this.getVariables().contact;
+        const customer = this.getVariables().customer;
 
         // Check not to be empty
-        if (contact === null) {
+        if (customer === null) {
             return {
                 status: false,
-                message: `Los datos de ${this.element} no se ha especificado correctamente.`,
-                contact: null
-            };
-        }
-
-        // Check attended
-        if (contact?.attended !== undefined) {
-            return {
-                status: false,
-                message: 'No especificar el campo attended',
-                contact: null
+                message: `Los datos del ${this.element} no se ha especificado correctamente.`,
+                customer: null
             };
         }
 
         // DETAILS
-        const creationDetail = await createDetails(contact!.details);
+        const creationDetail = await createDetails(customer!.details);
         if (!creationDetail.status) {
             return {
                 status: false,
@@ -74,25 +65,24 @@ class RrhhContactService extends ResolversOperationsService {
                 customer: null
             };
         }
-        contact!.details = creationDetail.item;
+        customer!.details = creationDetail.item;
         // DETAILS
 
         // Check the last registered user to assign ID
-        contact!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
-        contact!.attended = false;
+        customer!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 
-        const result = await this.add(this.collection, contact || {}, this.element);
+        const result = await this.add(this.collection, customer || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            contact: result.item
+            customer: result.item
         };
     }
 
-    // Update contact
+    // Update customer
     async modify() {
         const id = this.getVariables().id;
-        const contact = this.getVariables().contact;
+        const customer = this.getVariables().customer;
 
         // Validate an id
         if (!this.checkData(String(id) || '')) {
@@ -104,7 +94,7 @@ class RrhhContactService extends ResolversOperationsService {
         }
 
         // Validate an existing element
-        if (contact === null) {
+        if (customer === null) {
             return {
                 status: false,
                 message: `El ${this.element} no existe.`,
@@ -113,7 +103,7 @@ class RrhhContactService extends ResolversOperationsService {
         }
 
         // DETAILS
-        const modificationDetails = await modifierDetails(contact!.details);
+        const modificationDetails = await modifierDetails(customer!.details);
         if (!modificationDetails.status) {
             return {
                 status: false,
@@ -121,18 +111,18 @@ class RrhhContactService extends ResolversOperationsService {
                 customer: null
             };
         }
-        contact!.details = modificationDetails.item;
+        customer!.details = modificationDetails.item;
         // DETAILS
 
-        const result = await this.update(this.collection, { id }, contact || {}, this.element);
+        const result = await this.update(this.collection, { id }, customer || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            contact: result.item
+            customer: result.item
         };
     }
 
-    // Delete contact
+    // Delete customer
     async delete() {
         const id = this.getVariables().id;
 
@@ -157,4 +147,4 @@ class RrhhContactService extends ResolversOperationsService {
 
 }
 
-export default RrhhContactService;
+export default SalesCustomerService;

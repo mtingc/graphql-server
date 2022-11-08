@@ -1,17 +1,17 @@
-type SaleCustomerResult implements Result {
+type SalesCustomerResult implements Result {
   "Operation status"
   status: Boolean!
   "Operation message"
   message: String!
   "Customer"
-  customer: SaleCustomer
+  customer: SalesCustomer
 }
 
-type SaleCustomersResult implements Result {
+type SalesCustomersResult implements Result {
   "Operation status"
   status: Boolean!
   "Operation message"
   message: String!
   "List of Customers"
-  customers: [SaleCustomer!]
+  customers: [SalesCustomer!]
 }

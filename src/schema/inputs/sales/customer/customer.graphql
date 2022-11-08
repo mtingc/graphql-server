@@ -1,8 +1,8 @@
-input SaleCustomerInput {
+input SalesCustomerInput {
   "Customer name"
   name: String!
   "Customer logo"
-  logo: String!
+  logo: Upload
   "Contact information"
   infoContact: ContactInput!
   "Item creator and modifier details"

@@ -39,11 +39,10 @@ export async function createDetails(createDetails: IDetails) {
         };
     }
     if (creatorUserId === null
-        || creatorUserId === undefined
-        || creatorUserId === '') {
+        || creatorUserId === undefined) {
         return {
             status: false,
-            message: 'Usuario creador no definido.',
+            message: 'El usuario creador no puede estar indefinido',
             item: {}
         };
     }
@@ -88,7 +87,7 @@ export async function modifierDetails(createDetails: IDetails) {
         || creatorUserId === '') {
         return {
             status: false,
-            message: 'Usuario creador modificdo.',
+            message: 'Usuario creador modificado o no definido.',
             item: {}
         };
     }
