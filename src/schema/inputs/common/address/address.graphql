@@ -12,7 +12,7 @@ input AddressInput {
   "Country"
   country: String!
   "Postal code"
-  zipCode: Int!
+  zipCode: String!
   "Between which streets is it located (a and b)"
   streets: AddressStreetsInput
 }
