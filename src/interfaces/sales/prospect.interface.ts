@@ -1,7 +1,4 @@
-import { IImage } from "../../common/image.interface";
-import { IContact } from "../../common/contact/contact.interface";
-import { IAddress } from "../../common/address/address.interface";
-import { IDetails } from "../../common/details.interface";
+import { IImage, IContact, IAddress, IDetails } from '@ICommon';
 
 export interface ISalesProspect {
     id: string;

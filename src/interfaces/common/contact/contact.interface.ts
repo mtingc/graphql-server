@@ -1,4 +1,4 @@
-import { IContactPersonalized } from './personalized/personalized.interface';
+import { IContactPersonalized } from '@ICommon';
 
 export interface IContact {
     email: string;

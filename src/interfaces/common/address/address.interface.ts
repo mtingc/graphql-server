@@ -1,5 +1,4 @@
-import { IAddressNumber } from './number.interface';
-import { IAddressStreets } from './streets.interface';
+import { IAddressNumber, IAddressStreets } from '@ICommon';
 
 export interface IAddress {
     street: string;

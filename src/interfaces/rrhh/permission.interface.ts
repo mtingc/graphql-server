@@ -1,4 +1,4 @@
-import { IDetails } from '../common/details.interface';
+import { IDetails } from '@ICommon';
 
 export interface IRrhhPermission {
     id: string;

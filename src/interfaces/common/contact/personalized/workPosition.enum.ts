@@ -1,10 +1,10 @@
 export enum WorkPositionEnum {
-    VENTAS,
-    COMPRAS,
-    GERENTE,
-    MERCADOTECNIA,
-    DESARROLLADOR,
-    RECURSOS_HUMANOS,
-    SISTEMAS,
-    OTROS
+    SALES = 'Ventas',
+    PURCHASE = 'Compras',
+    MANAGER = 'Gerente',
+    MARKETING = 'Mercadotecnia',
+    DEVELOPER = 'Desarrollador',
+    HUMAN_RESOURCES = 'Recursos humanos',
+    SYSTEMS = 'Sistemas',
+    OTHER = 'Otro'
 }

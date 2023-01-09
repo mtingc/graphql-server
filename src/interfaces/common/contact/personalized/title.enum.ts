@@ -1,10 +1,7 @@
 export enum PersonalizedTitleEnum {
-    Lic,
-    Ing,
-    PhD,
-    Mtro,
-    Mtr,
-    Sr,
-    Sra,
-    undefined
+    LIC = 'Lic.',
+    ING = 'Ing.',
+    SR = 'Sr.',
+    SRA = 'Sra.',
+    UNDEFINED = 'Indefinido'
 }

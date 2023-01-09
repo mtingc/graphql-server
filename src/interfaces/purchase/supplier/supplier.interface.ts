@@ -1,8 +1,6 @@
-import { IAddress } from '../../common/address/address.interface';
-import { IContact } from '../../common/contact/contact.interface';
-import { IDetails } from './../../common/details.interface';
+import { IAddress, IContact, IDetails } from '@ICommon';
 
-import { ISupplierTaxex } from './taxes/taxex.interface';
+import { ISupplierTaxex } from './taxex.interface';
 import { IPurchaseProduct } from '../product/product.interface';
 
 export interface IPurchaseSupplier {

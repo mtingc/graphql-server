@@ -1,20 +1,13 @@
-import { IUser } from './user/user.interface';
 import { IPaginationOptions } from './pagination-options.interface';
 
 // RRHH
-import { IRrhhPermission } from './rrhh/permission.interface';
-import { IRrhhContact } from './rrhh/contact.interface';
-import { IRrhhWorkArea } from './rrhh/workArea.interface';
-import { IRrhhVacant } from './rrhh/vacant/vacant.interface';
+import { IUser, IRrhhPermission, IRrhhContact, IRrhhWorkArea, IRrhhVacant } from '@interfaces/rrhh';
 
 // Purchases
-import { IPurchaseSupplier } from './purchase/supplier/supplier.interface';
-import { IPurchaseProduct } from './purchase/product/product.interface';
-import { IPurchaseRequisition } from './purchase/requisition/requisition.interface';
+import { IPurchaseSupplier, IPurchaseProduct, IPurchaseRequisition } from '@interfaces/purchase';
 
 // Sales
-import { ISalesCustomer } from './sales/customer/customer.interface';
-import { ISalesProspect } from './sales/prospect/prospect.interface';
+import { ISalesCustomer, ISalesProspect } from '@interfaces/sales';
 
 export interface IVariables {
     id?: string | number;

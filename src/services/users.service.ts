@@ -8,7 +8,7 @@ import {
 } from './../lib/db-operations';
 import JWT from './../lib/jwt';
 import bcrypt from 'bcrypt';
-import { IUser } from '../interfaces/user/user.interface';
+import { IUser } from '@interfaces/rrhh';
 import { createDetails, modifierDetails } from '../lib/details';
 
 class UsersService extends ResolversOperationsService {

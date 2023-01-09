@@ -1,5 +1,4 @@
-import { PersonalizedTitleEnum } from './title.enum';
-import { WorkPositionEnum } from './workPosition.enum';
+import { PersonalizedTitleEnum, WorkPositionEnum } from '@ICommon';
 
 export interface IContactPersonalized {
     title: PersonalizedTitleEnum;

@@ -1,5 +1,4 @@
-import { IContact } from '../../common/contact/contact.interface';
-import { IDetails } from '../../common/details.interface';
+import { IContact, IDetails } from '@ICommon';
 
 export interface ISalesCustomer {
     id: string;

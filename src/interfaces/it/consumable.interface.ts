@@ -1,9 +1,8 @@
 import { IDetails } from '@ICommon';
 
-export interface IRrhhWorkArea {
+export interface IItConsumable {
     id: string;
-    title: string;
+    brand: string;
     description: string;
-    image: string;
     details: IDetails;
 }
