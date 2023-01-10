@@ -1,0 +1,12 @@
+input ItDesktopInput {
+    processor: String!
+    motherboard: String!
+    ram: [String!]!
+    storage: [String!]!
+    graphic: [String!]
+    case: String
+    coolign: [String!]
+    complementaries: [String!]
+    equipment: String
+    details: DetailsInput
+}

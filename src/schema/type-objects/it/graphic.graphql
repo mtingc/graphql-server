@@ -1,0 +1,27 @@
+type ItGraphic {
+  id: String
+  brand: String
+  model: String
+  capacity: Int
+  details: Details
+}
+
+type ResultItGraphic implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Get graphic card"
+  graphic: ItGraphic
+}
+
+type ResultItGraphics implements Result {
+  "Show paging system information"
+  info: ResultInfo
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of graphic cards"
+  graphics: [ItGraphic!]
+}

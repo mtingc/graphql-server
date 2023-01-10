@@ -1,0 +1,30 @@
+type ItOutputDevice {
+  id: String
+  brand: String
+  model: String
+  type: OutputDeviceTypeEnum
+  bluetooth: Boolean
+  complementaries: [ItComplementary]
+  equipment: [ItEquipment]
+  details: Details
+}
+
+type ResultItOutputDevice implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Get Output device"
+  outputDevice: ItOutputDevice
+}
+
+type ResultItOutputDevices implements Result {
+  "Show paging system information"
+  info: ResultInfo
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of Output devices"
+  outputDevices: [ItOutputDevice!]
+}

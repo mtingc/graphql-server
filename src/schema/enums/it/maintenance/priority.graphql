@@ -1,0 +1,6 @@
+enum MaintenancePriorityEnum {
+    LOW,
+    MEDIUM,
+    HIGH,
+    URGENT
+}

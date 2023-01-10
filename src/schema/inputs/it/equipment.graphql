@@ -1,0 +1,4 @@
+input ItEquipmentInput {
+    user: String!
+    details: DetailsInput
+}

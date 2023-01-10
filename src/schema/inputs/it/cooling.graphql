@@ -1,0 +1,6 @@
+input ItCoolingInput {
+    brand: String!
+    model: String
+    type: CoolingTypeEnum!
+    details: DetailsInput
+} 

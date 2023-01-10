@@ -1,0 +1,6 @@
+input ItScreenInInput {
+    hdmi: Int
+    vga: Int
+    dvi: Int
+    displayPort: Int
+}

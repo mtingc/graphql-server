@@ -1,0 +1,33 @@
+type ItLaptop {
+  id: String!
+  brand: String
+  model: String
+  inches: Int
+  processor: String
+  ram: [ItRam]
+  storage: [ItStorage]
+  dedicatedGraphic: Boolean
+  complementaries: [ItComplementary]
+  equipment: ItEquipment
+  details: Details!
+}
+
+type ResultItLaptop implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Get laptop"
+  laptop: ItLaptop
+}
+
+type ResultItLaptops implements Result {
+  "Show paging system information"
+  info: ResultInfo
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of laptops"
+  laptops: [ItLaptop!]
+}

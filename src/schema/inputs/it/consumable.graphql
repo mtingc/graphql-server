@@ -1,0 +1,5 @@
+input ItConsumableInput {
+    brand: String!
+    description: String!
+    details: DetailsInput
+}

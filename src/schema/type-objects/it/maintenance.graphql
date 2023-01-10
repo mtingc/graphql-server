@@ -1,0 +1,34 @@
+type ItMaintenance {
+  id: String
+  reportedBy: User
+  equipment: ItEquipment
+  devices: [String]
+  description: String
+  assignedTo: [User]
+  status: MaintenanceStatusEnum
+  priority: MaintenancePriorityEnum
+  resolutionDay: String
+  daysOpen: Int
+  additionalComments: String
+  details: Details
+}
+
+type ResultItMaintenance implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Get complementary device"
+  maintenance: ItMaintenance
+}
+
+type ResultItMaintenances implements Result {
+  "Show paging system information"
+  info: ResultInfo
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of complementaries"
+  maintenances: [ItMaintenance!]
+}

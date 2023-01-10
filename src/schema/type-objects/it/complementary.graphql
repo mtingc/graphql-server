@@ -1,0 +1,27 @@
+type ItComplementary {
+  id: String
+  type: ComplementaryTypeEnum
+  description: String
+  equipment: ItEquipment
+  details: Details
+}
+
+type ResultItComplementary implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Get complementary device"
+  complementary: ItComplementary
+}
+
+type ResultItComplementaries implements Result {
+  "Show paging system information"
+  info: ResultInfo
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of complementaries"
+  complementaries: [ItComplementary!]
+}

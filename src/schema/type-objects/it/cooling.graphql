@@ -1,0 +1,27 @@
+type ItCooling {
+  id: String
+  brand: String
+  model: String
+  type: CoolingTypeEnum
+  details: Details
+}
+
+type ResultItCooling implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Get cooling"
+  cooling: ItCooling
+}
+
+type ResultItCoolings implements Result {
+  "Show paging system information"
+  info: ResultInfo
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of coolings"
+  coolings: [ItCooling!]
+}

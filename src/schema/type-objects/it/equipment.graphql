@@ -1,0 +1,25 @@
+type ItEquipment {
+  id: String
+  user: User
+  details: Details
+}
+
+type ResultItEquipment implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Get equipment"
+  equipment: ItEquipment
+}
+
+type ResultItEquipments implements Result {
+  "Show paging system information"
+  info: ResultInfo
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of equipments"
+  equipments: [ItEquipment!]
+}

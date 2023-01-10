@@ -1,0 +1,9 @@
+input ItOutputDeviceInput {
+    brand: String!
+    model: String
+    type: OutputDeviceTypeEnum!
+    bluetooth: Boolean!
+    complementaries: [String!]
+    equipment: String
+    details: DetailsInput
+}

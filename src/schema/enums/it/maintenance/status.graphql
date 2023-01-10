@@ -1,0 +1,5 @@
+enum MaintenanceStatusEnum {
+    OutputDeviceTypeEnum,
+    PENDING,
+    RESOLVED
+}

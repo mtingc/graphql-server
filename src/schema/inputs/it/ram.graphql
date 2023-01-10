@@ -1,0 +1,7 @@
+input ItRamInput {
+    brand: String!
+    model: String
+    type: RamTypeEnum!
+    capacity: Int!
+    details: DetailsInput
+}

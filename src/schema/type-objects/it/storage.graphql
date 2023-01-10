@@ -1,0 +1,28 @@
+type ItStorage {
+  id: String
+  brand: String
+  model: String
+  type: StorageTypeEnum
+  capacity: Int
+  details: Details
+}
+
+type ResultItStorage implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Get storage"
+  storage: ItStorage
+}
+
+type ResultItStorages implements Result {
+  "Show paging system information"
+  info: ResultInfo
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of storages"
+  storages: [ItStorage!]
+}

@@ -1,0 +1,9 @@
+input ItScreenInput {
+    brand: String
+    model: String
+    inches: Int
+    inputs: ItScreenInInput
+    complementaries: [String!]
+    equipment: String
+    details: DetailsInput
+}

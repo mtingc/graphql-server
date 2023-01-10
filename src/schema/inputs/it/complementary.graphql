@@ -1,0 +1,6 @@
+input ItComplementaryInput {
+    type: ComplementaryTypeEnum!
+    description: String!
+    equipment: String
+    details: DetailsInput
+}

@@ -1,0 +1,26 @@
+type ItConsumable {
+  id: String
+  brand: String
+  description: String
+  details: Details
+}
+
+type ResultItConsumable implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Get consumable"
+  consumable: ItConsumable
+}
+
+type ResultItConsumables implements Result {
+  "Show paging system information"
+  info: ResultInfo
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of consumables"
+  consumables: [ItConsumable!]
+}

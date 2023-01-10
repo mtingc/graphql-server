@@ -1,0 +1,33 @@
+type ItDesktop {
+  id: String!
+  processor: String
+  motherboard: String
+  ram: [ItRam]
+  storage: [ItStorage]
+  graphic: [ItGraphic]
+  case: String
+  coolign: [ItCooling]
+  complementaries: [ItComplementary]
+  equipment: ItEquipment
+  details: Details
+}
+
+type ResultItDesktop implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Get desktop"
+  desktop: ItLaptop
+}
+
+type ResultItDesktops implements Result {
+  "Show paging system information"
+  info: ResultInfo
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of desktops"
+  desktops: [ItDesktop!]
+}

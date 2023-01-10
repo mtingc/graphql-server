@@ -1,0 +1,28 @@
+type ItRam {
+  id: String!
+  brand: String
+  model: String
+  type: RamTypeEnum
+  capacity: Int
+  details: Details
+}
+
+type ResultItRam implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Get ram"
+  ram: ItRam
+}
+
+type ResultItRams implements Result {
+  "Show paging system information"
+  info: ResultInfo
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of rams"
+  rams: [ItRam!]
+}

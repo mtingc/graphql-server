@@ -1,0 +1,6 @@
+enum InputDeviceTypeEnum {
+    KEYBOARD,
+    MOUSE,
+    CONTROLLER,
+    OTHER
+}
