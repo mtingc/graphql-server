@@ -1,0 +1,8 @@
+type Mutation {
+  "New storage"
+  addStorage(storage: ItStorageInput!): ResultItStorage
+  "Update storage"
+  updateStorage(id: ID!, storage: ItStorageInput!): ResultItStorage
+  "Delete storage"
+  deleteStorage(id: ID!): ResultItStorage
+}

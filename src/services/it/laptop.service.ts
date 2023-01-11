@@ -7,10 +7,10 @@ import {
     modifierDetails
 } from '../../lib/details';
 
-class ItScreenService extends ResolversOperationsService {
+class ItLaptopService extends ResolversOperationsService {
 
-    private element = 'pantalla';
-    private collection = COLLECTIONS.IT_SCREEN;
+    private element = 'laptop';
+    private collection = COLLECTIONS.IT_LAPTOP;
 
     constructor(
         root: object,
@@ -20,7 +20,7 @@ class ItScreenService extends ResolversOperationsService {
         super(root, variables, context);
     }
 
-    // Screen list
+    // Laptop list
     async items() {
         const page = this.getVariables().pagination?.page;
         const itemsPage = this.getVariables().pagination?.itemsPage;
@@ -30,100 +30,100 @@ class ItScreenService extends ResolversOperationsService {
             info: result.info,
             status: result.status,
             message: result.message,
-            screens: result.items
+            laptops: result.items
         };
     }
 
-    // Get a screen
+    // Get a laptop
     async details() {
         const result = await this.get(this.collection, this.element);
         return {
             status: result.status,
             message: result.message,
-            screen: result.item
+            laptop: result.item
         };
     }
 
-    // Create screen
+    // Create laptop
     async insert() {
-        const screen = this.getVariables().screen;
+        const laptop = this.getVariables().laptop;
 
         // Check not to be empty
-        if (screen === null) {
+        if (laptop === null) {
             return {
                 status: false,
                 message: `El ${this.element} no se ha especificado correctamente.`,
-                screen: null
+                laptop: null
             };
         }
 
         // DETAILS
-        const creationDetail = await createDetails(screen!.details);
+        const creationDetail = await createDetails(laptop!.details);
         if (!creationDetail.status) {
             return {
                 status: false,
                 message: creationDetail.message,
-                screen: null
+                laptop: null
             };
         }
-        screen!.details = creationDetail.item;
+        laptop!.details = creationDetail.item;
         // DETAILS
 
         // Check the last registered user to assign ID
-        screen!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
+        laptop!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 
-        const result = await this.add(this.collection, screen || {}, this.element);
+        const result = await this.add(this.collection, laptop || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            screen: result.item
+            laptop: result.item
         };
     }
 
-    // Update screen
+    // Update laptop
     async modify() {
         const id = this.getVariables().id;
-        const screen = this.getVariables().screen;
+        const laptop = this.getVariables().laptop;
 
         // Validate an id
         if (!this.checkData(String(id) || '')) {
             return {
                 status: false,
                 message: `El ID del ${this.element} no se ha especificado correctamente.`,
-                screen: null
+                laptop: null
             };
         }
 
         // Validate an existing element
-        if (screen === null) {
+        if (laptop === null) {
             return {
                 status: false,
                 message: `El ${this.element} no existe.`,
-                screen: null
+                laptop: null
             };
         }
 
         // DETAILS
-        const modificationDetails = await modifierDetails(screen!.details);
+        const modificationDetails = await modifierDetails(laptop!.details);
         if (!modificationDetails.status) {
             return {
                 status: false,
                 message: modificationDetails.message,
-                screen: null
+                laptop: null
             };
         }
-        screen!.details = modificationDetails.item;
+        laptop!.details = modificationDetails.item;
         // DETAILS
 
-        const result = await this.update(this.collection, { id }, screen || {}, this.element);
+        const result = await this.update(this.collection, { id }, laptop || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            screen: result.item
+            laptop: result.item
         };
     }
 
-    // Delete screen
+    // Delete laptop
     async delete() {
         const id = this.getVariables().id;
 
@@ -148,4 +148,4 @@ class ItScreenService extends ResolversOperationsService {
 
 }
 
-export default ItScreenService;
+export default ItLaptopService;

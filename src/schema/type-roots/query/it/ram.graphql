@@ -1,0 +1,6 @@
+type Query {
+  "Show item ram"
+  ram(id: ID!): ResultItRam
+  "Show list of rams"
+  rams(page: Int = 1, itemsPage: Int = 20): ResultItRams
+}

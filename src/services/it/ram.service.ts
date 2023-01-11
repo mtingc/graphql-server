@@ -7,10 +7,10 @@ import {
     modifierDetails
 } from '../../lib/details';
 
-class ItScreenService extends ResolversOperationsService {
+class ItRamService extends ResolversOperationsService {
 
-    private element = 'pantalla';
-    private collection = COLLECTIONS.IT_SCREEN;
+    private element = 'ram';
+    private collection = COLLECTIONS.IT_RAM;
 
     constructor(
         root: object,
@@ -20,7 +20,7 @@ class ItScreenService extends ResolversOperationsService {
         super(root, variables, context);
     }
 
-    // Screen list
+    // Ram list
     async items() {
         const page = this.getVariables().pagination?.page;
         const itemsPage = this.getVariables().pagination?.itemsPage;
@@ -30,100 +30,100 @@ class ItScreenService extends ResolversOperationsService {
             info: result.info,
             status: result.status,
             message: result.message,
-            screens: result.items
+            rams: result.items
         };
     }
 
-    // Get a screen
+    // Get a ram
     async details() {
         const result = await this.get(this.collection, this.element);
         return {
             status: result.status,
             message: result.message,
-            screen: result.item
+            ram: result.item
         };
     }
 
-    // Create screen
+    // Create ram
     async insert() {
-        const screen = this.getVariables().screen;
+        const ram = this.getVariables().ram;
 
         // Check not to be empty
-        if (screen === null) {
+        if (ram === null) {
             return {
                 status: false,
                 message: `El ${this.element} no se ha especificado correctamente.`,
-                screen: null
+                ram: null
             };
         }
 
         // DETAILS
-        const creationDetail = await createDetails(screen!.details);
+        const creationDetail = await createDetails(ram!.details);
         if (!creationDetail.status) {
             return {
                 status: false,
                 message: creationDetail.message,
-                screen: null
+                ram: null
             };
         }
-        screen!.details = creationDetail.item;
+        ram!.details = creationDetail.item;
         // DETAILS
 
         // Check the last registered user to assign ID
-        screen!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
+        ram!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 
-        const result = await this.add(this.collection, screen || {}, this.element);
+        const result = await this.add(this.collection, ram || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            screen: result.item
+            ram: result.item
         };
     }
 
-    // Update screen
+    // Update ram
     async modify() {
         const id = this.getVariables().id;
-        const screen = this.getVariables().screen;
+        const ram = this.getVariables().ram;
 
         // Validate an id
         if (!this.checkData(String(id) || '')) {
             return {
                 status: false,
                 message: `El ID del ${this.element} no se ha especificado correctamente.`,
-                screen: null
+                ram: null
             };
         }
 
         // Validate an existing element
-        if (screen === null) {
+        if (ram === null) {
             return {
                 status: false,
                 message: `El ${this.element} no existe.`,
-                screen: null
+                ram: null
             };
         }
 
         // DETAILS
-        const modificationDetails = await modifierDetails(screen!.details);
+        const modificationDetails = await modifierDetails(ram!.details);
         if (!modificationDetails.status) {
             return {
                 status: false,
                 message: modificationDetails.message,
-                screen: null
+                ram: null
             };
         }
-        screen!.details = modificationDetails.item;
+        ram!.details = modificationDetails.item;
         // DETAILS
 
-        const result = await this.update(this.collection, { id }, screen || {}, this.element);
+        const result = await this.update(this.collection, { id }, ram || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            screen: result.item
+            ram: result.item
         };
     }
 
-    // Delete screen
+    // Delete ram
     async delete() {
         const id = this.getVariables().id;
 
@@ -148,4 +148,4 @@ class ItScreenService extends ResolversOperationsService {
 
 }
 
-export default ItScreenService;
+export default ItRamService;

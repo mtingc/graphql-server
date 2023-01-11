@@ -18,7 +18,10 @@ export enum COLLECTIONS {
     PURCHASES_REQUISITIONS = 'purchases_requisitions',
     SALES_CUSTOMERS = 'sales_customers',
     SALES_PROSPECTS = 'sales_prospects',
-    IT_SCREEN = 'it_screens'
+    IT_LAPTOP = 'it_laptops',
+    IT_SCREEN = 'it_screens',
+    IT_STORAGE = 'it_storages',
+    IT_RAM = 'it_rams'
 }
 
 export enum MESSAGES {
