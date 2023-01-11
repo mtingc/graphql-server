@@ -17,7 +17,8 @@ export enum COLLECTIONS {
     PURCHASES_PRODUCTS_SERVICES = 'purchases_products',
     PURCHASES_REQUISITIONS = 'purchases_requisitions',
     SALES_CUSTOMERS = 'sales_customers',
-    SALES_PROSPECTS = 'sales_prospects'
+    SALES_PROSPECTS = 'sales_prospects',
+    IT_SCREEN = 'it_screens'
 }
 
 export enum MESSAGES {

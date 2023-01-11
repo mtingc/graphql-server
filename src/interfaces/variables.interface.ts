@@ -9,6 +9,9 @@ import { IPurchaseSupplier, IPurchaseProduct, IPurchaseRequisition } from '@inte
 // Sales
 import { ISalesCustomer, ISalesProspect } from '@interfaces/sales';
 
+// IT
+import { IItScreen } from '@interfaces/it';
+
 export interface IVariables {
     id?: string | number;
     user?: IUser;
@@ -21,5 +24,6 @@ export interface IVariables {
     requisition?: IPurchaseRequisition;
     customer?: ISalesCustomer;
     prospect?: ISalesProspect;
+    screen?: IItScreen;
     pagination?: IPaginationOptions;
 }

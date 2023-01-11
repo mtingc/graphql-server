@@ -9,7 +9,7 @@ import { ApolloServer } from 'apollo-server-express';
 
 import environments from './config/environments';
 import Database from './lib/database';
-import { IContext } from './interfaces/context.interface';
+import { IContext } from '@interfaces/context.interface';
 /* import JWT from './lib/jwt'; */
 
 // Set environment variables

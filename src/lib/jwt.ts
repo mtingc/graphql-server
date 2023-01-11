@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { SECRET_KEY, MESSAGES, EXPIRETIME } from './../config/constants';
-import { IJwt } from '../interfaces/jwt.interface';
+import { IJwt } from '@interfaces/jwt.interface';
 
 class JWT {
     private secretKey = SECRET_KEY as string;
@@ -17,7 +17,7 @@ class JWT {
     verify(token: string) {
         try {
             return jwt.verify(token, this.secretKey);
-        } catch(e) {
+        } catch (e) {
             return MESSAGES.TOKEN_VERIFICATION_FAILED;
         }
     }

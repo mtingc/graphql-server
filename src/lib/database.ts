@@ -13,7 +13,7 @@ class Database {
             // Connection status
             console.log('ONLINE');
             console.log(this.db.databaseName);
-        } catch(error) {
+        } catch (error) {
             console.log('ERROR');
             console.log('OFFLINE');
             console.log('DATABASE:', this.db?.databaseName);

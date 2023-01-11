@@ -1,6 +1,6 @@
 import ResolversOperationsService from './resolvers-operations.service';
-import { IContextData } from './../interfaces/context-data.interface';
-import { COLLECTIONS, EXPIRETIME, MESSAGES } from './../config/constants';
+import { IContextData } from '@interfaces/context-data.interface';
+import { COLLECTIONS, EXPIRETIME, MESSAGES } from '../config/constants';
 import {
     assignDocumentId,
     findOneElement,
