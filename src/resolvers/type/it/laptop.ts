@@ -10,9 +10,7 @@ const typeItLaptopResolvers: IResolvers = {
                 db,
                 COLLECTIONS.IT_RAM,
                 {
-                    $and: [
-                        { id: { $ne: ram } }
-                    ]
+                    id: { $in: ram }
                 }
             );
 
@@ -23,9 +21,7 @@ const typeItLaptopResolvers: IResolvers = {
                 db,
                 COLLECTIONS.IT_STORAGE,
                 {
-                    $and: [
-                        { id: { $ne: storage } }
-                    ]
+                    id: { $in: storage }
                 }
             );
 
