@@ -10,7 +10,7 @@ import { IPurchaseSupplier, IPurchaseProduct, IPurchaseRequisition } from '@inte
 import { ISalesCustomer, ISalesProspect } from '@interfaces/sales';
 
 // IT
-import { IItLaptop, IItScreen, IItStorage, IItRam } from '@interfaces/it';
+import { IItLaptop, IItDesktop, IItScreen, IItStorage, IItRam, IItGraphic, IItCooling } from '@interfaces/it';
 
 export interface IVariables {
     id?: string | number;
@@ -25,8 +25,11 @@ export interface IVariables {
     customer?: ISalesCustomer;
     prospect?: ISalesProspect;
     laptop?: IItLaptop;
+    desktop?: IItDesktop;
     screen?: IItScreen;
     storage?: IItStorage;
     ram?: IItRam;
+    graphic?: IItGraphic;
+    cooling?: IItCooling;
     pagination?: IPaginationOptions;
 }

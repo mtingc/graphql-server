@@ -1,0 +1,6 @@
+type Query {
+  "Show item cooling"
+  cooling(id: ID!): ResultItCooling
+  "Show list of coolings"
+  coolings(page: Int = 1, itemsPage: Int = 20): ResultItCoolings
+}

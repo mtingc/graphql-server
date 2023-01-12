@@ -19,9 +19,12 @@ export enum COLLECTIONS {
     SALES_CUSTOMERS = 'sales_customers',
     SALES_PROSPECTS = 'sales_prospects',
     IT_LAPTOP = 'it_laptops',
+    IT_DESKTOP = 'it_desktops',
     IT_SCREEN = 'it_screens',
     IT_STORAGE = 'it_storages',
-    IT_RAM = 'it_rams'
+    IT_RAM = 'it_rams',
+    IT_GRAPHIC = 'it_graphics',
+    IT_COOLING = 'it_coolings',
 }
 
 export enum MESSAGES {

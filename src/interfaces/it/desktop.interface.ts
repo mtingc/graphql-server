@@ -9,7 +9,7 @@ export interface IItDesktop {
     storage: IItStorage[];
     graphic?: IItGraphic[];
     case?: string;
-    coolign?: IItCooling[];
+    cooling?: IItCooling[];
     complementaries?: IItComplementary[];
     equipment: IItEquipment;
     details: IDetails;

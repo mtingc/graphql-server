@@ -6,7 +6,7 @@ type ItDesktop {
   storage: [ItStorage]
   graphic: [ItGraphic]
   case: String
-  coolign: [ItCooling]
+  cooling: [ItCooling]
   complementaries: [ItComplementary]
   equipment: ItEquipment
   details: Details
@@ -18,7 +18,7 @@ type ResultItDesktop implements Result {
   "Operation message"
   message: String!
   "Get desktop"
-  desktop: ItLaptop
+  desktop: ItDesktop
 }
 
 type ResultItDesktops implements Result {

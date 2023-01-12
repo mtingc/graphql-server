@@ -1,0 +1,8 @@
+type Mutation {
+  "New graphic"
+  addGraphic(graphic: ItGraphicInput!): ResultItGraphic
+  "Update graphic"
+  updateGraphic(id: ID!, graphic: ItGraphicInput!): ResultItGraphic
+  "Delete graphic"
+  deleteGraphic(id: ID!): ResultItGraphic
+}

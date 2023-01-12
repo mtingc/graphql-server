@@ -1,8 +1,11 @@
 import { IResolvers } from '@graphql-tools/utils';
 import ItLaptopService from '../../services/it/laptop.service';
+import ItDesktopService from '../../services/it/desktop.service';
 import ItScreenService from '../../services/it/screen.service';
 import ItStorageService from '../../services/it/storage.service';
 import ItRamService from '../../services/it/ram.service';
+import ItGraphicService from '../../services/it/graphic.service';
+import ItCoolingService from '../../services/it/cooling.service';
 
 const queryItResolvers: IResolvers = {
     Query: {
@@ -13,6 +16,16 @@ const queryItResolvers: IResolvers = {
         },
         async laptops(_, variables, context) {
             return new ItLaptopService(_, {
+                pagination: variables
+            }, context).items();
+        },
+
+        // Desktop
+        async desktop(_, { id }, { db }) {
+            return new ItDesktopService(_, { id }, { db }).details();
+        },
+        async desktops(_, variables, context) {
+            return new ItDesktopService(_, {
                 pagination: variables
             }, context).items();
         },
@@ -43,6 +56,26 @@ const queryItResolvers: IResolvers = {
         },
         async rams(_, variables, context) {
             return new ItRamService(_, {
+                pagination: variables
+            }, context).items();
+        },
+
+        // Graphic
+        async graphic(_, { id }, { db }) {
+            return new ItGraphicService(_, { id }, { db }).details();
+        },
+        async graphics(_, variables, context) {
+            return new ItGraphicService(_, {
+                pagination: variables
+            }, context).items();
+        },
+
+        // Cooling
+        async cooling(_, { id }, { db }) {
+            return new ItCoolingService(_, { id }, { db }).details();
+        },
+        async coolings(_, variables, context) {
+            return new ItCoolingService(_, {
                 pagination: variables
             }, context).items();
         }

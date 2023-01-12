@@ -1,0 +1,6 @@
+type Query {
+  "Show item graphic"
+  graphic(id: ID!): ResultItGraphic
+  "Show list of graphics"
+  graphics(page: Int = 1, itemsPage: Int = 20): ResultItGraphics
+}

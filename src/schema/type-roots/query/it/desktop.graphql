@@ -1,0 +1,6 @@
+type Query {
+  "Show item desktop"
+  desktop(id: ID!): ResultItDesktop
+  "Show list of desktops"
+  desktops(page: Int = 1, itemsPage: Int = 20): ResultItDesktops
+}

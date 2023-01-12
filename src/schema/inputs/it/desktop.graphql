@@ -5,7 +5,7 @@ input ItDesktopInput {
     storage: [String!]!
     graphic: [String!]
     case: String
-    coolign: [String!]
+    cooling: [String!]
     complementaries: [String!]
     equipment: String
     details: DetailsInput
