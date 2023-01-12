@@ -25,6 +25,9 @@ export enum COLLECTIONS {
     IT_RAM = 'it_rams',
     IT_GRAPHIC = 'it_graphics',
     IT_COOLING = 'it_coolings',
+    IT_INPUT_DEVICE = 'it_inputDevices',
+    IT_OUTPUT_DEVICE = 'it_outputDevices',
+    IT_CONSUMABLE = 'it_consumables',
 }
 
 export enum MESSAGES {

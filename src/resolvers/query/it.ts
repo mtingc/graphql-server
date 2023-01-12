@@ -6,6 +6,9 @@ import ItStorageService from '../../services/it/storage.service';
 import ItRamService from '../../services/it/ram.service';
 import ItGraphicService from '../../services/it/graphic.service';
 import ItCoolingService from '../../services/it/cooling.service';
+import ItInputDeviceService from '../../services/it/inputDevice.service';
+import ItOutputDeviceService from '../../services/it/outputDevice.service';
+import ItConsumableService from '../../services/it/consumable.service';
 
 const queryItResolvers: IResolvers = {
     Query: {
@@ -76,6 +79,36 @@ const queryItResolvers: IResolvers = {
         },
         async coolings(_, variables, context) {
             return new ItCoolingService(_, {
+                pagination: variables
+            }, context).items();
+        },
+
+        // Input device
+        async inputDevice(_, { id }, { db }) {
+            return new ItInputDeviceService(_, { id }, { db }).details();
+        },
+        async inputDevices(_, variables, context) {
+            return new ItInputDeviceService(_, {
+                pagination: variables
+            }, context).items();
+        },
+
+        // Output device
+        async outputDevice(_, { id }, { db }) {
+            return new ItOutputDeviceService(_, { id }, { db }).details();
+        },
+        async outputDevices(_, variables, context) {
+            return new ItOutputDeviceService(_, {
+                pagination: variables
+            }, context).items();
+        },
+
+        // Consumable
+        async consumable(_, { id }, { db }) {
+            return new ItConsumableService(_, { id }, { db }).details();
+        },
+        async consumables(_, variables, context) {
+            return new ItConsumableService(_, {
                 pagination: variables
             }, context).items();
         }

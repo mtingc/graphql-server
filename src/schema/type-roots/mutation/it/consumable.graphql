@@ -1,0 +1,8 @@
+type Mutation {
+  "New consumable"
+  addConsumable(consumable: ItConsumableInput!): ResultItConsumable
+  "Update consumable"
+  updateConsumable(id: ID!, consumable: ItConsumableInput!): ResultItConsumable
+  "Delete consumable"
+  deleteConsumable(id: ID!): ResultItConsumable
+}

@@ -3,7 +3,7 @@ type ItOutputDevice {
   brand: String
   model: String
   type: OutputDeviceTypeEnum
-  bluetooth: Boolean
+  signal: [DeviceSignalEnum]
   complementaries: [ItComplementary]
   equipment: [ItEquipment]
   details: Details

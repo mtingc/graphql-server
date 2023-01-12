@@ -6,6 +6,9 @@ import ItStorageService from '../../services/it/storage.service';
 import ItRamService from '../../services/it/ram.service';
 import ItGraphicService from '../../services/it/graphic.service';
 import ItCoolingService from '../../services/it/cooling.service';
+import ItInputDeviceService from '../../services/it/inputDevice.service';
+import ItOutputDeviceService from '../../services/it/outputDevice.service';
+import ItConsumableService from '../../services/it/consumable.service';
 
 const mutationItResolvers: IResolvers = {
     Mutation: {
@@ -85,6 +88,39 @@ const mutationItResolvers: IResolvers = {
         },
         deleteCooling(_, variables, context) {
             return new ItCoolingService(_, variables, context).delete();
+        },
+
+        // Input Device
+        addInputDevice(_, variables, context) {
+            return new ItInputDeviceService(_, variables, context).insert();
+        },
+        updateInputDevice(_, variables, context) {
+            return new ItInputDeviceService(_, variables, context).modify();
+        },
+        deleteInputDevice(_, variables, context) {
+            return new ItInputDeviceService(_, variables, context).delete();
+        },
+
+        // Output Device
+        addOutputDevice(_, variables, context) {
+            return new ItOutputDeviceService(_, variables, context).insert();
+        },
+        updateOutputDevice(_, variables, context) {
+            return new ItOutputDeviceService(_, variables, context).modify();
+        },
+        deleteOutputDevice(_, variables, context) {
+            return new ItOutputDeviceService(_, variables, context).delete();
+        },
+
+        // Consumable
+        addConsumable(_, variables, context) {
+            return new ItConsumableService(_, variables, context).insert();
+        },
+        updateConsumable(_, variables, context) {
+            return new ItConsumableService(_, variables, context).modify();
+        },
+        deleteConsumable(_, variables, context) {
+            return new ItConsumableService(_, variables, context).delete();
         }
 
     }

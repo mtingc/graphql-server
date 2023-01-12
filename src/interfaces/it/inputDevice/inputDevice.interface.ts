@@ -1,12 +1,12 @@
 import { IDetails } from '@ICommon';
-import { IItComplementary, IItEquipment, InputDeviceTypeEnum } from '@interfaces/it';
+import { IItComplementary, IItEquipment, InputDeviceTypeEnum, DeviceSignalEnum } from '@interfaces/it';
 
 export interface IItInputDevice {
     id: string;
     brand: string;
     model?: string;
     type: InputDeviceTypeEnum;
-    bluetooth?: boolean;
+    signal?: DeviceSignalEnum[];
     complementaries?: IItComplementary[];
     equipment?: IItEquipment;
     details: IDetails;

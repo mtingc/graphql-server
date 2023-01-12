@@ -1,0 +1,6 @@
+type Query {
+  "Show item consumable"
+  consumable(id: ID!): ResultItConsumable
+  "Show list of consumables"
+  consumables(page: Int = 1, itemsPage: Int = 20): ResultItConsumables
+}

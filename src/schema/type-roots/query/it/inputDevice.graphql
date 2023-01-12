@@ -1,0 +1,6 @@
+type Query {
+  "Show item inputDevice"
+  inputDevice(id: ID!): ResultItInputDevice
+  "Show list of inputDevices"
+  inputDevices(page: Int = 1, itemsPage: Int = 20): ResultItInputDevices
+}

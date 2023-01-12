@@ -3,7 +3,7 @@ type ItInputDevice {
   brand: String
   model: String
   type: InputDeviceTypeEnum
-  bluetooth: Boolean
+  signal: [DeviceSignalEnum]
   complementaries: [ItComplementary]
   equipment: ItEquipment
   details: Details
@@ -15,7 +15,7 @@ type ResultItInputDevice implements Result {
   "Operation message"
   message: String!
   "Get InputDevice"
-  InputDevice: ItInputDevice
+  inputDevice: ItInputDevice
 }
 
 type ResultItInputDevices implements Result {
@@ -26,5 +26,5 @@ type ResultItInputDevices implements Result {
   "Operation message"
   message: String!
   "List of Input devices"
-  InputDevices: [ItInputDevice!]
+  inputDevices: [ItInputDevice!]
 }

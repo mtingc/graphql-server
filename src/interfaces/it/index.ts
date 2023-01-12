@@ -17,6 +17,8 @@ export * from './equipment.interface';
 export * from './maintenance/maintenance.interface';
 
 // Enums
+export * from './deviceSignal.enum';
+
 export * from './complementary/type.enum';
 
 export * from './cooling/type.enum';
