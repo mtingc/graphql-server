@@ -1,14 +1,18 @@
 import { IResolvers } from '@graphql-tools/utils';
+// Main data
 import ItLaptopService from '../../services/it/laptop.service';
 import ItDesktopService from '../../services/it/desktop.service';
 import ItScreenService from '../../services/it/screen.service';
+import ItInputDeviceService from '../../services/it/inputDevice.service';
+import ItOutputDeviceService from '../../services/it/outputDevice.service';
+import ItConsumableService from '../../services/it/consumable.service';
+// Supplementary data
 import ItStorageService from '../../services/it/storage.service';
 import ItRamService from '../../services/it/ram.service';
 import ItGraphicService from '../../services/it/graphic.service';
 import ItCoolingService from '../../services/it/cooling.service';
-import ItInputDeviceService from '../../services/it/inputDevice.service';
-import ItOutputDeviceService from '../../services/it/outputDevice.service';
-import ItConsumableService from '../../services/it/consumable.service';
+import ItComplementaryService from '../../services/it/complementary.service';
+// Actions
 
 const queryItResolvers: IResolvers = {
     Query: {
@@ -39,6 +43,36 @@ const queryItResolvers: IResolvers = {
         },
         async screens(_, variables, context) {
             return new ItScreenService(_, {
+                pagination: variables
+            }, context).items();
+        },
+
+        // Input device
+        async inputDevice(_, { id }, { db }) {
+            return new ItInputDeviceService(_, { id }, { db }).details();
+        },
+        async inputDevices(_, variables, context) {
+            return new ItInputDeviceService(_, {
+                pagination: variables
+            }, context).items();
+        },
+
+        // Output device
+        async outputDevice(_, { id }, { db }) {
+            return new ItOutputDeviceService(_, { id }, { db }).details();
+        },
+        async outputDevices(_, variables, context) {
+            return new ItOutputDeviceService(_, {
+                pagination: variables
+            }, context).items();
+        },
+
+        // Consumable
+        async consumable(_, { id }, { db }) {
+            return new ItConsumableService(_, { id }, { db }).details();
+        },
+        async consumables(_, variables, context) {
+            return new ItConsumableService(_, {
                 pagination: variables
             }, context).items();
         },
@@ -83,32 +117,12 @@ const queryItResolvers: IResolvers = {
             }, context).items();
         },
 
-        // Input device
-        async inputDevice(_, { id }, { db }) {
-            return new ItInputDeviceService(_, { id }, { db }).details();
+        // Complementary
+        async complementary(_, { id }, { db }) {
+            return new ItComplementaryService(_, { id }, { db }).details();
         },
-        async inputDevices(_, variables, context) {
-            return new ItInputDeviceService(_, {
-                pagination: variables
-            }, context).items();
-        },
-
-        // Output device
-        async outputDevice(_, { id }, { db }) {
-            return new ItOutputDeviceService(_, { id }, { db }).details();
-        },
-        async outputDevices(_, variables, context) {
-            return new ItOutputDeviceService(_, {
-                pagination: variables
-            }, context).items();
-        },
-
-        // Consumable
-        async consumable(_, { id }, { db }) {
-            return new ItConsumableService(_, { id }, { db }).details();
-        },
-        async consumables(_, variables, context) {
-            return new ItConsumableService(_, {
+        async complementaries(_, variables, context) {
+            return new ItComplementaryService(_, {
                 pagination: variables
             }, context).items();
         }

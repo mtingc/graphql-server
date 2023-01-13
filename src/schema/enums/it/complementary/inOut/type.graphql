@@ -1,0 +1,4 @@
+enum ComplementaryInOutTypeEnum {
+    FEMALE,
+    MALE
+}

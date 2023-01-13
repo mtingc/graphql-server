@@ -1,0 +1,19 @@
+export enum ComplementaryInOutDescriptionEnum {
+    USB_A,
+    USB_B,
+    USB_B_MICRO,
+    USB_C,
+    USB_MINI,
+    USB_MICRO,
+    LIGHTNING,
+    TRS,
+    RCA,
+    XLR,
+    HDMI,
+    VGA,
+    DVI,
+    DISPLAYPORT,
+    ALIMENTACION_LAPTOP,
+    ALIMENTACION_PARED,
+    ETHERNET
+}

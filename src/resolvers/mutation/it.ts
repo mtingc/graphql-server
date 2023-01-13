@@ -1,14 +1,18 @@
 import { IResolvers } from '@graphql-tools/utils';
+// Main data
 import ItLaptopService from '../../services/it/laptop.service';
 import ItDesktopService from '../../services/it/desktop.service';
 import ItScreenService from '../../services/it/screen.service';
+import ItInputDeviceService from '../../services/it/inputDevice.service';
+import ItOutputDeviceService from '../../services/it/outputDevice.service';
+import ItConsumableService from '../../services/it/consumable.service';
+// Supplementary data
 import ItStorageService from '../../services/it/storage.service';
 import ItRamService from '../../services/it/ram.service';
 import ItGraphicService from '../../services/it/graphic.service';
 import ItCoolingService from '../../services/it/cooling.service';
-import ItInputDeviceService from '../../services/it/inputDevice.service';
-import ItOutputDeviceService from '../../services/it/outputDevice.service';
-import ItConsumableService from '../../services/it/consumable.service';
+import ItComplementaryService from '../../services/it/complementary.service';
+// Actions
 
 const mutationItResolvers: IResolvers = {
     Mutation: {
@@ -44,6 +48,39 @@ const mutationItResolvers: IResolvers = {
         },
         deleteScreen(_, variables, context) {
             return new ItScreenService(_, variables, context).delete();
+        },
+
+        // Input Device
+        addInputDevice(_, variables, context) {
+            return new ItInputDeviceService(_, variables, context).insert();
+        },
+        updateInputDevice(_, variables, context) {
+            return new ItInputDeviceService(_, variables, context).modify();
+        },
+        deleteInputDevice(_, variables, context) {
+            return new ItInputDeviceService(_, variables, context).delete();
+        },
+
+        // Output Device
+        addOutputDevice(_, variables, context) {
+            return new ItOutputDeviceService(_, variables, context).insert();
+        },
+        updateOutputDevice(_, variables, context) {
+            return new ItOutputDeviceService(_, variables, context).modify();
+        },
+        deleteOutputDevice(_, variables, context) {
+            return new ItOutputDeviceService(_, variables, context).delete();
+        },
+
+        // Consumable
+        addConsumable(_, variables, context) {
+            return new ItConsumableService(_, variables, context).insert();
+        },
+        updateConsumable(_, variables, context) {
+            return new ItConsumableService(_, variables, context).modify();
+        },
+        deleteConsumable(_, variables, context) {
+            return new ItConsumableService(_, variables, context).delete();
         },
 
         // Storage
@@ -90,37 +127,15 @@ const mutationItResolvers: IResolvers = {
             return new ItCoolingService(_, variables, context).delete();
         },
 
-        // Input Device
-        addInputDevice(_, variables, context) {
-            return new ItInputDeviceService(_, variables, context).insert();
+        // Complementary
+        addComplementary(_, variables, context) {
+            return new ItComplementaryService(_, variables, context).insert();
         },
-        updateInputDevice(_, variables, context) {
-            return new ItInputDeviceService(_, variables, context).modify();
+        updateComplementary(_, variables, context) {
+            return new ItComplementaryService(_, variables, context).modify();
         },
-        deleteInputDevice(_, variables, context) {
-            return new ItInputDeviceService(_, variables, context).delete();
-        },
-
-        // Output Device
-        addOutputDevice(_, variables, context) {
-            return new ItOutputDeviceService(_, variables, context).insert();
-        },
-        updateOutputDevice(_, variables, context) {
-            return new ItOutputDeviceService(_, variables, context).modify();
-        },
-        deleteOutputDevice(_, variables, context) {
-            return new ItOutputDeviceService(_, variables, context).delete();
-        },
-
-        // Consumable
-        addConsumable(_, variables, context) {
-            return new ItConsumableService(_, variables, context).insert();
-        },
-        updateConsumable(_, variables, context) {
-            return new ItConsumableService(_, variables, context).modify();
-        },
-        deleteConsumable(_, variables, context) {
-            return new ItConsumableService(_, variables, context).delete();
+        deleteComplementary(_, variables, context) {
+            return new ItComplementaryService(_, variables, context).delete();
         }
 
     }

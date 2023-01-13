@@ -1,4 +1,4 @@
-// Primary devices 
+// Main data
 export * from './laptop.interface';
 export * from './desktop.interface';
 export * from './screen/screen.interface';
@@ -6,13 +6,13 @@ export * from './screen/input.interface';
 export * from './inputDevice/inputDevice.interface';
 export * from './outputDevice/outputDevice.interface';
 export * from './consumable.interface';
-// Secondary devices
+// Supplementary data
 export * from './storage/storage.interface';
 export * from './ram/ram.interface';
 export * from './graphic.interface';
 export * from './cooling/cooling.interface';
 export * from './complementary/complementary.interface';
-// Processing entities
+// Actions
 export * from './equipment.interface';
 export * from './maintenance/maintenance.interface';
 
@@ -20,6 +20,9 @@ export * from './maintenance/maintenance.interface';
 export * from './deviceSignal.enum';
 
 export * from './complementary/type.enum';
+export * from './complementary/inOut/inOut.interface';
+export * from './complementary/inOut/description.enum';
+export * from './complementary/inOut/type.enum';
 
 export * from './cooling/type.enum';
 

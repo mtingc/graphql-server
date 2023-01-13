@@ -21,13 +21,14 @@ export enum COLLECTIONS {
     IT_LAPTOP = 'it_laptops',
     IT_DESKTOP = 'it_desktops',
     IT_SCREEN = 'it_screens',
+    IT_INPUT_DEVICE = 'it_inputDevices',
+    IT_OUTPUT_DEVICE = 'it_outputDevices',
+    IT_CONSUMABLE = 'it_consumables',
     IT_STORAGE = 'it_storages',
     IT_RAM = 'it_rams',
     IT_GRAPHIC = 'it_graphics',
     IT_COOLING = 'it_coolings',
-    IT_INPUT_DEVICE = 'it_inputDevices',
-    IT_OUTPUT_DEVICE = 'it_outputDevices',
-    IT_CONSUMABLE = 'it_consumables',
+    IT_COMPLEMENTARY = 'it_complementaries',
 }
 
 export enum MESSAGES {

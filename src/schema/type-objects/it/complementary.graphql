@@ -1,9 +1,14 @@
 type ItComplementary {
   id: String
   type: ComplementaryTypeEnum
-  description: String
+  inOut: [ItComplementaryInOut]
   equipment: ItEquipment
   details: Details
+}
+
+type ItComplementaryInOut {
+  description: ComplementaryInOutDescriptionEnum
+  type: ComplementaryInOutTypeEnum
 }
 
 type ResultItComplementary implements Result {

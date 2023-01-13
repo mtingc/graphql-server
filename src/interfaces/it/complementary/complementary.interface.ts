@@ -1,10 +1,10 @@
 import { IDetails } from '@ICommon';
-import { IItEquipment, ComplementaryTypeEnum } from '@interfaces/it';
+import { IItEquipment, IItComplementaryInOut, ComplementaryTypeEnum } from '@interfaces/it';
 
 export interface IItComplementary {
     id: string;
     type: ComplementaryTypeEnum;
-    description: string;
+    inOut: IItComplementaryInOut[];
     equipment?: IItEquipment;
     details: IDetails;
 }
