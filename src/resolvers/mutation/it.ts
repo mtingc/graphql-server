@@ -13,6 +13,7 @@ import ItGraphicService from '../../services/it/graphic.service';
 import ItCoolingService from '../../services/it/cooling.service';
 import ItComplementaryService from '../../services/it/complementary.service';
 // Actions
+import ItEquipmentService from '../../services/it/equipment.service';
 
 const mutationItResolvers: IResolvers = {
     Mutation: {
@@ -136,6 +137,17 @@ const mutationItResolvers: IResolvers = {
         },
         deleteComplementary(_, variables, context) {
             return new ItComplementaryService(_, variables, context).delete();
+        },
+
+        // Equipment
+        addEquipment(_, variables, context) {
+            return new ItEquipmentService(_, variables, context).insert();
+        },
+        updateEquipment(_, variables, context) {
+            return new ItEquipmentService(_, variables, context).modify();
+        },
+        deleteEquipment(_, variables, context) {
+            return new ItEquipmentService(_, variables, context).delete();
         }
 
     }

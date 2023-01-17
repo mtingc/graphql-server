@@ -1,6 +1,6 @@
 import { IResolvers } from '@graphql-tools/utils';
 import { COLLECTIONS } from '../../../config/constants';
-import { findElements } from '../../../lib/db-operations';
+import { findElements, findOneElement } from '../../../lib/db-operations';
 
 const typeItResolvers: IResolvers = {
     ItLaptop: {
@@ -33,6 +33,17 @@ const typeItResolvers: IResolvers = {
                 COLLECTIONS.IT_COMPLEMENTARY,
                 {
                     id: { $in: complementaries }
+                }
+            );
+
+        },
+        equipment: async ({ equipment }, _, { db }) => {
+
+            return await findOneElement(
+                db,
+                COLLECTIONS.IT_EQUIPMENT,
+                {
+                    id: equipment
                 }
             );
 
@@ -94,6 +105,17 @@ const typeItResolvers: IResolvers = {
                 }
             );
 
+        },
+        equipment: async ({ equipment }, _, { db }) => {
+
+            return await findOneElement(
+                db,
+                COLLECTIONS.IT_EQUIPMENT,
+                {
+                    id: equipment
+                }
+            );
+
         }
     },
     ItScreen: {
@@ -104,6 +126,17 @@ const typeItResolvers: IResolvers = {
                 COLLECTIONS.IT_COMPLEMENTARY,
                 {
                     id: { $in: complementaries }
+                }
+            );
+
+        },
+        equipment: async ({ equipment }, _, { db }) => {
+
+            return await findOneElement(
+                db,
+                COLLECTIONS.IT_EQUIPMENT,
+                {
+                    id: equipment
                 }
             );
 
@@ -120,6 +153,17 @@ const typeItResolvers: IResolvers = {
                 }
             );
 
+        },
+        equipment: async ({ equipment }, _, { db }) => {
+
+            return await findOneElement(
+                db,
+                COLLECTIONS.IT_EQUIPMENT,
+                {
+                    id: equipment
+                }
+            );
+
         }
     },
     ItOutputDevice: {
@@ -130,6 +174,43 @@ const typeItResolvers: IResolvers = {
                 COLLECTIONS.IT_COMPLEMENTARY,
                 {
                     id: { $in: complementaries }
+                }
+            );
+
+        },
+        equipment: async ({ equipment }, _, { db }) => {
+
+            return await findOneElement(
+                db,
+                COLLECTIONS.IT_EQUIPMENT,
+                {
+                    id: equipment
+                }
+            );
+
+        }
+    },
+    ItComplementary: {
+        equipment: async ({ equipment }, _, { db }) => {
+
+            return await findOneElement(
+                db,
+                COLLECTIONS.IT_EQUIPMENT,
+                {
+                    id: equipment
+                }
+            );
+
+        }
+    },
+    ItEquipment: {
+        user: async ({ user }, _, { db }) => {
+
+            return await findOneElement(
+                db,
+                COLLECTIONS.USERS,
+                {
+                    id: user
                 }
             );
 

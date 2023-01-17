@@ -13,6 +13,7 @@ import ItGraphicService from '../../services/it/graphic.service';
 import ItCoolingService from '../../services/it/cooling.service';
 import ItComplementaryService from '../../services/it/complementary.service';
 // Actions
+import ItEquipmentService from '../../services/it/equipment.service';
 
 const queryItResolvers: IResolvers = {
     Query: {
@@ -123,6 +124,16 @@ const queryItResolvers: IResolvers = {
         },
         async complementaries(_, variables, context) {
             return new ItComplementaryService(_, {
+                pagination: variables
+            }, context).items();
+        },
+
+        // Equipment
+        async equipment(_, { id }, { db }) {
+            return new ItEquipmentService(_, { id }, { db }).details();
+        },
+        async equipments(_, variables, context) {
+            return new ItEquipmentService(_, {
                 pagination: variables
             }, context).items();
         }

@@ -5,7 +5,7 @@ type ItOutputDevice {
   type: OutputDeviceTypeEnum
   signal: [DeviceSignalEnum]
   complementaries: [ItComplementary]
-  equipment: [ItEquipment]
+  equipment: ItEquipment
   details: Details
 }
 

@@ -1,0 +1,8 @@
+type Mutation {
+  "New equipment"
+  addEquipment(equipment: ItEquipmentInput!): ResultItEquipment
+  "Update equipment"
+  updateEquipment(id: ID!, equipment: ItEquipmentInput!): ResultItEquipment
+  "Delete equipment"
+  deleteEquipment(id: ID!): ResultItEquipment
+}

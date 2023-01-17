@@ -28,6 +28,7 @@ export enum COLLECTIONS {
     IT_RAM = 'it_rams',
     IT_GRAPHIC = 'it_graphics',
     IT_COOLING = 'it_coolings',
+    IT_EQUIPMENT = 'it_equipments',
     IT_COMPLEMENTARY = 'it_complementaries',
 }
 
