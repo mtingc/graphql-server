@@ -1,8 +1,0 @@
-type Mutation {
-  "New laptop"
-  addLaptop(laptop: ItLaptopInput!): ResultItLaptop
-  "Update laptop"
-  updateLaptop(id: ID!, laptop: ItLaptopInput!): ResultItLaptop
-  "Delete laptop"
-  deleteLaptop(id: ID!): ResultItLaptop
-}

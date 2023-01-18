@@ -1,0 +1,7 @@
+interface ItDevice {
+    id: String!
+    brand: String!
+    model: String!
+    idCables: [ItCable!]!
+    details: Details!
+}

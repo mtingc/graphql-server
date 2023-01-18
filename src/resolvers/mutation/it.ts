@@ -1,6 +1,6 @@
 import { IResolvers } from '@graphql-tools/utils';
 // Main data
-import ItLaptopService from '../../services/it/laptop.service';
+import ItDeviceService from '../../services/it/device.service';
 import ItDesktopService from '../../services/it/desktop.service';
 import ItScreenService from '../../services/it/screen.service';
 import ItInputDeviceService from '../../services/it/inputDevice.service';
@@ -18,15 +18,15 @@ import ItEquipmentService from '../../services/it/equipment.service';
 const mutationItResolvers: IResolvers = {
     Mutation: {
 
-        // Laptop
-        addLaptop(_, variables, context) {
-            return new ItLaptopService(_, variables, context).insert();
+        // Device
+        addDevice(_, variables, context) {
+            return new ItDeviceService(_, variables, context).insert();
         },
-        updateLaptop(_, variables, context) {
-            return new ItLaptopService(_, variables, context).modify();
+        updateDevice(_, variables, context) {
+            return new ItDeviceService(_, variables, context).modify();
         },
-        deleteLaptop(_, variables, context) {
-            return new ItLaptopService(_, variables, context).delete();
+        deleteDevice(_, variables, context) {
+            return new ItDeviceService(_, variables, context).delete();
         },
 
         // Desktop

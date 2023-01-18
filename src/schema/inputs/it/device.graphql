@@ -1,0 +1,12 @@
+input ItDeviceInput {
+    brand: String!
+    model: String!
+    processor: String!
+    idRams: [String!]
+    idStorages: [String!]
+    inches: Int!
+    dedicatedGraphic: Boolean!
+    idEquipment: String
+    idCables: [String!]
+    details: DetailsInput
+}

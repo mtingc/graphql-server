@@ -1,0 +1,8 @@
+type Mutation {
+  "New device"
+  addDevice(device: ItDeviceInput): ResultItDevice
+  "Update device"
+  updateDevice(id: ID!, device: ItDeviceInput): ResultItDevice
+  "Delete device"
+  deleteDevice(id: ID!): ResultItDevice
+}

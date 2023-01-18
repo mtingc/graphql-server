@@ -1,6 +1,6 @@
 import { IResolvers } from '@graphql-tools/utils';
 // Main data
-import ItLaptopService from '../../services/it/laptop.service';
+import ItDeviceService from '../../services/it/device.service';
 import ItDesktopService from '../../services/it/desktop.service';
 import ItScreenService from '../../services/it/screen.service';
 import ItInputDeviceService from '../../services/it/inputDevice.service';
@@ -18,12 +18,12 @@ import ItEquipmentService from '../../services/it/equipment.service';
 const queryItResolvers: IResolvers = {
     Query: {
 
-        // Laptop
-        async laptop(_, { id }, { db }) {
-            return new ItLaptopService(_, { id }, { db }).details();
+        // Device
+        async device(_, { id }, { db }) {
+            return new ItDeviceService(_, { id }, { db }).details();
         },
-        async laptops(_, variables, context) {
-            return new ItLaptopService(_, {
+        async devices(_, variables, context) {
+            return new ItDeviceService(_, {
                 pagination: variables
             }, context).items();
         },

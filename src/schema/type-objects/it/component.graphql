@@ -1,0 +1,6 @@
+type ItComplementComponent implements ItComplement {
+    id: String!
+    brand: String!
+    model: String!
+    details: Details!
+}

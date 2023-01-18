@@ -18,7 +18,7 @@ export enum COLLECTIONS {
     PURCHASES_REQUISITIONS = 'purchases_requisitions',
     SALES_CUSTOMERS = 'sales_customers',
     SALES_PROSPECTS = 'sales_prospects',
-    IT_LAPTOP = 'it_laptops',
+    IT_DEVICE = 'it_devices',
     IT_DESKTOP = 'it_desktops',
     IT_SCREEN = 'it_screens',
     IT_INPUT_DEVICE = 'it_inputDevices',

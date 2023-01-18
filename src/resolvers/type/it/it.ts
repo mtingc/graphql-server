@@ -3,47 +3,54 @@ import { COLLECTIONS } from '../../../config/constants';
 import { findElements, findOneElement } from '../../../lib/db-operations';
 
 const typeItResolvers: IResolvers = {
-    ItLaptop: {
-        ram: async ({ ram }, _, { db }) => {
+    ItDevice: {
+        __resolveType(root: { dedicatedGraphic: boolean }) {
+            if (root.dedicatedGraphic) {
+                return 'ItDeviceLaptop';
+            }
+        }
+    },
+    ItDeviceLaptop: {
+        idRam: async ({ idRam }, _, { db }) => {
 
             return await findElements(
                 db,
                 COLLECTIONS.IT_RAM,
                 {
-                    id: { $in: ram }
+                    id: { $in: idRam }
                 }
             );
 
         },
-        storage: async ({ storage }, _, { db }) => {
+        idStorage: async ({ idStorage }, _, { db }) => {
 
             return await findElements(
                 db,
                 COLLECTIONS.IT_STORAGE,
                 {
-                    id: { $in: storage }
+                    id: { $in: idStorage }
                 }
             );
 
         },
-        complementaries: async ({ complementaries }, _, { db }) => {
+        idCables: async ({ idCables }, _, { db }) => {
 
             return await findElements(
                 db,
                 COLLECTIONS.IT_COMPLEMENTARY,
                 {
-                    id: { $in: complementaries }
+                    id: { $in: idCables }
                 }
             );
 
         },
-        equipment: async ({ equipment }, _, { db }) => {
+        idEquipment: async ({ idEquipment }, _, { db }) => {
 
             return await findOneElement(
                 db,
                 COLLECTIONS.IT_EQUIPMENT,
                 {
-                    id: equipment
+                    id: idEquipment
                 }
             );
 
