@@ -1,6 +1,0 @@
-type Query {
-  "Show item screen"
-  screen(id: ID!): ResultItScreen
-  "Show list of screens"
-  screens(page: Int = 1, itemsPage: Int = 20): ResultItScreens
-}

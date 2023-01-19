@@ -1,9 +1,6 @@
 import { IResolvers } from '@graphql-tools/utils';
 // Main data
 import ItDeviceService from '../../services/it/device.service';
-import ItScreenService from '../../services/it/screen.service';
-import ItInputDeviceService from '../../services/it/inputDevice.service';
-import ItOutputDeviceService from '../../services/it/outputDevice.service';
 import ItConsumableService from '../../services/it/consumable.service';
 // Supplementary data
 import ItStorageService from '../../services/it/storage.service';
@@ -33,41 +30,24 @@ const mutationItResolvers: IResolvers = {
             return new ItDeviceService(_, variables, context).modify();
         },
 
-        deleteDevice(_, variables, context) {
-            return new ItDeviceService(_, variables, context).delete();
-        },
-
         // Screen
         addScreen(_, variables, context) {
-            return new ItScreenService(_, variables, context).insert();
+            return new ItDeviceService(_, variables, context).insert();
         },
         updateScreen(_, variables, context) {
-            return new ItScreenService(_, variables, context).modify();
-        },
-        deleteScreen(_, variables, context) {
-            return new ItScreenService(_, variables, context).delete();
+            return new ItDeviceService(_, variables, context).modify();
         },
 
-        // Input Device
-        addInputDevice(_, variables, context) {
-            return new ItInputDeviceService(_, variables, context).insert();
+        // Input
+        addPeripheral(_, variables, context) {
+            return new ItDeviceService(_, variables, context).insert();
         },
-        updateInputDevice(_, variables, context) {
-            return new ItInputDeviceService(_, variables, context).modify();
-        },
-        deleteInputDevice(_, variables, context) {
-            return new ItInputDeviceService(_, variables, context).delete();
+        updatePeripheral(_, variables, context) {
+            return new ItDeviceService(_, variables, context).modify();
         },
 
-        // Output Device
-        addOutputDevice(_, variables, context) {
-            return new ItOutputDeviceService(_, variables, context).insert();
-        },
-        updateOutputDevice(_, variables, context) {
-            return new ItOutputDeviceService(_, variables, context).modify();
-        },
-        deleteOutputDevice(_, variables, context) {
-            return new ItOutputDeviceService(_, variables, context).delete();
+        deleteDevice(_, variables, context) {
+            return new ItDeviceService(_, variables, context).delete();
         },
 
         // Consumable

@@ -1,9 +1,0 @@
-input ItOutputDeviceInput {
-    brand: String!
-    model: String
-    type: OutputDeviceTypeEnum!
-    signal: [DeviceSignalEnum!]!
-    complementaries: [String!]
-    equipment: String
-    details: DetailsInput
-}

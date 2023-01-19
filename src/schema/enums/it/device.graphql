@@ -1,0 +1,15 @@
+enum PeripheralSignalEnum {
+    WiFi,
+    Bluetooth,
+    Otro
+}
+
+enum PeripheralTypeEnum {
+    KEYBOARD,
+    MOUSE,
+    CONTROLLER,
+    SPEAKER,
+    PRINTER,
+    CAMERA,
+    OTHER
+}

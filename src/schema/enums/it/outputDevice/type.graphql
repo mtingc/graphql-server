@@ -1,5 +1,0 @@
-enum OutputDeviceTypeEnum {
-    SPEAKER,
-    PRINTER,
-    OTHER
-}

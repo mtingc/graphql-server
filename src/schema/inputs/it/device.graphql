@@ -24,3 +24,30 @@ input ItDeviceDesktopInput {
     idCables: [String!]
     details: DetailsInput
 }
+
+input ItDeviceScreenInput {
+    brand: String!
+    model: String!
+    inches: Int
+    inputs: ItScreenInInput
+    idEquipment: String
+    idCables: [String!]
+    details: DetailsInput
+}
+
+input ItScreenInInput {
+    hdmi: Int = 0
+    vga: Int = 0
+    dvi: Int = 0
+    displayPort: Int = 0
+}
+
+input ItDevicePeripheralInput {
+    brand: String!
+    model: String!
+    type: PeripheralTypeEnum
+    signal: [PeripheralSignalEnum]
+    idEquipment: String
+    idCables: [String!]
+    details: DetailsInput
+}

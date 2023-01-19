@@ -1,8 +1,0 @@
-type Mutation {
-  "New outputDevice"
-  addOutputDevice(outputDevice: ItOutputDeviceInput!): ResultItOutputDevice
-  "Update outputDevice"
-  updateOutputDevice(id: ID!, outputDevice: ItOutputDeviceInput!): ResultItOutputDevice
-  "Delete outputDevice"
-  deleteOutputDevice(id: ID!): ResultItOutputDevice
-}

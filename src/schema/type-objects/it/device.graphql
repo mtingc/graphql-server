@@ -27,6 +27,35 @@ type ItDeviceDesktop implements ItDevice {
   details: Details!
 }
 
+type ItDeviceScreen implements ItDevice {
+  id: String!
+  brand: String!
+  model: String!
+  inches: Int
+  inputs: ItScreenIn
+  idEquipment: ItEquipment
+  idCables: [ItCable!]!
+  details: Details!
+}
+
+type ItScreenIn {
+    hdmi: Int
+    vga: Int
+    dvi: Int
+    displayPort: Int
+}
+
+type ItDevicePeripheral implements ItDevice {
+  id: String!
+  brand: String!
+  model: String!
+  type: PeripheralTypeEnum
+  signal: [PeripheralSignalEnum]
+  idEquipment: ItEquipment
+  idCables: [ItCable!]!
+  details: Details!
+}
+
 type ResultItDevice implements Result {
   "Operation status"
   status: Boolean!

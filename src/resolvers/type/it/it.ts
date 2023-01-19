@@ -1,15 +1,22 @@
 import { IResolvers } from '@graphql-tools/utils';
 import { COLLECTIONS } from '../../../config/constants';
 import { findElements, findOneElement } from '../../../lib/db-operations';
+import { IItScreenInput, ItPeripheralTypeEnum } from '@interfaces/it';
 
 const typeItResolvers: IResolvers = {
     ItDevice: {
-        __resolveType(root: { dedicatedGraphic: boolean, motherboard: string }) {
+        __resolveType(root: { dedicatedGraphic: boolean, motherboard: string, inputs: IItScreenInput, type: ItPeripheralTypeEnum }) {
             if (root.dedicatedGraphic) {
                 return 'ItDeviceLaptop';
             }
             if (root.motherboard) {
                 return 'ItDeviceDesktop';
+            }
+            if (root.inputs) {
+                return 'ItDeviceScreen';
+            }
+            if (root.type) {
+                return 'ItDevicePeripheral';
             }
         }
     },
@@ -18,7 +25,7 @@ const typeItResolvers: IResolvers = {
 
             return await findElements(
                 db,
-                COLLECTIONS.IT_RAM,
+                COLLECTIONS.IT_COMPLEMENT,
                 {
                     id: { $in: idRams }
                 }
@@ -29,7 +36,7 @@ const typeItResolvers: IResolvers = {
 
             return await findElements(
                 db,
-                COLLECTIONS.IT_STORAGE,
+                COLLECTIONS.IT_COMPLEMENT,
                 {
                     id: { $in: idStorages }
                 }
@@ -40,7 +47,7 @@ const typeItResolvers: IResolvers = {
 
             return await findElements(
                 db,
-                COLLECTIONS.IT_COMPLEMENTARY,
+                COLLECTIONS.IT_CABLE,
                 {
                     id: { $in: idCables }
                 }
@@ -65,7 +72,7 @@ const typeItResolvers: IResolvers = {
 
             return await findElements(
                 db,
-                COLLECTIONS.IT_RAM,
+                COLLECTIONS.IT_COMPLEMENT,
                 {
                     id: { $in: idRams }
                 }
@@ -76,7 +83,7 @@ const typeItResolvers: IResolvers = {
 
             return await findElements(
                 db,
-                COLLECTIONS.IT_STORAGE,
+                COLLECTIONS.IT_COMPLEMENT,
                 {
                     id: { $in: idStorages }
                 }
@@ -87,7 +94,7 @@ const typeItResolvers: IResolvers = {
 
             return await findElements(
                 db,
-                COLLECTIONS.IT_GRAPHIC,
+                COLLECTIONS.IT_COMPLEMENT,
                 {
                     id: { $in: idGraphics }
                 }
@@ -98,7 +105,7 @@ const typeItResolvers: IResolvers = {
 
             return await findElements(
                 db,
-                COLLECTIONS.IT_COOLING,
+                COLLECTIONS.IT_COMPLEMENT,
                 {
                     id: { $in: idCoolings }
                 }
@@ -109,7 +116,7 @@ const typeItResolvers: IResolvers = {
 
             return await findElements(
                 db,
-                COLLECTIONS.IT_COMPLEMENTARY,
+                COLLECTIONS.IT_CABLE,
                 {
                     id: { $in: idCables }
                 }
@@ -128,73 +135,49 @@ const typeItResolvers: IResolvers = {
 
         }
     },
-    ItScreen: {
-        complementaries: async ({ complementaries }, _, { db }) => {
+    ItDeviceScreen: {
+        idCables: async ({ idCables }, _, { db }) => {
 
             return await findElements(
                 db,
-                COLLECTIONS.IT_COMPLEMENTARY,
+                COLLECTIONS.IT_CABLE,
                 {
-                    id: { $in: complementaries }
+                    id: { $in: idCables }
                 }
             );
 
         },
-        equipment: async ({ equipment }, _, { db }) => {
+        idEquipment: async ({ idEquipment }, _, { db }) => {
 
             return await findOneElement(
                 db,
                 COLLECTIONS.IT_EQUIPMENT,
                 {
-                    id: equipment
+                    id: idEquipment
                 }
             );
 
         }
     },
-    ItInputDevice: {
-        complementaries: async ({ complementaries }, _, { db }) => {
+    ItDevicePeripheral: {
+        idCables: async ({ idCables }, _, { db }) => {
 
             return await findElements(
                 db,
-                COLLECTIONS.IT_COMPLEMENTARY,
+                COLLECTIONS.IT_CABLE,
                 {
-                    id: { $in: complementaries }
+                    id: { $in: idCables }
                 }
             );
 
         },
-        equipment: async ({ equipment }, _, { db }) => {
+        idEquipment: async ({ idEquipment }, _, { db }) => {
 
             return await findOneElement(
                 db,
                 COLLECTIONS.IT_EQUIPMENT,
                 {
-                    id: equipment
-                }
-            );
-
-        }
-    },
-    ItOutputDevice: {
-        complementaries: async ({ complementaries }, _, { db }) => {
-
-            return await findElements(
-                db,
-                COLLECTIONS.IT_COMPLEMENTARY,
-                {
-                    id: { $in: complementaries }
-                }
-            );
-
-        },
-        equipment: async ({ equipment }, _, { db }) => {
-
-            return await findOneElement(
-                db,
-                COLLECTIONS.IT_EQUIPMENT,
-                {
-                    id: equipment
+                    id: idEquipment
                 }
             );
 

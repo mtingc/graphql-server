@@ -7,5 +7,13 @@ type Mutation {
   addDesktop(device: ItDeviceDesktopInput): ResultItDevice
   updateDesktop(id: ID!, device: ItDeviceDesktopInput): ResultItDevice
   
+  "Screen"
+  addScreen(device: ItDeviceScreenInput): ResultItDevice
+  updateScreen(id: ID!, device: ItDeviceScreenInput): ResultItDevice
+  
+  "Peripheral"
+  addPeripheral(device: ItDevicePeripheralInput): ResultItDevice
+  updatePeripheral(id: ID!, device: ItDevicePeripheralInput): ResultItDevice
+  
   deleteDevice(id: ID!): ResultItDevice
 }

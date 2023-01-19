@@ -1,8 +1,0 @@
-type Mutation {
-  "New screen"
-  addScreen(screen: ItScreenInput!): ResultItScreen
-  "Update screen"
-  updateScreen(id: ID!, screen: ItScreenInput!): ResultItScreen
-  "Delete screen"
-  deleteScreen(id: ID!): ResultItScreen
-}

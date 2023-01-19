@@ -1,9 +1,6 @@
 import { IResolvers } from '@graphql-tools/utils';
 // Main data
 import ItDeviceService from '../../services/it/device.service';
-import ItScreenService from '../../services/it/screen.service';
-import ItInputDeviceService from '../../services/it/inputDevice.service';
-import ItOutputDeviceService from '../../services/it/outputDevice.service';
 import ItConsumableService from '../../services/it/consumable.service';
 // Supplementary data
 import ItStorageService from '../../services/it/storage.service';
@@ -23,36 +20,6 @@ const queryItResolvers: IResolvers = {
         },
         async devices(_, variables, context) {
             return new ItDeviceService(_, {
-                pagination: variables
-            }, context).items();
-        },
-
-        // Screen
-        async screen(_, { id }, { db }) {
-            return new ItScreenService(_, { id }, { db }).details();
-        },
-        async screens(_, variables, context) {
-            return new ItScreenService(_, {
-                pagination: variables
-            }, context).items();
-        },
-
-        // Input device
-        async inputDevice(_, { id }, { db }) {
-            return new ItInputDeviceService(_, { id }, { db }).details();
-        },
-        async inputDevices(_, variables, context) {
-            return new ItInputDeviceService(_, {
-                pagination: variables
-            }, context).items();
-        },
-
-        // Output device
-        async outputDevice(_, { id }, { db }) {
-            return new ItOutputDeviceService(_, { id }, { db }).details();
-        },
-        async outputDevices(_, variables, context) {
-            return new ItOutputDeviceService(_, {
                 pagination: variables
             }, context).items();
         },
