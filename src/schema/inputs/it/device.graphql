@@ -1,11 +1,25 @@
-input ItDeviceInput {
+input ItDeviceLaptopInput {
     brand: String!
     model: String!
-    processor: String!
+    processor: String
     idRams: [String!]
     idStorages: [String!]
-    inches: Int!
-    dedicatedGraphic: Boolean!
+    inches: Int
+    dedicatedGraphic: Boolean
+    idEquipment: String
+    idCables: [String!]
+    details: DetailsInput
+}
+
+input ItDeviceDesktopInput {
+    brand: String!
+    model: String!
+    motherboard: String
+    idRams: [String!]
+    idStorages: [String!]
+    idGraphics: [String!]
+    case: String
+    idCoolings: [String!]
     idEquipment: String
     idCables: [String!]
     details: DetailsInput

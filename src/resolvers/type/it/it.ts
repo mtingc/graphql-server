@@ -4,31 +4,34 @@ import { findElements, findOneElement } from '../../../lib/db-operations';
 
 const typeItResolvers: IResolvers = {
     ItDevice: {
-        __resolveType(root: { dedicatedGraphic: boolean }) {
+        __resolveType(root: { dedicatedGraphic: boolean, motherboard: string }) {
             if (root.dedicatedGraphic) {
                 return 'ItDeviceLaptop';
+            }
+            if (root.motherboard) {
+                return 'ItDeviceDesktop';
             }
         }
     },
     ItDeviceLaptop: {
-        idRam: async ({ idRam }, _, { db }) => {
+        idRams: async ({ idRams }, _, { db }) => {
 
             return await findElements(
                 db,
                 COLLECTIONS.IT_RAM,
                 {
-                    id: { $in: idRam }
+                    id: { $in: idRams }
                 }
             );
 
         },
-        idStorage: async ({ idStorage }, _, { db }) => {
+        idStorages: async ({ idStorages }, _, { db }) => {
 
             return await findElements(
                 db,
                 COLLECTIONS.IT_STORAGE,
                 {
-                    id: { $in: idStorage }
+                    id: { $in: idStorages }
                 }
             );
 
@@ -57,69 +60,69 @@ const typeItResolvers: IResolvers = {
         }
 
     },
-    ItDesktop: {
-        ram: async ({ ram }, _, { db }) => {
+    ItDeviceDesktop: {
+        idRams: async ({ idRams }, _, { db }) => {
 
             return await findElements(
                 db,
                 COLLECTIONS.IT_RAM,
                 {
-                    id: { $in: ram }
+                    id: { $in: idRams }
                 }
             );
 
         },
-        storage: async ({ storage }, _, { db }) => {
+        idStorages: async ({ idStorages }, _, { db }) => {
 
             return await findElements(
                 db,
                 COLLECTIONS.IT_STORAGE,
                 {
-                    id: { $in: storage }
+                    id: { $in: idStorages }
                 }
             );
 
         },
-        graphic: async ({ graphic }, _, { db }) => {
+        idGraphics: async ({ idGraphics }, _, { db }) => {
 
             return await findElements(
                 db,
                 COLLECTIONS.IT_GRAPHIC,
                 {
-                    id: { $in: graphic }
+                    id: { $in: idGraphics }
                 }
             );
 
         },
-        cooling: async ({ cooling }, _, { db }) => {
+        idCoolings: async ({ idCoolings }, _, { db }) => {
 
             return await findElements(
                 db,
                 COLLECTIONS.IT_COOLING,
                 {
-                    id: { $in: cooling }
+                    id: { $in: idCoolings }
                 }
             );
 
         },
-        complementaries: async ({ complementaries }, _, { db }) => {
+        idCables: async ({ idCables }, _, { db }) => {
 
             return await findElements(
                 db,
                 COLLECTIONS.IT_COMPLEMENTARY,
                 {
-                    id: { $in: complementaries }
+                    id: { $in: idCables }
                 }
             );
 
         },
-        equipment: async ({ equipment }, _, { db }) => {
+        idEquipment: async ({ idEquipment }, _, { db }) => {
 
             return await findOneElement(
                 db,
                 COLLECTIONS.IT_EQUIPMENT,
                 {
-                    id: equipment
+                    id: idEquipment
                 }
             );
 

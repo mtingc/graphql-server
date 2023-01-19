@@ -1,8 +1,0 @@
-type Mutation {
-  "New desktop"
-  addDesktop(desktop: ItDesktopInput!): ResultItDesktop
-  "Update desktop"
-  updateDesktop(id: ID!, desktop: ItDesktopInput!): ResultItDesktop
-  "Delete desktop"
-  deleteDesktop(id: ID!): ResultItDesktop
-}

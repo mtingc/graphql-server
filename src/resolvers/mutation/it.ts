@@ -1,7 +1,6 @@
 import { IResolvers } from '@graphql-tools/utils';
 // Main data
 import ItDeviceService from '../../services/it/device.service';
-import ItDesktopService from '../../services/it/desktop.service';
 import ItScreenService from '../../services/it/screen.service';
 import ItInputDeviceService from '../../services/it/inputDevice.service';
 import ItOutputDeviceService from '../../services/it/outputDevice.service';
@@ -18,26 +17,24 @@ import ItEquipmentService from '../../services/it/equipment.service';
 const mutationItResolvers: IResolvers = {
     Mutation: {
 
-        // Device
-        addDevice(_, variables, context) {
+        // Laptop
+        addLaptop(_, variables, context) {
             return new ItDeviceService(_, variables, context).insert();
         },
-        updateDevice(_, variables, context) {
+        updateLaptop(_, variables, context) {
             return new ItDeviceService(_, variables, context).modify();
-        },
-        deleteDevice(_, variables, context) {
-            return new ItDeviceService(_, variables, context).delete();
         },
 
         // Desktop
         addDesktop(_, variables, context) {
-            return new ItDesktopService(_, variables, context).insert();
+            return new ItDeviceService(_, variables, context).insert();
         },
         updateDesktop(_, variables, context) {
-            return new ItDesktopService(_, variables, context).modify();
+            return new ItDeviceService(_, variables, context).modify();
         },
-        deleteDesktop(_, variables, context) {
-            return new ItDesktopService(_, variables, context).delete();
+
+        deleteDevice(_, variables, context) {
+            return new ItDeviceService(_, variables, context).delete();
         },
 
         // Screen

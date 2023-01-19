@@ -1,6 +1,5 @@
 // Main data
 export * from './device.interface';
-export * from './desktop.interface';
 export * from './screen/screen.interface';
 export * from './screen/input.interface';
 export * from './inputDevice/inputDevice.interface';

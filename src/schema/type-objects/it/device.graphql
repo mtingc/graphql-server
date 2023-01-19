@@ -3,10 +3,25 @@ type ItDeviceLaptop implements ItDevice {
   brand: String!
   model: String!
   processor: String
-  idRam: [ItComplement]
-  idStorage: [ItComplement]
+  idRams: [ItComplement]
+  idStorages: [ItComplement]
   inches: Int
   dedicatedGraphic: Boolean
+  idEquipment: ItEquipment
+  idCables: [ItCable!]!
+  details: Details!
+}
+
+type ItDeviceDesktop implements ItDevice {
+  id: String!
+  brand: String!
+  model: String!
+  motherboard: String
+  idRams: [ItComplement]
+  idStorages: [ItComplement]
+  idGraphics: [ItComplement]
+  case: String
+  idCoolings: [ItComplement]
   idEquipment: ItEquipment
   idCables: [ItCable!]!
   details: Details!
