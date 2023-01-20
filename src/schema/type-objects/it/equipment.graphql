@@ -1,6 +1,7 @@
 type ItEquipment {
   id: String
   user: User
+  idDevices: [ItDevice]
   details: Details
 }
 

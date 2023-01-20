@@ -7,7 +7,6 @@ type ItDeviceLaptop implements ItDevice {
   idStorages: [ItComplement]
   inches: Int
   dedicatedGraphic: Boolean
-  idEquipment: ItEquipment
   idCables: [ItCable!]!
   details: Details!
 }
@@ -22,7 +21,6 @@ type ItDeviceDesktop implements ItDevice {
   idGraphics: [ItComplement]
   case: String
   idCoolings: [ItComplement]
-  idEquipment: ItEquipment
   idCables: [ItCable!]!
   details: Details!
 }
@@ -33,7 +31,6 @@ type ItDeviceScreen implements ItDevice {
   model: String!
   inches: Int
   inputs: ItScreenIn
-  idEquipment: ItEquipment
   idCables: [ItCable!]!
   details: Details!
 }
@@ -51,7 +48,6 @@ type ItDevicePeripheral implements ItDevice {
   model: String!
   type: PeripheralTypeEnum
   signal: [PeripheralSignalEnum]
-  idEquipment: ItEquipment
   idCables: [ItCable!]!
   details: Details!
 }

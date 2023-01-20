@@ -53,17 +53,6 @@ const typeItResolvers: IResolvers = {
                 }
             );
 
-        },
-        idEquipment: async ({ idEquipment }, _, { db }) => {
-
-            return await findOneElement(
-                db,
-                COLLECTIONS.IT_EQUIPMENT,
-                {
-                    id: idEquipment
-                }
-            );
-
         }
 
     },
@@ -122,17 +111,6 @@ const typeItResolvers: IResolvers = {
                 }
             );
 
-        },
-        idEquipment: async ({ idEquipment }, _, { db }) => {
-
-            return await findOneElement(
-                db,
-                COLLECTIONS.IT_EQUIPMENT,
-                {
-                    id: idEquipment
-                }
-            );
-
         }
     },
     ItDeviceScreen: {
@@ -143,17 +121,6 @@ const typeItResolvers: IResolvers = {
                 COLLECTIONS.IT_CABLE,
                 {
                     id: { $in: idCables }
-                }
-            );
-
-        },
-        idEquipment: async ({ idEquipment }, _, { db }) => {
-
-            return await findOneElement(
-                db,
-                COLLECTIONS.IT_EQUIPMENT,
-                {
-                    id: idEquipment
                 }
             );
 
@@ -170,17 +137,6 @@ const typeItResolvers: IResolvers = {
                 }
             );
 
-        },
-        idEquipment: async ({ idEquipment }, _, { db }) => {
-
-            return await findOneElement(
-                db,
-                COLLECTIONS.IT_EQUIPMENT,
-                {
-                    id: idEquipment
-                }
-            );
-
         }
     },
     ItComplement: {
@@ -191,19 +147,6 @@ const typeItResolvers: IResolvers = {
             if (root.type) {
                 return 'ItComplementCooling';
             }
-        }
-    },
-    ItCable: {
-        idEquipment: async ({ idEquipment }, _, { db }) => {
-
-            return await findOneElement(
-                db,
-                COLLECTIONS.IT_EQUIPMENT,
-                {
-                    id: idEquipment
-                }
-            );
-
         }
     },
     ItEquipment: {
@@ -217,7 +160,18 @@ const typeItResolvers: IResolvers = {
                 }
             );
 
-        }
+        },
+        idDevices: async ({ idDevices }, _, { db }) => {
+
+            return await findElements(
+                db,
+                COLLECTIONS.IT_DEVICE,
+                {
+                    id: { $in: idDevices }
+                }
+            );
+
+        },
     }
 };
 

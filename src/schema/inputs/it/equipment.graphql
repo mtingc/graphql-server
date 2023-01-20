@@ -1,4 +1,5 @@
 input ItEquipmentInput {
     user: String!
+    idDevices: [String!]!
     details: DetailsInput
 }

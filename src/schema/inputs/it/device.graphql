@@ -6,7 +6,6 @@ input ItDeviceLaptopInput {
     idStorages: [String!]
     inches: Int
     dedicatedGraphic: Boolean
-    idEquipment: String
     idCables: [String!]
     details: DetailsInput
 }
@@ -20,7 +19,6 @@ input ItDeviceDesktopInput {
     idGraphics: [String!]
     case: String
     idCoolings: [String!]
-    idEquipment: String
     idCables: [String!]
     details: DetailsInput
 }
@@ -30,7 +28,6 @@ input ItDeviceScreenInput {
     model: String!
     inches: Int
     inputs: ItScreenInInput
-    idEquipment: String
     idCables: [String!]
     details: DetailsInput
 }
@@ -47,7 +44,6 @@ input ItDevicePeripheralInput {
     model: String!
     type: PeripheralTypeEnum
     signal: [PeripheralSignalEnum]
-    idEquipment: String
     idCables: [String!]
     details: DetailsInput
 }
