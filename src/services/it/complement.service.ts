@@ -7,10 +7,10 @@ import {
     modifierDetails
 } from '../../lib/details';
 
-class ItRamService extends ResolversOperationsService {
+class ItComplementService extends ResolversOperationsService {
 
-    private element = 'ram';
-    private collection = COLLECTIONS.IT_RAM;
+    private element = 'complemento';
+    private collection = COLLECTIONS.IT_COMPLEMENT;
 
     constructor(
         root: object,
@@ -20,7 +20,7 @@ class ItRamService extends ResolversOperationsService {
         super(root, variables, context);
     }
 
-    // Ram list
+    // Complements list
     async items() {
         const page = this.getVariables().pagination?.page;
         const itemsPage = this.getVariables().pagination?.itemsPage;
@@ -30,100 +30,100 @@ class ItRamService extends ResolversOperationsService {
             info: result.info,
             status: result.status,
             message: result.message,
-            rams: result.items
+            complements: result.items
         };
     }
 
-    // Get a ram
+    // Get a complement
     async details() {
         const result = await this.get(this.collection, this.element);
         return {
             status: result.status,
             message: result.message,
-            ram: result.item
+            complement: result.item
         };
     }
 
-    // Create ram
+    // Create complement
     async insert() {
-        const ram = this.getVariables().ram;
+        const complement = this.getVariables().complement;
 
         // Check not to be empty
-        if (ram === null) {
+        if (complement === null) {
             return {
                 status: false,
                 message: `El ${this.element} no se ha especificado correctamente.`,
-                ram: null
+                complement: null
             };
         }
 
         // DETAILS
-        const creationDetail = await createDetails(ram!.details);
+        const creationDetail = await createDetails(complement!.details);
         if (!creationDetail.status) {
             return {
                 status: false,
                 message: creationDetail.message,
-                ram: null
+                complement: null
             };
         }
-        ram!.details = creationDetail.item;
+        complement!.details = creationDetail.item;
         // DETAILS
 
         // Check the last registered user to assign ID
-        ram!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
+        complement!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 
-        const result = await this.add(this.collection, ram || {}, this.element);
+        const result = await this.add(this.collection, complement || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            ram: result.item
+            complement: result.item
         };
     }
 
-    // Update ram
+    // Update complement
     async modify() {
         const id = this.getVariables().id;
-        const ram = this.getVariables().ram;
+        const complement = this.getVariables().complement;
 
         // Validate an id
         if (!this.checkData(String(id) || '')) {
             return {
                 status: false,
                 message: `El ID del ${this.element} no se ha especificado correctamente.`,
-                ram: null
+                complement: null
             };
         }
 
         // Validate an existing element
-        if (ram === null) {
+        if (complement === null) {
             return {
                 status: false,
                 message: `El ${this.element} no existe.`,
-                ram: null
+                complement: null
             };
         }
 
         // DETAILS
-        const modificationDetails = await modifierDetails(ram!.details);
+        const modificationDetails = await modifierDetails(complement!.details);
         if (!modificationDetails.status) {
             return {
                 status: false,
                 message: modificationDetails.message,
-                ram: null
+                complement: null
             };
         }
-        ram!.details = modificationDetails.item;
+        complement!.details = modificationDetails.item;
         // DETAILS
 
-        const result = await this.update(this.collection, { id }, ram || {}, this.element);
+        const result = await this.update(this.collection, { id }, complement || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            ram: result.item
+            complement: result.item
         };
     }
 
-    // Delete ram
+    // Delete complement
     async delete() {
         const id = this.getVariables().id;
 
@@ -148,4 +148,4 @@ class ItRamService extends ResolversOperationsService {
 
 }
 
-export default ItRamService;
+export default ItComplementService;

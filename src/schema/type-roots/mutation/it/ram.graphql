@@ -1,8 +1,0 @@
-type Mutation {
-  "New ram"
-  addRam(ram: ItRamInput!): ResultItRam
-  "Update ram"
-  updateRam(id: ID!, ram: ItRamInput!): ResultItRam
-  "Delete ram"
-  deleteRam(id: ID!): ResultItRam
-}

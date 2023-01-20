@@ -1,0 +1,11 @@
+type Mutation {
+  "Component"
+  addComponent(complement: ItComplementComponentInput): ResultItComplement
+  updateComponent(id: ID!, complement: ItComplementComponentInput): ResultItComplement
+
+  "Cooling"
+  addCooling(complement: ItComplementCoolingInput): ResultItComplement
+  updateCooling(id: ID!, complement: ItComplementCoolingInput): ResultItComplement
+
+  deleteComplement(id: ID!): ResultItComplement
+}

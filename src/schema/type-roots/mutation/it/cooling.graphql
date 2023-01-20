@@ -1,8 +1,0 @@
-type Mutation {
-  "New cooling"
-  addCooling(cooling: ItCoolingInput!): ResultItCooling
-  "Update cooling"
-  updateCooling(id: ID!, cooling: ItCoolingInput!): ResultItCooling
-  "Delete cooling"
-  deleteCooling(id: ID!): ResultItCooling
-}

@@ -1,5 +1,0 @@
-enum CoolingTypeEnum {
-    DISIPADOR,
-    VENTILADOR,
-    DISIPADOR_VENTILADOR
-}

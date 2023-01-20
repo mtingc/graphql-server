@@ -1,0 +1,14 @@
+input ItComplementComponentInput {
+    brand: String
+    model: String
+    disk: ComponentDiskEnum
+    capacity: Int
+    details: DetailsInput
+}
+
+input ItComplementCoolingInput {
+    brand: String
+    model: String
+    type: CoolingTypeEnum
+    details: DetailsInput
+}

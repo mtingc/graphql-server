@@ -2,5 +2,35 @@ type ItComplementComponent implements ItComplement {
     id: String!
     brand: String!
     model: String!
+    disk: ComponentDiskEnum
+    capacity: Int
     details: Details!
+}
+
+type ItComplementCooling implements ItComplement {
+    id: String!
+    brand: String!
+    model: String!
+    type: CoolingTypeEnum
+    details: Details!
+}
+
+type ResultItComplement implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Get complement"
+  complement: ItComplement
+}
+
+type ResultItComplements implements Result {
+  "Show paging system information"
+  info: ResultInfo
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of complements"
+  complements: [ItComplement!]
 }

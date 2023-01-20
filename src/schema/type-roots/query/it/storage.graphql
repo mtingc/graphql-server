@@ -1,6 +1,0 @@
-type Query {
-  "Show item storage"
-  storage(id: ID!): ResultItStorage
-  "Show list of storages"
-  storages(page: Int = 1, itemsPage: Int = 20): ResultItStorages
-}

@@ -1,12 +1,9 @@
 import { IResolvers } from '@graphql-tools/utils';
 // Main data
 import ItDeviceService from '../../services/it/device.service';
+import ItComplementService from '../../services/it/complement.service';
 import ItConsumableService from '../../services/it/consumable.service';
 // Supplementary data
-import ItStorageService from '../../services/it/storage.service';
-import ItRamService from '../../services/it/ram.service';
-import ItGraphicService from '../../services/it/graphic.service';
-import ItCoolingService from '../../services/it/cooling.service';
 import ItComplementaryService from '../../services/it/complementary.service';
 // Actions
 import ItEquipmentService from '../../services/it/equipment.service';
@@ -24,52 +21,22 @@ const queryItResolvers: IResolvers = {
             }, context).items();
         },
 
+        // Complement
+        async complement(_, { id }, { db }) {
+            return new ItComplementService(_, { id }, { db }).details();
+        },
+        async complements(_, variables, context) {
+            return new ItComplementService(_, {
+                pagination: variables
+            }, context).items();
+        },
+
         // Consumable
         async consumable(_, { id }, { db }) {
             return new ItConsumableService(_, { id }, { db }).details();
         },
         async consumables(_, variables, context) {
             return new ItConsumableService(_, {
-                pagination: variables
-            }, context).items();
-        },
-
-        // Storage
-        async storage(_, { id }, { db }) {
-            return new ItStorageService(_, { id }, { db }).details();
-        },
-        async storages(_, variables, context) {
-            return new ItStorageService(_, {
-                pagination: variables
-            }, context).items();
-        },
-
-        // Ram
-        async ram(_, { id }, { db }) {
-            return new ItRamService(_, { id }, { db }).details();
-        },
-        async rams(_, variables, context) {
-            return new ItRamService(_, {
-                pagination: variables
-            }, context).items();
-        },
-
-        // Graphic
-        async graphic(_, { id }, { db }) {
-            return new ItGraphicService(_, { id }, { db }).details();
-        },
-        async graphics(_, variables, context) {
-            return new ItGraphicService(_, {
-                pagination: variables
-            }, context).items();
-        },
-
-        // Cooling
-        async cooling(_, { id }, { db }) {
-            return new ItCoolingService(_, { id }, { db }).details();
-        },
-        async coolings(_, variables, context) {
-            return new ItCoolingService(_, {
                 pagination: variables
             }, context).items();
         },

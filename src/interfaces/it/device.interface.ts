@@ -1,4 +1,4 @@
-import { IDetails } from '@interfaces/common';
+import { IDetails } from '@ICommon';
 
 export interface IItDevice {
     id: string;

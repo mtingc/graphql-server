@@ -183,6 +183,16 @@ const typeItResolvers: IResolvers = {
 
         }
     },
+    ItComplement: {
+        __resolveType(root: { capacity: number, type: any }) {
+            if (root.capacity) {
+                return 'ItComplementComponent';
+            }
+            if (root.type) {
+                return 'ItComplementCooling';
+            }
+        }
+    },
     ItComplementary: {
         equipment: async ({ equipment }, _, { db }) => {
 

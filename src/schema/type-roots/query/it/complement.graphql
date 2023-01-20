@@ -1,0 +1,6 @@
+type Query {
+  "Show item complement"
+  complement(id: ID!): ResultItComplement
+  "Show list of complements"
+  complements(page: Int = 1, itemsPage: Int = 20): ResultItComplements
+}

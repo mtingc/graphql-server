@@ -1,12 +1,9 @@
 import { IResolvers } from '@graphql-tools/utils';
 // Main data
 import ItDeviceService from '../../services/it/device.service';
+import ItComplementService from '../../services/it/complement.service';
 import ItConsumableService from '../../services/it/consumable.service';
 // Supplementary data
-import ItStorageService from '../../services/it/storage.service';
-import ItRamService from '../../services/it/ram.service';
-import ItGraphicService from '../../services/it/graphic.service';
-import ItCoolingService from '../../services/it/cooling.service';
 import ItComplementaryService from '../../services/it/complementary.service';
 // Actions
 import ItEquipmentService from '../../services/it/equipment.service';
@@ -50,6 +47,26 @@ const mutationItResolvers: IResolvers = {
             return new ItDeviceService(_, variables, context).delete();
         },
 
+        // Component
+        addComponent(_, variables, context) {
+            return new ItComplementService(_, variables, context).insert();
+        },
+        updateComponent(_, variables, context) {
+            return new ItComplementService(_, variables, context).modify();
+        },
+
+        // Component
+        addCooling(_, variables, context) {
+            return new ItComplementService(_, variables, context).insert();
+        },
+        updateCooling(_, variables, context) {
+            return new ItComplementService(_, variables, context).modify();
+        },
+
+        deleteComplement(_, variables, context) {
+            return new ItComplementService(_, variables, context).delete();
+        },
+
         // Consumable
         addConsumable(_, variables, context) {
             return new ItConsumableService(_, variables, context).insert();
@@ -59,50 +76,6 @@ const mutationItResolvers: IResolvers = {
         },
         deleteConsumable(_, variables, context) {
             return new ItConsumableService(_, variables, context).delete();
-        },
-
-        // Storage
-        addStorage(_, variables, context) {
-            return new ItStorageService(_, variables, context).insert();
-        },
-        updateStorage(_, variables, context) {
-            return new ItStorageService(_, variables, context).modify();
-        },
-        deleteStorage(_, variables, context) {
-            return new ItStorageService(_, variables, context).delete();
-        },
-
-        // Ram
-        addRam(_, variables, context) {
-            return new ItRamService(_, variables, context).insert();
-        },
-        updateRam(_, variables, context) {
-            return new ItRamService(_, variables, context).modify();
-        },
-        deleteRam(_, variables, context) {
-            return new ItRamService(_, variables, context).delete();
-        },
-
-        // Graphic
-        addGraphic(_, variables, context) {
-            return new ItGraphicService(_, variables, context).insert();
-        },
-        updateGraphic(_, variables, context) {
-            return new ItGraphicService(_, variables, context).modify();
-        },
-        deleteGraphic(_, variables, context) {
-            return new ItGraphicService(_, variables, context).delete();
-        },
-
-        // Cooling
-        addCooling(_, variables, context) {
-            return new ItCoolingService(_, variables, context).insert();
-        },
-        updateCooling(_, variables, context) {
-            return new ItCoolingService(_, variables, context).modify();
-        },
-        deleteCooling(_, variables, context) {
-            return new ItCoolingService(_, variables, context).delete();
         },
 
         // Complementary

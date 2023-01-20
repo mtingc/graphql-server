@@ -1,7 +1,0 @@
-input ItStorageInput {
-    brand: String!
-    model: String
-    type: StorageTypeEnum!
-    capacity: Int!
-    details: DetailsInput
-}

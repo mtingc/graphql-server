@@ -1,0 +1,19 @@
+enum ComponentDiskEnum {
+    HDD_3_5,
+    HDD_2_5,
+    HDD_Externo,
+    SSD_SATA,
+    SSD_M_2,
+    SSD_M_2_NVMe,
+    SSD_Externo,
+    USB,
+    DDR4,
+    DDR5,
+    GPU
+}
+
+enum CoolingTypeEnum {
+    DISIPADOR,
+    VENTILADOR,
+    DISIPADOR_CON_VENTILADOR
+}

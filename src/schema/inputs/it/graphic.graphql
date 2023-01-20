@@ -1,6 +1,0 @@
-input ItGraphicInput {
-    brand: String!
-    model: String
-    capacity: Int!
-    details: DetailsInput
-}
