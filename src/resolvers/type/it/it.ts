@@ -193,14 +193,14 @@ const typeItResolvers: IResolvers = {
             }
         }
     },
-    ItComplementary: {
-        equipment: async ({ equipment }, _, { db }) => {
+    ItCable: {
+        idEquipment: async ({ idEquipment }, _, { db }) => {
 
             return await findOneElement(
                 db,
                 COLLECTIONS.IT_EQUIPMENT,
                 {
-                    id: equipment
+                    id: idEquipment
                 }
             );
 

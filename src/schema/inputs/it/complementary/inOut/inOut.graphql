@@ -1,4 +1,0 @@
-input ItComplementaryInOutInput {
-    description: ComplementaryInOutDescriptionEnum!
-    type: ComplementaryInOutTypeEnum!
-}

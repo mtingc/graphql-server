@@ -1,4 +1,4 @@
-enum ComplementaryInOutDescriptionEnum {
+export enum InOutDescriptionEnum {
     USB_A,
     USB_B,
     USB_B_MICRO,

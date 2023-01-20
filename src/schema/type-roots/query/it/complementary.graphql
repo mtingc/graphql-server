@@ -1,6 +1,0 @@
-type Query {
-  "Show item complementary"
-  complementary(id: ID!): ResultItComplementary
-  "Show list of complementaries"
-  complementaries(page: Int = 1, itemsPage: Int = 20): ResultItComplementaries
-}

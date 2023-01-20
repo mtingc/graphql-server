@@ -1,0 +1,4 @@
+input ItCableInOutInput {
+    description: InOutDescriptionEnum!
+    type: InOutTypeEnum!
+}

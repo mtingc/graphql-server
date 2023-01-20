@@ -1,0 +1,6 @@
+type Query {
+  "Show item cable"
+  cable(id: ID!): ResultItCable
+  "Show list of cables"
+  cables(page: Int = 1, itemsPage: Int = 20): ResultItCables
+}

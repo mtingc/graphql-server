@@ -4,7 +4,7 @@ import ItDeviceService from '../../services/it/device.service';
 import ItComplementService from '../../services/it/complement.service';
 import ItConsumableService from '../../services/it/consumable.service';
 // Supplementary data
-import ItComplementaryService from '../../services/it/complementary.service';
+import ItCableService from '../../services/it/cable.service';
 // Actions
 import ItEquipmentService from '../../services/it/equipment.service';
 
@@ -67,6 +67,17 @@ const mutationItResolvers: IResolvers = {
             return new ItComplementService(_, variables, context).delete();
         },
 
+        // Cable
+        addCable(_, variables, context) {
+            return new ItCableService(_, variables, context).insert();
+        },
+        updateCable(_, variables, context) {
+            return new ItCableService(_, variables, context).modify();
+        },
+        deleteCable(_, variables, context) {
+            return new ItCableService(_, variables, context).delete();
+        },
+
         // Consumable
         addConsumable(_, variables, context) {
             return new ItConsumableService(_, variables, context).insert();
@@ -76,17 +87,6 @@ const mutationItResolvers: IResolvers = {
         },
         deleteConsumable(_, variables, context) {
             return new ItConsumableService(_, variables, context).delete();
-        },
-
-        // Complementary
-        addComplementary(_, variables, context) {
-            return new ItComplementaryService(_, variables, context).insert();
-        },
-        updateComplementary(_, variables, context) {
-            return new ItComplementaryService(_, variables, context).modify();
-        },
-        deleteComplementary(_, variables, context) {
-            return new ItComplementaryService(_, variables, context).delete();
         },
 
         // Equipment

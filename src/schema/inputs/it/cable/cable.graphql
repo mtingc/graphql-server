@@ -1,0 +1,6 @@
+input ItCableInput {
+    type: CableTypeEnum!
+    inOut: [ItCableInOutInput!]!
+    idEquipment: String
+    details: DetailsInput
+}

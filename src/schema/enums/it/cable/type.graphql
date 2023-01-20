@@ -1,4 +1,4 @@
-enum ComplementaryTypeEnum {
+enum CableTypeEnum {
     CABLE,
     ADAPTADOR,
     ANTENA,

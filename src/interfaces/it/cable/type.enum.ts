@@ -1,4 +1,4 @@
-export enum ComplementaryTypeEnum {
+export enum CableTypeEnum {
     CABLE,
     ADAPTADOR,
     ANTENA,

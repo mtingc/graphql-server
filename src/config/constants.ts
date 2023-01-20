@@ -20,10 +20,9 @@ export enum COLLECTIONS {
     SALES_PROSPECTS = 'sales_prospects',
     IT_DEVICE = 'it_devices',
     IT_COMPLEMENT = 'it_complements',
-    IT_CONSUMABLE = 'it_consumables',
     IT_CABLE = 'it_cables',
+    IT_CONSUMABLE = 'it_consumables',
     IT_EQUIPMENT = 'it_equipments',
-    IT_COMPLEMENTARY = 'it_complementaries',
 }
 
 export enum MESSAGES {

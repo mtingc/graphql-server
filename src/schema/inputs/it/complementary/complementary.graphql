@@ -1,6 +1,0 @@
-input ItComplementaryInput {
-    type: ComplementaryTypeEnum!
-    inOut: [ItComplementaryInOutInput!]!
-    equipment: String
-    details: DetailsInput
-}

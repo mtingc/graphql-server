@@ -1,8 +1,0 @@
-type Mutation {
-  "New complementary"
-  addComplementary(complementary: ItComplementaryInput!): ResultItComplementary
-  "Update complementary"
-  updateComplementary(id: ID!, complementary: ItComplementaryInput!): ResultItComplementary
-  "Delete complementary"
-  deleteComplementary(id: ID!): ResultItComplementary
-}

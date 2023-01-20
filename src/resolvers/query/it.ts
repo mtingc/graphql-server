@@ -4,7 +4,7 @@ import ItDeviceService from '../../services/it/device.service';
 import ItComplementService from '../../services/it/complement.service';
 import ItConsumableService from '../../services/it/consumable.service';
 // Supplementary data
-import ItComplementaryService from '../../services/it/complementary.service';
+import ItCableService from '../../services/it/cable.service';
 // Actions
 import ItEquipmentService from '../../services/it/equipment.service';
 
@@ -31,22 +31,22 @@ const queryItResolvers: IResolvers = {
             }, context).items();
         },
 
+        // Cable
+        async cable(_, { id }, { db }) {
+            return new ItCableService(_, { id }, { db }).details();
+        },
+        async cables(_, variables, context) {
+            return new ItCableService(_, {
+                pagination: variables
+            }, context).items();
+        },
+
         // Consumable
         async consumable(_, { id }, { db }) {
             return new ItConsumableService(_, { id }, { db }).details();
         },
         async consumables(_, variables, context) {
             return new ItConsumableService(_, {
-                pagination: variables
-            }, context).items();
-        },
-
-        // Complementary
-        async complementary(_, { id }, { db }) {
-            return new ItComplementaryService(_, { id }, { db }).details();
-        },
-        async complementaries(_, variables, context) {
-            return new ItComplementaryService(_, {
                 pagination: variables
             }, context).items();
         },

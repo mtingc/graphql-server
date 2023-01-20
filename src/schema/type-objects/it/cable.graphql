@@ -1,0 +1,32 @@
+type ItCable {
+    id: String
+    type: CableTypeEnum
+    inOut: [ItCableInOut]
+    idEquipment: ItEquipment
+    details: Details
+}
+
+type ItCableInOut {
+    description: InOutDescriptionEnum
+    type: InOutTypeEnum
+}
+
+type ResultItCable implements Result {
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "Get cable"
+  cable: ItCable
+}
+
+type ResultItCables implements Result {
+  "Show paging system information"
+  info: ResultInfo
+  "Operation status"
+  status: Boolean!
+  "Operation message"
+  message: String!
+  "List of cables"
+  cables: [ItCable!]
+}

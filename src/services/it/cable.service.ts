@@ -7,10 +7,10 @@ import {
     modifierDetails
 } from '../../lib/details';
 
-class ItComplementaryService extends ResolversOperationsService {
+class ItCableService extends ResolversOperationsService {
 
-    private element = 'complementario';
-    private collection = COLLECTIONS.IT_COMPLEMENTARY;
+    private element = 'cable';
+    private collection = COLLECTIONS.IT_CABLE;
 
     constructor(
         root: object,
@@ -20,7 +20,7 @@ class ItComplementaryService extends ResolversOperationsService {
         super(root, variables, context);
     }
 
-    // Complementaries list
+    // Cables list
     async items() {
         const page = this.getVariables().pagination?.page;
         const itemsPage = this.getVariables().pagination?.itemsPage;
@@ -30,100 +30,100 @@ class ItComplementaryService extends ResolversOperationsService {
             info: result.info,
             status: result.status,
             message: result.message,
-            complementaries: result.items
+            cables: result.items
         };
     }
 
-    // Get a complementary
+    // Get a cable
     async details() {
         const result = await this.get(this.collection, this.element);
         return {
             status: result.status,
             message: result.message,
-            complementary: result.item
+            cable: result.item
         };
     }
 
-    // Create complementary
+    // Create cable
     async insert() {
-        const complementary = this.getVariables().complementary;
+        const cable = this.getVariables().cable;
 
         // Check not to be empty
-        if (complementary === null) {
+        if (cable === null) {
             return {
                 status: false,
                 message: `El ${this.element} no se ha especificado correctamente.`,
-                complementary: null
+                cable: null
             };
         }
 
         // DETAILS
-        const creationDetail = await createDetails(complementary!.details);
+        const creationDetail = await createDetails(cable!.details);
         if (!creationDetail.status) {
             return {
                 status: false,
                 message: creationDetail.message,
-                complementary: null
+                cable: null
             };
         }
-        complementary!.details = creationDetail.item;
+        cable!.details = creationDetail.item;
         // DETAILS
 
         // Check the last registered user to assign ID
-        complementary!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
+        cable!.id = await assignDocumentId(this.getDb(), this.collection, { key: 'details.creationDate', order: -1 });
 
-        const result = await this.add(this.collection, complementary || {}, this.element);
+        const result = await this.add(this.collection, cable || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            complementary: result.item
+            cable: result.item
         };
     }
 
-    // Update complementary
+    // Update cable
     async modify() {
         const id = this.getVariables().id;
-        const complementary = this.getVariables().complementary;
+        const cable = this.getVariables().cable;
 
         // Validate an id
         if (!this.checkData(String(id) || '')) {
             return {
                 status: false,
                 message: `El ID del ${this.element} no se ha especificado correctamente.`,
-                complementary: null
+                cable: null
             };
         }
 
         // Validate an existing element
-        if (complementary === null) {
+        if (cable === null) {
             return {
                 status: false,
                 message: `El ${this.element} no existe.`,
-                complementary: null
+                cable: null
             };
         }
 
         // DETAILS
-        const modificationDetails = await modifierDetails(complementary!.details);
+        const modificationDetails = await modifierDetails(cable!.details);
         if (!modificationDetails.status) {
             return {
                 status: false,
                 message: modificationDetails.message,
-                complementary: null
+                cable: null
             };
         }
-        complementary!.details = modificationDetails.item;
+        cable!.details = modificationDetails.item;
         // DETAILS
 
-        const result = await this.update(this.collection, { id }, complementary || {}, this.element);
+        const result = await this.update(this.collection, { id }, cable || {}, this.element);
         return {
             status: result.status,
             message: result.message,
-            complementary: result.item
+            cable: result.item
         };
     }
 
-    // Delete complementary
+    // Delete cable
     async delete() {
         const id = this.getVariables().id;
 
@@ -148,4 +148,4 @@ class ItComplementaryService extends ResolversOperationsService {
 
 }
 
-export default ItComplementaryService;
+export default ItCableService;

@@ -1,7 +1,0 @@
-type ItCable {
-    id: String
-    type: String
-    inOut: String
-    idEquipment: ItEquipment
-    details: Details
-}
