@@ -1,4 +1,16 @@
-export enum InOutDescriptionEnum {
+enum CableTypeEnum {
+    CABLE,
+    ADAPTADOR,
+    ANTENA,
+    OTRO
+}
+
+enum InOutTypeEnum {
+    FEMALE,
+    MALE
+}
+
+enum InOutDescriptionEnum {
     USB_A,
     USB_B,
     USB_B_MICRO,

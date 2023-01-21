@@ -1,12 +1,13 @@
 import { IResolvers } from '@graphql-tools/utils';
 // Main data
 import ItDeviceService from '../../services/it/device.service';
-import ItComplementService from '../../services/it/complement.service';
 import ItConsumableService from '../../services/it/consumable.service';
 // Supplementary data
+import ItComplementService from '../../services/it/complement.service';
 import ItCableService from '../../services/it/cable.service';
 // Actions
 import ItEquipmentService from '../../services/it/equipment.service';
+import ItMaintenanceService from '../../services/it/maintenance.service';
 
 const mutationItResolvers: IResolvers = {
     Mutation: {
@@ -98,6 +99,17 @@ const mutationItResolvers: IResolvers = {
         },
         deleteEquipment(_, variables, context) {
             return new ItEquipmentService(_, variables, context).delete();
+        },
+
+        // Maintenance
+        addMaintenance(_, variables, context) {
+            return new ItMaintenanceService(_, variables, context).insert();
+        },
+        updateMaintenance(_, variables, context) {
+            return new ItMaintenanceService(_, variables, context).modify();
+        },
+        deleteMaintenance(_, variables, context) {
+            return new ItMaintenanceService(_, variables, context).delete();
         }
 
     }

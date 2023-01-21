@@ -1,12 +1,13 @@
 import { IResolvers } from '@graphql-tools/utils';
 // Main data
 import ItDeviceService from '../../services/it/device.service';
-import ItComplementService from '../../services/it/complement.service';
 import ItConsumableService from '../../services/it/consumable.service';
 // Supplementary data
+import ItComplementService from '../../services/it/complement.service';
 import ItCableService from '../../services/it/cable.service';
 // Actions
 import ItEquipmentService from '../../services/it/equipment.service';
+import ItMaintenanceService from '../../services/it/maintenance.service';
 
 const queryItResolvers: IResolvers = {
     Query: {
@@ -57,6 +58,16 @@ const queryItResolvers: IResolvers = {
         },
         async equipments(_, variables, context) {
             return new ItEquipmentService(_, {
+                pagination: variables
+            }, context).items();
+        },
+
+        // Equipment
+        async maintenance(_, { id }, { db }) {
+            return new ItMaintenanceService(_, { id }, { db }).details();
+        },
+        async maintenances(_, variables, context) {
+            return new ItMaintenanceService(_, {
                 pagination: variables
             }, context).items();
         }

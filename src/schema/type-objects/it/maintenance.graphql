@@ -1,15 +1,15 @@
 type ItMaintenance {
   id: String
-  reportedBy: User
-  equipment: ItEquipment
-  devices: [String]
+  idReportedBy: User
+  idEquipment: ItEquipment
+  idDevices: [ItDevice]
   description: String
-  assignedTo: [User]
+  idAssignedTo: [User]
   status: MaintenanceStatusEnum
   priority: MaintenancePriorityEnum
   resolutionDay: String
   daysOpen: Int
-  additionalComments: String
+  additionalComments: [String]
   details: Details
 }
 

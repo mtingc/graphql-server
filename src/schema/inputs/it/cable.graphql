@@ -3,3 +3,8 @@ input ItCableInput {
     inOut: [ItCableInOutInput!]!
     details: DetailsInput
 }
+
+input ItCableInOutInput {
+    description: InOutDescriptionEnum!
+    type: InOutTypeEnum!
+}

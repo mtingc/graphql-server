@@ -4,3 +4,9 @@ enum MaintenancePriorityEnum {
     HIGH,
     URGENT
 }
+
+enum MaintenanceStatusEnum {
+    OPEN,
+    PENDING,
+    RESOLVED
+}

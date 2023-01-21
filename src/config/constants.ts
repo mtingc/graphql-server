@@ -23,6 +23,7 @@ export enum COLLECTIONS {
     IT_CABLE = 'it_cables',
     IT_CONSUMABLE = 'it_consumables',
     IT_EQUIPMENT = 'it_equipments',
+    IT_MAINTENANCE = 'it_maintenances'
 }
 
 export enum MESSAGES {

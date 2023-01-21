@@ -172,6 +172,73 @@ const typeItResolvers: IResolvers = {
             );
 
         },
+    },
+    ItMaintenance: {
+        idReportedBy: async ({ idReportedBy }, _, { db }) => {
+
+            return await findOneElement(
+                db,
+                COLLECTIONS.USERS,
+                {
+                    id: idReportedBy
+                }
+            );
+
+        },
+        idEquipment: async ({ idEquipment }, _, { db }) => {
+
+            return await findOneElement(
+                db,
+                COLLECTIONS.IT_EQUIPMENT,
+                {
+                    id: idEquipment
+                }
+            );
+
+        },
+        idDevices: async ({ idDevices }, _, { db }) => {
+
+            return await findElements(
+                db,
+                COLLECTIONS.IT_DEVICE,
+                {
+                    id: { $in: idDevices }
+                }
+            );
+
+        },
+        idAssignedTo: async ({ idAssignedTo }, _, { db }) => {
+
+            return await findElements(
+                db,
+                COLLECTIONS.USERS,
+                {
+                    id: { $in: idAssignedTo }
+                }
+            );
+
+        },
+        daysOpen: async ({ status, resolutionDay, details }) => {
+
+            if (status === 'RESOLVED') {
+
+                const { creationDate } = details;
+                const creation = new Date(creationDate).getTime();
+                const closed = new Date(resolutionDay).getTime();
+
+                const days = (closed - creation) / (1000 * 60 * 60 * 24);
+                return Math.ceil(days);
+
+            } else {
+                const { creationDate } = details;
+                const creation = new Date(creationDate).getTime();
+                const closed = new Date().getTime();
+
+                const days = (closed - creation) / (1000 * 60 * 60 * 24);
+                return Math.round(days);
+            }
+
+        },
     }
 };
 

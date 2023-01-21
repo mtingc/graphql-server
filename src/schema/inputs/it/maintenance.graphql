@@ -1,12 +1,11 @@
 input ItMaintenanceInput {
-    reportedBy: String!
-    equipment: String!
-    devices: [String!]!
+    idReportedBy: String!
+    idEquipment: String!
+    idDevices: [String!]!
     description: String
-    assignedTo: String!
-    status: MaintenanceStatusEnum!
+    idAssignedTo: [String!]
+    status: MaintenanceStatusEnum
     priority: MaintenancePriorityEnum!
-    resolutionDay: String
-    additionalComments: String
+    additionalComments: [String!]
     details: DetailsInput
 }
