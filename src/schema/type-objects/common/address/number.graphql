@@ -1,4 +1,0 @@
-type AddressNumber {
-  interior: String
-  exterior: String
-}

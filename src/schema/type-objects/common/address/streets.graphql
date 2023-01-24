@@ -1,4 +1,4 @@
 type AddressStreets {
-  a: String
-  b: String
+  first: String
+  second: String
 }
